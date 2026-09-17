@@ -1,0 +1,122 @@
+# Smoke configuration: a fast end-to-end pass over every stage.
+#
+# Purpose is to exercise every code path -- including one comparator per tier and one
+# ablation instance -- not to produce publishable numbers. Nothing produced under this
+# config may appear in the manuscript.
+#
+# The feature invariants (43 daily indicators, 129 monthly features) are deliberately NOT
+# relaxed here: they are the contract with the published feature description, so a
+# configuration that violates them must fail even in smoke.
+
+name: smoke
+
+windows:
+  download_start: 2025-01-01
+  download_end: 2026-06-30
+  eval_start_month: "2026-05"
+  eval_end_month: "2026-06"   # 2 evaluation blocks
+
+universe:
+  trailing_months: 3
+  min_traded_day_fraction: 0.90
+  min_median_traded_value_mxn: 500000.0
+  max_stale_run_days: 5
+  # Smoke shares the real universe and the real 500k threshold, so the floor must stay
+  # meaningful: it feeds the momentum comparator's concentration guard.
+  min_universe_size: 50
+  require_full_window_coverage: true
+  min_window_coverage_fraction: 0.95
+  max_edge_gap_days: 7
+  max_zero_return_fraction: 0.50
+  min_month_median_volume: 1.0
+  max_abs_daily_return: 0.50
+
+features:
+  ma_windows: [5, 10, 20, 40, 60]
+  ratio_windows: [1, 10, 20, 40, 60]
+  rsi_window: 14
+  mfi_window: 14
+  stochastic_window: 14
+  min_trading_days_per_month: 15
+  expected_daily_indicators: 43
+  expected_monthly_features: 129
+  aggregations: [mean, std, last]
+  dictionary_version: "1.0.0"
+
+screening:
+  labeling_strategies: [historical_and_t1]
+  screeners: [all_stocks, svm, xgboost]
+  inner_metric: balanced_accuracy
+  inner_folds: 2
+  min_training_observations: 50
+  min_training_months: 3
+  hyperparameter_grids:
+    svm:
+      kernel: [rbf]
+      C: [1.0]
+    xgboost:
+      max_depth: [3]
+      learning_rate: [0.1]
+      n_estimators: [100]
+    tabpfn:
+      model_path: ["tabpfn-v2-classifier.ckpt"]
+      n_estimators: [2]
+
+optimization:
+  population_size: 20
+  generations: 10           # 200 objective evaluations per run
+  weight_caps: [1.0]
+  seeds: 2
+  covariance_trailing_days: 120
+  covariance_estimator: sample
+  knee_normalization: minmax
+  hypervolume_reference: [1.1, 1.1]
+
+ablation:
+  enabled: true
+  labeling_strategy: historical_and_t1
+  screeners: [svm, xgboost]
+  selection_sizes: [10, null]
+  weight_cap: 1.0
+  seeds: 1
+  budget_multiplier: 2      # extended budget 400 evaluations
+  checkpoint_evaluations: [100, 200, 400]
+
+evaluation:
+  cost_scenarios_bps: [0.0, 50.0]
+  primary_cost_scenario_bps: 50.0
+  risk_free_series: cetes_28d
+  trading_days_per_month: 21
+
+benchmarks:
+  reference_series: [cetes_28d, bmv_ipc, sp500_mxn]
+  tier1_methods: [equal_weight_universe, momentum_equal_weight]
+  tier2_methods: [l4_single_objective_ga_sharpe]
+  best_arm_rule: max_profile_metric_at_primary_cost
+  momentum_formation_months: 12
+  momentum_skip_months: 1
+  momentum_selection_fraction: 0.20
+  sensitivity_estimator: ledoit_wolf
+
+stats:
+  alpha: 0.05
+  bootstrap_resamples: 200
+  bootstrap_scheme: iid_month
+  bootstrap_seed: 20260727
+  correction_method: holm
+  seed_aggregation: median
+  headline_set_size: 5
+  target_power: 0.80
+  primary_hypotheses:
+    - name: H1_screening_effect
+      kind: factor_effect
+      factor: screener
+      contrast: ml_screeners_vs_all_stocks
+      metric: return_net
+
+paths:
+  cache: data/cache
+  universe: data/universe
+  features: data/features
+  results: results/smoke
+  paper: paper/smoke

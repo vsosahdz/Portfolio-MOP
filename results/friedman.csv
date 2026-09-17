@@ -1,0 +1,5 @@
+factor,levels,n_blocks,statistic,p_value,held_constant,note
+screener,6,18,4.952380952380906,0.4217193165312968,labeling=historical; allocator=ga_max_return; weight_cap=1.0,
+labeling,3,18,0.7777777777777715,0.6778095780054525,screener=all_stocks; allocator=ga_max_return; weight_cap=1.0,
+allocator,6,18,3.365079365079339,0.6438937424607329,screener=all_stocks; labeling=historical; weight_cap=1.0,
+weight_cap,2,18,,,screener=all_stocks; labeling=historical; allocator=ga_max_return,too few levels or blocks for a Friedman test

@@ -1,0 +1,13 @@
+{
+  "series_id": "SF43936",
+  "label": "cetes_28d",
+  "title": "Valores gubernamentales - Resultados de la subasta semanal - Tasa de rendimiento - Cetes a 28 dias",
+  "observation_frequency": "weekly (settlement-dated)",
+  "units": "annualised percent, 360-day basis",
+  "requested_start": "2023-01-01",
+  "requested_end": "2026-06-30",
+  "observations": 182,
+  "first_observation": "2023-01-05",
+  "last_observation": "2026-06-25",
+  "retrieved_at": "2026-08-22T07:24:51+00:00"
+}

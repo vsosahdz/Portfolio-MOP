@@ -1,0 +1,1183 @@
+{
+  "version": "1.0.0",
+  "daily_indicators": 43,
+  "monthly_features": 129,
+  "aggregations": [
+    "mean",
+    "std",
+    "last"
+  ],
+  "key_columns": [
+    "provider_symbol",
+    "month",
+    "sessions"
+  ],
+  "label_input_columns": [
+    "monthly_return",
+    "trailing_3m_mean_return",
+    "next_month_return"
+  ],
+  "columns": [
+    {
+      "column": "return_mean",
+      "indicator": "return",
+      "family": "return",
+      "window": 1,
+      "aggregation": "mean",
+      "formula": "close_t / close_{t-1} - 1",
+      "note": ""
+    },
+    {
+      "column": "return_std",
+      "indicator": "return",
+      "family": "return",
+      "window": 1,
+      "aggregation": "std",
+      "formula": "close_t / close_{t-1} - 1",
+      "note": ""
+    },
+    {
+      "column": "return_last",
+      "indicator": "return",
+      "family": "return",
+      "window": 1,
+      "aggregation": "last",
+      "formula": "close_t / close_{t-1} - 1",
+      "note": ""
+    },
+    {
+      "column": "change_mean",
+      "indicator": "change",
+      "family": "return",
+      "window": 1,
+      "aggregation": "mean",
+      "formula": "close_t - close_{t-1}",
+      "note": ""
+    },
+    {
+      "column": "change_std",
+      "indicator": "change",
+      "family": "return",
+      "window": 1,
+      "aggregation": "std",
+      "formula": "close_t - close_{t-1}",
+      "note": ""
+    },
+    {
+      "column": "change_last",
+      "indicator": "change",
+      "family": "return",
+      "window": 1,
+      "aggregation": "last",
+      "formula": "close_t - close_{t-1}",
+      "note": ""
+    },
+    {
+      "column": "gain_mean",
+      "indicator": "gain",
+      "family": "rsi",
+      "window": 1,
+      "aggregation": "mean",
+      "formula": "change_t if change_t >= 0 else 0",
+      "note": ""
+    },
+    {
+      "column": "gain_std",
+      "indicator": "gain",
+      "family": "rsi",
+      "window": 1,
+      "aggregation": "std",
+      "formula": "change_t if change_t >= 0 else 0",
+      "note": ""
+    },
+    {
+      "column": "gain_last",
+      "indicator": "gain",
+      "family": "rsi",
+      "window": 1,
+      "aggregation": "last",
+      "formula": "change_t if change_t >= 0 else 0",
+      "note": ""
+    },
+    {
+      "column": "loss_mean",
+      "indicator": "loss",
+      "family": "rsi",
+      "window": 1,
+      "aggregation": "mean",
+      "formula": "|change_t| if change_t < 0 else 0",
+      "note": "Table A.1 writes the signed change; the magnitude is used, since a signed average makes RS negative and RSI divergent"
+    },
+    {
+      "column": "loss_std",
+      "indicator": "loss",
+      "family": "rsi",
+      "window": 1,
+      "aggregation": "std",
+      "formula": "|change_t| if change_t < 0 else 0",
+      "note": "Table A.1 writes the signed change; the magnitude is used, since a signed average makes RS negative and RSI divergent"
+    },
+    {
+      "column": "loss_last",
+      "indicator": "loss",
+      "family": "rsi",
+      "window": 1,
+      "aggregation": "last",
+      "formula": "|change_t| if change_t < 0 else 0",
+      "note": "Table A.1 writes the signed change; the magnitude is used, since a signed average makes RS negative and RSI divergent"
+    },
+    {
+      "column": "avg_gain_mean",
+      "indicator": "avg_gain",
+      "family": "rsi",
+      "window": 14,
+      "aggregation": "mean",
+      "formula": "arithmetic mean of gain over n",
+      "note": ""
+    },
+    {
+      "column": "avg_gain_std",
+      "indicator": "avg_gain",
+      "family": "rsi",
+      "window": 14,
+      "aggregation": "std",
+      "formula": "arithmetic mean of gain over n",
+      "note": ""
+    },
+    {
+      "column": "avg_gain_last",
+      "indicator": "avg_gain",
+      "family": "rsi",
+      "window": 14,
+      "aggregation": "last",
+      "formula": "arithmetic mean of gain over n",
+      "note": ""
+    },
+    {
+      "column": "avg_loss_mean",
+      "indicator": "avg_loss",
+      "family": "rsi",
+      "window": 14,
+      "aggregation": "mean",
+      "formula": "arithmetic mean of loss over n",
+      "note": ""
+    },
+    {
+      "column": "avg_loss_std",
+      "indicator": "avg_loss",
+      "family": "rsi",
+      "window": 14,
+      "aggregation": "std",
+      "formula": "arithmetic mean of loss over n",
+      "note": ""
+    },
+    {
+      "column": "avg_loss_last",
+      "indicator": "avg_loss",
+      "family": "rsi",
+      "window": 14,
+      "aggregation": "last",
+      "formula": "arithmetic mean of loss over n",
+      "note": ""
+    },
+    {
+      "column": "rs_mean",
+      "indicator": "rs",
+      "family": "rsi",
+      "window": 14,
+      "aggregation": "mean",
+      "formula": "avg_gain / avg_loss",
+      "note": "infinite where avg_loss is zero, which maps to RSI = 100"
+    },
+    {
+      "column": "rs_std",
+      "indicator": "rs",
+      "family": "rsi",
+      "window": 14,
+      "aggregation": "std",
+      "formula": "avg_gain / avg_loss",
+      "note": "infinite where avg_loss is zero, which maps to RSI = 100"
+    },
+    {
+      "column": "rs_last",
+      "indicator": "rs",
+      "family": "rsi",
+      "window": 14,
+      "aggregation": "last",
+      "formula": "avg_gain / avg_loss",
+      "note": "infinite where avg_loss is zero, which maps to RSI = 100"
+    },
+    {
+      "column": "rsi_mean",
+      "indicator": "rsi",
+      "family": "rsi",
+      "window": 14,
+      "aggregation": "mean",
+      "formula": "100 - 100 / (1 + RS)",
+      "note": "plain arithmetic mean as specified, NOT Wilder smoothing"
+    },
+    {
+      "column": "rsi_std",
+      "indicator": "rsi",
+      "family": "rsi",
+      "window": 14,
+      "aggregation": "std",
+      "formula": "100 - 100 / (1 + RS)",
+      "note": "plain arithmetic mean as specified, NOT Wilder smoothing"
+    },
+    {
+      "column": "rsi_last",
+      "indicator": "rsi",
+      "family": "rsi",
+      "window": 14,
+      "aggregation": "last",
+      "formula": "100 - 100 / (1 + RS)",
+      "note": "plain arithmetic mean as specified, NOT Wilder smoothing"
+    },
+    {
+      "column": "ma_5_mean",
+      "indicator": "ma_5",
+      "family": "moving_average",
+      "window": 5,
+      "aggregation": "mean",
+      "formula": "mean of close over n",
+      "note": ""
+    },
+    {
+      "column": "ma_5_std",
+      "indicator": "ma_5",
+      "family": "moving_average",
+      "window": 5,
+      "aggregation": "std",
+      "formula": "mean of close over n",
+      "note": ""
+    },
+    {
+      "column": "ma_5_last",
+      "indicator": "ma_5",
+      "family": "moving_average",
+      "window": 5,
+      "aggregation": "last",
+      "formula": "mean of close over n",
+      "note": ""
+    },
+    {
+      "column": "ma_10_mean",
+      "indicator": "ma_10",
+      "family": "moving_average",
+      "window": 10,
+      "aggregation": "mean",
+      "formula": "mean of close over n",
+      "note": ""
+    },
+    {
+      "column": "ma_10_std",
+      "indicator": "ma_10",
+      "family": "moving_average",
+      "window": 10,
+      "aggregation": "std",
+      "formula": "mean of close over n",
+      "note": ""
+    },
+    {
+      "column": "ma_10_last",
+      "indicator": "ma_10",
+      "family": "moving_average",
+      "window": 10,
+      "aggregation": "last",
+      "formula": "mean of close over n",
+      "note": ""
+    },
+    {
+      "column": "ma_20_mean",
+      "indicator": "ma_20",
+      "family": "moving_average",
+      "window": 20,
+      "aggregation": "mean",
+      "formula": "mean of close over n",
+      "note": ""
+    },
+    {
+      "column": "ma_20_std",
+      "indicator": "ma_20",
+      "family": "moving_average",
+      "window": 20,
+      "aggregation": "std",
+      "formula": "mean of close over n",
+      "note": ""
+    },
+    {
+      "column": "ma_20_last",
+      "indicator": "ma_20",
+      "family": "moving_average",
+      "window": 20,
+      "aggregation": "last",
+      "formula": "mean of close over n",
+      "note": ""
+    },
+    {
+      "column": "ma_40_mean",
+      "indicator": "ma_40",
+      "family": "moving_average",
+      "window": 40,
+      "aggregation": "mean",
+      "formula": "mean of close over n",
+      "note": ""
+    },
+    {
+      "column": "ma_40_std",
+      "indicator": "ma_40",
+      "family": "moving_average",
+      "window": 40,
+      "aggregation": "std",
+      "formula": "mean of close over n",
+      "note": ""
+    },
+    {
+      "column": "ma_40_last",
+      "indicator": "ma_40",
+      "family": "moving_average",
+      "window": 40,
+      "aggregation": "last",
+      "formula": "mean of close over n",
+      "note": ""
+    },
+    {
+      "column": "ma_60_mean",
+      "indicator": "ma_60",
+      "family": "moving_average",
+      "window": 60,
+      "aggregation": "mean",
+      "formula": "mean of close over n",
+      "note": ""
+    },
+    {
+      "column": "ma_60_std",
+      "indicator": "ma_60",
+      "family": "moving_average",
+      "window": 60,
+      "aggregation": "std",
+      "formula": "mean of close over n",
+      "note": ""
+    },
+    {
+      "column": "ma_60_last",
+      "indicator": "ma_60",
+      "family": "moving_average",
+      "window": 60,
+      "aggregation": "last",
+      "formula": "mean of close over n",
+      "note": ""
+    },
+    {
+      "column": "tp_mean",
+      "indicator": "tp",
+      "family": "money_flow",
+      "window": 1,
+      "aggregation": "mean",
+      "formula": "(high + low + close) / 3",
+      "note": ""
+    },
+    {
+      "column": "tp_std",
+      "indicator": "tp",
+      "family": "money_flow",
+      "window": 1,
+      "aggregation": "std",
+      "formula": "(high + low + close) / 3",
+      "note": ""
+    },
+    {
+      "column": "tp_last",
+      "indicator": "tp",
+      "family": "money_flow",
+      "window": 1,
+      "aggregation": "last",
+      "formula": "(high + low + close) / 3",
+      "note": ""
+    },
+    {
+      "column": "pmf_mean",
+      "indicator": "pmf",
+      "family": "money_flow",
+      "window": 1,
+      "aggregation": "mean",
+      "formula": "tp * volume if tp_t >= tp_{t-1} else 0",
+      "note": ""
+    },
+    {
+      "column": "pmf_std",
+      "indicator": "pmf",
+      "family": "money_flow",
+      "window": 1,
+      "aggregation": "std",
+      "formula": "tp * volume if tp_t >= tp_{t-1} else 0",
+      "note": ""
+    },
+    {
+      "column": "pmf_last",
+      "indicator": "pmf",
+      "family": "money_flow",
+      "window": 1,
+      "aggregation": "last",
+      "formula": "tp * volume if tp_t >= tp_{t-1} else 0",
+      "note": ""
+    },
+    {
+      "column": "nmf_mean",
+      "indicator": "nmf",
+      "family": "money_flow",
+      "window": 1,
+      "aggregation": "mean",
+      "formula": "tp * volume if tp_t < tp_{t-1} else 0",
+      "note": ""
+    },
+    {
+      "column": "nmf_std",
+      "indicator": "nmf",
+      "family": "money_flow",
+      "window": 1,
+      "aggregation": "std",
+      "formula": "tp * volume if tp_t < tp_{t-1} else 0",
+      "note": ""
+    },
+    {
+      "column": "nmf_last",
+      "indicator": "nmf",
+      "family": "money_flow",
+      "window": 1,
+      "aggregation": "last",
+      "formula": "tp * volume if tp_t < tp_{t-1} else 0",
+      "note": ""
+    },
+    {
+      "column": "mfi_mean",
+      "indicator": "mfi",
+      "family": "money_flow",
+      "window": 14,
+      "aggregation": "mean",
+      "formula": "100 - 100 / (1 + sum(pmf, n) / sum(nmf, n))",
+      "note": "maps to 100 where the negative money flow over the window is zero"
+    },
+    {
+      "column": "mfi_std",
+      "indicator": "mfi",
+      "family": "money_flow",
+      "window": 14,
+      "aggregation": "std",
+      "formula": "100 - 100 / (1 + sum(pmf, n) / sum(nmf, n))",
+      "note": "maps to 100 where the negative money flow over the window is zero"
+    },
+    {
+      "column": "mfi_last",
+      "indicator": "mfi",
+      "family": "money_flow",
+      "window": 14,
+      "aggregation": "last",
+      "formula": "100 - 100 / (1 + sum(pmf, n) / sum(nmf, n))",
+      "note": "maps to 100 where the negative money flow over the window is zero"
+    },
+    {
+      "column": "so_mean",
+      "indicator": "so",
+      "family": "stochastic",
+      "window": 14,
+      "aggregation": "mean",
+      "formula": "(close_t - min(low, n)) / (max(high, n) - min(low, n)) * 100",
+      "note": "Table A.1 renders the denominator as high_t - min(low, n); the conventional max(high, n) is used"
+    },
+    {
+      "column": "so_std",
+      "indicator": "so",
+      "family": "stochastic",
+      "window": 14,
+      "aggregation": "std",
+      "formula": "(close_t - min(low, n)) / (max(high, n) - min(low, n)) * 100",
+      "note": "Table A.1 renders the denominator as high_t - min(low, n); the conventional max(high, n) is used"
+    },
+    {
+      "column": "so_last",
+      "indicator": "so",
+      "family": "stochastic",
+      "window": 14,
+      "aggregation": "last",
+      "formula": "(close_t - min(low, n)) / (max(high, n) - min(low, n)) * 100",
+      "note": "Table A.1 renders the denominator as high_t - min(low, n); the conventional max(high, n) is used"
+    },
+    {
+      "column": "chr_1_mean",
+      "indicator": "chr_1",
+      "family": "chr",
+      "window": 1,
+      "aggregation": "mean",
+      "formula": "ln(close_t / high_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "chr_1_std",
+      "indicator": "chr_1",
+      "family": "chr",
+      "window": 1,
+      "aggregation": "std",
+      "formula": "ln(close_t / high_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "chr_1_last",
+      "indicator": "chr_1",
+      "family": "chr",
+      "window": 1,
+      "aggregation": "last",
+      "formula": "ln(close_t / high_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "chr_10_mean",
+      "indicator": "chr_10",
+      "family": "chr",
+      "window": 10,
+      "aggregation": "mean",
+      "formula": "ln(close_t / high_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "chr_10_std",
+      "indicator": "chr_10",
+      "family": "chr",
+      "window": 10,
+      "aggregation": "std",
+      "formula": "ln(close_t / high_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "chr_10_last",
+      "indicator": "chr_10",
+      "family": "chr",
+      "window": 10,
+      "aggregation": "last",
+      "formula": "ln(close_t / high_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "chr_20_mean",
+      "indicator": "chr_20",
+      "family": "chr",
+      "window": 20,
+      "aggregation": "mean",
+      "formula": "ln(close_t / high_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "chr_20_std",
+      "indicator": "chr_20",
+      "family": "chr",
+      "window": 20,
+      "aggregation": "std",
+      "formula": "ln(close_t / high_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "chr_20_last",
+      "indicator": "chr_20",
+      "family": "chr",
+      "window": 20,
+      "aggregation": "last",
+      "formula": "ln(close_t / high_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "chr_40_mean",
+      "indicator": "chr_40",
+      "family": "chr",
+      "window": 40,
+      "aggregation": "mean",
+      "formula": "ln(close_t / high_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "chr_40_std",
+      "indicator": "chr_40",
+      "family": "chr",
+      "window": 40,
+      "aggregation": "std",
+      "formula": "ln(close_t / high_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "chr_40_last",
+      "indicator": "chr_40",
+      "family": "chr",
+      "window": 40,
+      "aggregation": "last",
+      "formula": "ln(close_t / high_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "chr_60_mean",
+      "indicator": "chr_60",
+      "family": "chr",
+      "window": 60,
+      "aggregation": "mean",
+      "formula": "ln(close_t / high_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "chr_60_std",
+      "indicator": "chr_60",
+      "family": "chr",
+      "window": 60,
+      "aggregation": "std",
+      "formula": "ln(close_t / high_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "chr_60_last",
+      "indicator": "chr_60",
+      "family": "chr",
+      "window": 60,
+      "aggregation": "last",
+      "formula": "ln(close_t / high_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hor_1_mean",
+      "indicator": "hor_1",
+      "family": "hor",
+      "window": 1,
+      "aggregation": "mean",
+      "formula": "ln(high_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hor_1_std",
+      "indicator": "hor_1",
+      "family": "hor",
+      "window": 1,
+      "aggregation": "std",
+      "formula": "ln(high_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hor_1_last",
+      "indicator": "hor_1",
+      "family": "hor",
+      "window": 1,
+      "aggregation": "last",
+      "formula": "ln(high_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hor_10_mean",
+      "indicator": "hor_10",
+      "family": "hor",
+      "window": 10,
+      "aggregation": "mean",
+      "formula": "ln(high_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hor_10_std",
+      "indicator": "hor_10",
+      "family": "hor",
+      "window": 10,
+      "aggregation": "std",
+      "formula": "ln(high_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hor_10_last",
+      "indicator": "hor_10",
+      "family": "hor",
+      "window": 10,
+      "aggregation": "last",
+      "formula": "ln(high_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hor_20_mean",
+      "indicator": "hor_20",
+      "family": "hor",
+      "window": 20,
+      "aggregation": "mean",
+      "formula": "ln(high_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hor_20_std",
+      "indicator": "hor_20",
+      "family": "hor",
+      "window": 20,
+      "aggregation": "std",
+      "formula": "ln(high_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hor_20_last",
+      "indicator": "hor_20",
+      "family": "hor",
+      "window": 20,
+      "aggregation": "last",
+      "formula": "ln(high_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hor_40_mean",
+      "indicator": "hor_40",
+      "family": "hor",
+      "window": 40,
+      "aggregation": "mean",
+      "formula": "ln(high_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hor_40_std",
+      "indicator": "hor_40",
+      "family": "hor",
+      "window": 40,
+      "aggregation": "std",
+      "formula": "ln(high_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hor_40_last",
+      "indicator": "hor_40",
+      "family": "hor",
+      "window": 40,
+      "aggregation": "last",
+      "formula": "ln(high_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hor_60_mean",
+      "indicator": "hor_60",
+      "family": "hor",
+      "window": 60,
+      "aggregation": "mean",
+      "formula": "ln(high_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hor_60_std",
+      "indicator": "hor_60",
+      "family": "hor",
+      "window": 60,
+      "aggregation": "std",
+      "formula": "ln(high_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hor_60_last",
+      "indicator": "hor_60",
+      "family": "hor",
+      "window": 60,
+      "aggregation": "last",
+      "formula": "ln(high_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "lor_1_mean",
+      "indicator": "lor_1",
+      "family": "lor",
+      "window": 1,
+      "aggregation": "mean",
+      "formula": "ln(low_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "lor_1_std",
+      "indicator": "lor_1",
+      "family": "lor",
+      "window": 1,
+      "aggregation": "std",
+      "formula": "ln(low_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "lor_1_last",
+      "indicator": "lor_1",
+      "family": "lor",
+      "window": 1,
+      "aggregation": "last",
+      "formula": "ln(low_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "lor_10_mean",
+      "indicator": "lor_10",
+      "family": "lor",
+      "window": 10,
+      "aggregation": "mean",
+      "formula": "ln(low_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "lor_10_std",
+      "indicator": "lor_10",
+      "family": "lor",
+      "window": 10,
+      "aggregation": "std",
+      "formula": "ln(low_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "lor_10_last",
+      "indicator": "lor_10",
+      "family": "lor",
+      "window": 10,
+      "aggregation": "last",
+      "formula": "ln(low_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "lor_20_mean",
+      "indicator": "lor_20",
+      "family": "lor",
+      "window": 20,
+      "aggregation": "mean",
+      "formula": "ln(low_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "lor_20_std",
+      "indicator": "lor_20",
+      "family": "lor",
+      "window": 20,
+      "aggregation": "std",
+      "formula": "ln(low_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "lor_20_last",
+      "indicator": "lor_20",
+      "family": "lor",
+      "window": 20,
+      "aggregation": "last",
+      "formula": "ln(low_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "lor_40_mean",
+      "indicator": "lor_40",
+      "family": "lor",
+      "window": 40,
+      "aggregation": "mean",
+      "formula": "ln(low_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "lor_40_std",
+      "indicator": "lor_40",
+      "family": "lor",
+      "window": 40,
+      "aggregation": "std",
+      "formula": "ln(low_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "lor_40_last",
+      "indicator": "lor_40",
+      "family": "lor",
+      "window": 40,
+      "aggregation": "last",
+      "formula": "ln(low_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "lor_60_mean",
+      "indicator": "lor_60",
+      "family": "lor",
+      "window": 60,
+      "aggregation": "mean",
+      "formula": "ln(low_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "lor_60_std",
+      "indicator": "lor_60",
+      "family": "lor",
+      "window": 60,
+      "aggregation": "std",
+      "formula": "ln(low_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "lor_60_last",
+      "indicator": "lor_60",
+      "family": "lor",
+      "window": 60,
+      "aggregation": "last",
+      "formula": "ln(low_t / open_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hlr_1_mean",
+      "indicator": "hlr_1",
+      "family": "hlr",
+      "window": 1,
+      "aggregation": "mean",
+      "formula": "ln(high_t / low_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hlr_1_std",
+      "indicator": "hlr_1",
+      "family": "hlr",
+      "window": 1,
+      "aggregation": "std",
+      "formula": "ln(high_t / low_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hlr_1_last",
+      "indicator": "hlr_1",
+      "family": "hlr",
+      "window": 1,
+      "aggregation": "last",
+      "formula": "ln(high_t / low_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hlr_10_mean",
+      "indicator": "hlr_10",
+      "family": "hlr",
+      "window": 10,
+      "aggregation": "mean",
+      "formula": "ln(high_t / low_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hlr_10_std",
+      "indicator": "hlr_10",
+      "family": "hlr",
+      "window": 10,
+      "aggregation": "std",
+      "formula": "ln(high_t / low_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hlr_10_last",
+      "indicator": "hlr_10",
+      "family": "hlr",
+      "window": 10,
+      "aggregation": "last",
+      "formula": "ln(high_t / low_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hlr_20_mean",
+      "indicator": "hlr_20",
+      "family": "hlr",
+      "window": 20,
+      "aggregation": "mean",
+      "formula": "ln(high_t / low_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hlr_20_std",
+      "indicator": "hlr_20",
+      "family": "hlr",
+      "window": 20,
+      "aggregation": "std",
+      "formula": "ln(high_t / low_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hlr_20_last",
+      "indicator": "hlr_20",
+      "family": "hlr",
+      "window": 20,
+      "aggregation": "last",
+      "formula": "ln(high_t / low_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hlr_40_mean",
+      "indicator": "hlr_40",
+      "family": "hlr",
+      "window": 40,
+      "aggregation": "mean",
+      "formula": "ln(high_t / low_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hlr_40_std",
+      "indicator": "hlr_40",
+      "family": "hlr",
+      "window": 40,
+      "aggregation": "std",
+      "formula": "ln(high_t / low_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hlr_40_last",
+      "indicator": "hlr_40",
+      "family": "hlr",
+      "window": 40,
+      "aggregation": "last",
+      "formula": "ln(high_t / low_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hlr_60_mean",
+      "indicator": "hlr_60",
+      "family": "hlr",
+      "window": 60,
+      "aggregation": "mean",
+      "formula": "ln(high_t / low_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hlr_60_std",
+      "indicator": "hlr_60",
+      "family": "hlr",
+      "window": 60,
+      "aggregation": "std",
+      "formula": "ln(high_t / low_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "hlr_60_last",
+      "indicator": "hlr_60",
+      "family": "hlr",
+      "window": 60,
+      "aggregation": "last",
+      "formula": "ln(high_t / low_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "ccr_1_mean",
+      "indicator": "ccr_1",
+      "family": "ccr",
+      "window": 1,
+      "aggregation": "mean",
+      "formula": "ln(close_t / close_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "ccr_1_std",
+      "indicator": "ccr_1",
+      "family": "ccr",
+      "window": 1,
+      "aggregation": "std",
+      "formula": "ln(close_t / close_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "ccr_1_last",
+      "indicator": "ccr_1",
+      "family": "ccr",
+      "window": 1,
+      "aggregation": "last",
+      "formula": "ln(close_t / close_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "ccr_10_mean",
+      "indicator": "ccr_10",
+      "family": "ccr",
+      "window": 10,
+      "aggregation": "mean",
+      "formula": "ln(close_t / close_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "ccr_10_std",
+      "indicator": "ccr_10",
+      "family": "ccr",
+      "window": 10,
+      "aggregation": "std",
+      "formula": "ln(close_t / close_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "ccr_10_last",
+      "indicator": "ccr_10",
+      "family": "ccr",
+      "window": 10,
+      "aggregation": "last",
+      "formula": "ln(close_t / close_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "ccr_20_mean",
+      "indicator": "ccr_20",
+      "family": "ccr",
+      "window": 20,
+      "aggregation": "mean",
+      "formula": "ln(close_t / close_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "ccr_20_std",
+      "indicator": "ccr_20",
+      "family": "ccr",
+      "window": 20,
+      "aggregation": "std",
+      "formula": "ln(close_t / close_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "ccr_20_last",
+      "indicator": "ccr_20",
+      "family": "ccr",
+      "window": 20,
+      "aggregation": "last",
+      "formula": "ln(close_t / close_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "ccr_40_mean",
+      "indicator": "ccr_40",
+      "family": "ccr",
+      "window": 40,
+      "aggregation": "mean",
+      "formula": "ln(close_t / close_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "ccr_40_std",
+      "indicator": "ccr_40",
+      "family": "ccr",
+      "window": 40,
+      "aggregation": "std",
+      "formula": "ln(close_t / close_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "ccr_40_last",
+      "indicator": "ccr_40",
+      "family": "ccr",
+      "window": 40,
+      "aggregation": "last",
+      "formula": "ln(close_t / close_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "ccr_60_mean",
+      "indicator": "ccr_60",
+      "family": "ccr",
+      "window": 60,
+      "aggregation": "mean",
+      "formula": "ln(close_t / close_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "ccr_60_std",
+      "indicator": "ccr_60",
+      "family": "ccr",
+      "window": 60,
+      "aggregation": "std",
+      "formula": "ln(close_t / close_{t-n})",
+      "note": ""
+    },
+    {
+      "column": "ccr_60_last",
+      "indicator": "ccr_60",
+      "family": "ccr",
+      "window": 60,
+      "aggregation": "last",
+      "formula": "ln(close_t / close_{t-n})",
+      "note": ""
+    }
+  ]
+}

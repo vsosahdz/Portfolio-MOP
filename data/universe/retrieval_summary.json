@@ -1,0 +1,11 @@
+{
+  "requested": 533,
+  "by_status": {
+    "cached": 7,
+    "downloaded": 511,
+    "too_short": 8,
+    "empty": 7
+  },
+  "usable": 518,
+  "written_at": "2026-08-22T06:35:38+00:00"
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "n": 10,
+    "ga_return_range": 0.0006088307743833037,
+    "true_return_range": 0.0007418492856561387,
+    "ga_risk_range": 0.0022626343658658527,
+    "true_risk_range": 0.005023672760444891,
+    "return_coverage": 0.8206933485752635,
+    "risk_coverage": 0.4503944571551823
+  },
+  {
+    "n": 20,
+    "ga_return_range": 0.0016647287135329002,
+    "true_return_range": 0.004565003677332496,
+    "ga_risk_range": 0.005663015134206872,
+    "true_risk_range": 0.025084564926527372,
+    "return_coverage": 0.3646719326424867,
+    "risk_coverage": 0.22575696053704056
+  },
+  {
+    "n": 40,
+    "ga_return_range": 0.001199187499735032,
+    "true_return_range": 0.004642971595749683,
+    "ga_risk_range": 0.0044270290091381745,
+    "true_risk_range": 0.02637812227621431,
+    "return_coverage": 0.2582801714386546,
+    "risk_coverage": 0.16782957341622898
+  },
+  {
+    "n": 80,
+    "ga_return_range": 0.0009602510598951666,
+    "true_return_range": 0.00783528751668688,
+    "ga_risk_range": 0.003139473659073841,
+    "true_risk_range": 0.0408774751850119,
+    "return_coverage": 0.12255466794933964,
+    "risk_coverage": 0.07680204427657406
+  },
+  {
+    "n": 94,
+    "ga_return_range": 0.0007862644142014224,
+    "true_return_range": 0.007812334496808501,
+    "ga_risk_range": 0.001961983409158004,
+    "true_risk_range": 0.04093814785156648,
+    "return_coverage": 0.10064397710090722,
+    "risk_coverage": 0.04792555384458923
+  }
+]

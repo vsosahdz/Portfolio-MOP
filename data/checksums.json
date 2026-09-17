@@ -1,0 +1,2223 @@
+{
+  "data_vintage": "2026-08-22",
+  "config_fingerprint": "2658d460ef0feacc",
+  "note": "Digests of the cached dataset of record. The equity series come from a free provider and the rate and exchange series from Banco de M\u00e9xico's SIE API; both are redistributed here only to support replication.",
+  "files": {
+    "data/cache/A.MX.parquet": {
+      "sha256": "e2a155991f204e20a7a1c9b4c611c6b447274b215c7d0b35c5deac21d500b351",
+      "bytes": 12495
+    },
+    "data/cache/AAPL.MX.parquet": {
+      "sha256": "76dfb0cbfa18bd9d5ffdfad1318617c8a188e7e9e3ca9b6e02f11e3d5f959dcc",
+      "bytes": 44886
+    },
+    "data/cache/ABBV.MX.parquet": {
+      "sha256": "59c4c3f68c8bac5694a642981352d7c8d5966bea064f7a0d2279190e31cea388",
+      "bytes": 33515
+    },
+    "data/cache/ABNB.MX.parquet": {
+      "sha256": "8c0a5aed35d41ff9081ab73c00e0e8984271be70a1607aacbd706408db915777",
+      "bytes": 34584
+    },
+    "data/cache/ABT.MX.parquet": {
+      "sha256": "1b778eb561f1f9a0615f349694a62ef83a7ddb050bb48802d7fa117b4aeea17d",
+      "bytes": 27474
+    },
+    "data/cache/AC.MX.parquet": {
+      "sha256": "c1c9f97e3a6db4ac573e2a720e8ccda349ad4d99d65d1cd380c0508834074b0d",
+      "bytes": 45242
+    },
+    "data/cache/ADBE.MX.parquet": {
+      "sha256": "ee1531120886d937438e3abf3072966aaf091bbc584d505b11004ec635b342fa",
+      "bytes": 41279
+    },
+    "data/cache/ADI.MX.parquet": {
+      "sha256": "2124acd548f8b2604fb3cadf06682b002dab7e08b8b005e089d0caa6a6edf3c8",
+      "bytes": 21413
+    },
+    "data/cache/ADM.MX.parquet": {
+      "sha256": "630f89f0c792b670095bebc601be1bd233d15984ccec0f447a168a7385d720b6",
+      "bytes": 19261
+    },
+    "data/cache/ADSK.MX.parquet": {
+      "sha256": "de0af97d35dda2cdc744eaed74189677ad2cb0b7226351b56cc0e623abe027c9",
+      "bytes": 21806
+    },
+    "data/cache/AEP.MX.parquet": {
+      "sha256": "904831a88a6dacf14a4c6b6089586fa942ddf0cc980e241e6c64f61f000f1134",
+      "bytes": 12828
+    },
+    "data/cache/AFRM.MX.parquet": {
+      "sha256": "56d22ff3f1a055a90d0554b2ba56c38d978eff4520e39ba7d97220a0d0c14c25",
+      "bytes": 33729
+    },
+    "data/cache/AGNC.MX.parquet": {
+      "sha256": "43aea4faa48da4cb2cbe3dfe23f10584f04d2fd6be1fce10f4b66d3f291c2bb9",
+      "bytes": 30363
+    },
+    "data/cache/AGUA.MX.parquet": {
+      "sha256": "2f60ceca2722c05e918863229ab656c9904b11e006a11e86712ec6f0580506b6",
+      "bytes": 40155
+    },
+    "data/cache/AHR.MX.parquet": {
+      "sha256": "53ddb27ada0e8a390d132e5ccac789e99a097dc85068a042627ec39d41d436d5",
+      "bytes": 4814
+    },
+    "data/cache/AIG.MX.parquet": {
+      "sha256": "472c3a85b679cdf45bcc12879c059b2e8daf3a0135ef3d30c83b67062867e14d",
+      "bytes": 15098
+    },
+    "data/cache/AIZ.MX.parquet": {
+      "sha256": "21d91868e19ce83c5c48feb8812dc3b05d9f12770b8760ced8a0d1a6952bd592",
+      "bytes": 8184
+    },
+    "data/cache/AJG.MX.parquet": {
+      "sha256": "3adbeaa0ad98fb58c03ea65b752a12e77d4e26192e7e8fce1b56ccac6b94703e",
+      "bytes": 14059
+    },
+    "data/cache/AKAM.MX.parquet": {
+      "sha256": "8438cf08e448eeeeb5774fa91691302b601465f15d749e5f3f7ccb589b06cc4a",
+      "bytes": 12556
+    },
+    "data/cache/ALAB.MX.parquet": {
+      "sha256": "9e9dfe9ef9c58b0eab105cc48153169fabc524d7bc48ab5bbc0945deedbfc2e4",
+      "bytes": 17680
+    },
+    "data/cache/ALB.MX.parquet": {
+      "sha256": "53d0eb5460853dbab71032d6164aa0002b4fbb62655c21ffe6ab48bb3c9625f8",
+      "bytes": 28442
+    },
+    "data/cache/ALGN.MX.parquet": {
+      "sha256": "2b6e80c5b58a6bd6d7c5b81f32c45d2f1d6855ac414977b50bd597182876366b",
+      "bytes": 17068
+    },
+    "data/cache/ALNY.MX.parquet": {
+      "sha256": "977a45e9dda41cac945ab49d57ad8b17e0ad4b03de9bc98566136dc7cee8d1c2",
+      "bytes": 13019
+    },
+    "data/cache/ALPEKA.MX.parquet": {
+      "sha256": "a8f0221bf15e83a19e3edba8f5925822a8105029840aee154bed22bf9799dc35",
+      "bytes": 39697
+    },
+    "data/cache/ALSEA.MX.parquet": {
+      "sha256": "a0a63d4f45346cd12e8749316d86c12753df17959fc2ac33434ac682f792de40",
+      "bytes": 44605
+    },
+    "data/cache/AMAT.MX.parquet": {
+      "sha256": "485e1cf44c465c730b627d5463365d28ecbe03c084b2203534b65963c52b4902",
+      "bytes": 35155
+    },
+    "data/cache/AMD.MX.parquet": {
+      "sha256": "211a91b372a842c895b1e2e3e66a32130c670a733d7d87f6ad4c396d08a8ad0a",
+      "bytes": 45036
+    },
+    "data/cache/AME.MX.parquet": {
+      "sha256": "feaa1931b1f4672e745da635d4d42f598e65b4a8449596a86fa5d3ea0c3ad3a7",
+      "bytes": 14096
+    },
+    "data/cache/AMGN.MX.parquet": {
+      "sha256": "6b5bd19f2f29b9b9ef131b3f8c72d4662acf0d9ea22a8d5f148bce5154d8d235",
+      "bytes": 20378
+    },
+    "data/cache/AMKR.MX.parquet": {
+      "sha256": "19853822b6a26be67615ae505a86a8c66d872d8d987eaba5c46c39aa96c00587",
+      "bytes": 6401
+    },
+    "data/cache/AMP.MX.parquet": {
+      "sha256": "dd745a918f560952773069b37d765cd55159a2673faebc8d5dab7d8587496d87",
+      "bytes": 18241
+    },
+    "data/cache/AMT.MX.parquet": {
+      "sha256": "24922684032872e50d58499fa713edf76d3997e8d9447202416a61a6eda24a7e",
+      "bytes": 21956
+    },
+    "data/cache/AMXB.MX.parquet": {
+      "sha256": "c4a239ea8aa4a4d6554bfb98528218aa8f5ca121a9fc3c52859ed425d6ad0254",
+      "bytes": 33890
+    },
+    "data/cache/AMZN.MX.parquet": {
+      "sha256": "c0e8a09afeab3cee0608dbb40a9d4e9634a3ba5dfb08181adec893085587c991",
+      "bytes": 45049
+    },
+    "data/cache/ANB.MX.parquet": {
+      "sha256": "50cc5df1e7634caac3465059865879e5e85adb22c5b05e5ddda6a74e51721a1b",
+      "bytes": 15865
+    },
+    "data/cache/ANET.MX.parquet": {
+      "sha256": "92aa027b46701c91655a4a73462e1fbeb25cabeb42e3eb819a96e3bfa1dd1e91",
+      "bytes": 29702
+    },
+    "data/cache/APA.MX.parquet": {
+      "sha256": "a33fc2f995cfcae40790cb753bf615e7d06d1758518b49d9e48c8954699d4bc1",
+      "bytes": 25311
+    },
+    "data/cache/APD.MX.parquet": {
+      "sha256": "2e788a6112b588348aa66669f486a0df79cc8f69af189d7a6167fa95579c7ae8",
+      "bytes": 13279
+    },
+    "data/cache/APH.MX.parquet": {
+      "sha256": "0305faf1fba853f90221216dbf5ba1e4041d687b593253c49982a2c1fa116ec8",
+      "bytes": 19174
+    },
+    "data/cache/APP.MX.parquet": {
+      "sha256": "7d00e251b5ff5ad75cf471da5ab2e8cd4c41629b10e6fb919e7fdcf366aa6941",
+      "bytes": 21033
+    },
+    "data/cache/ARMK.MX.parquet": {
+      "sha256": "f59e93d6675e2343a58a69d03cffd29c3f00ea0cf1ec2000c185adc674f0b767",
+      "bytes": 13396
+    },
+    "data/cache/ASTS.MX.parquet": {
+      "sha256": "38b5a88c27092da11521872df96e10ce5523e83a508739b6e21d3618311292ee",
+      "bytes": 20145
+    },
+    "data/cache/ASURB.MX.parquet": {
+      "sha256": "3bb1808f9cea22a5934ce38dc16ba00239e267bdf1e5272668642a3547b611bd",
+      "bytes": 46073
+    },
+    "data/cache/ATI.MX.parquet": {
+      "sha256": "6d27aa995234b52d99d5ada3e510d823b3270ab93f4125ae073623e7ce84b0d9",
+      "bytes": 7560
+    },
+    "data/cache/ATO.MX.parquet": {
+      "sha256": "c3689a1588fe0ffa0ec00ecffd242a98ba02cfdbb23dc6ab6b52124b9573d021",
+      "bytes": 6600
+    },
+    "data/cache/AVB.MX.parquet": {
+      "sha256": "51ab18c8221f5f7955b4666e2d191ca2b68b8b27e8d0d58783a5828858ca7ff6",
+      "bytes": 11606
+    },
+    "data/cache/AVGO.MX.parquet": {
+      "sha256": "4c4fb9928692b7b5345d264d06fad1285567e407cc1641a3ae9d58ffa67cd3cb",
+      "bytes": 37939
+    },
+    "data/cache/AWK.MX.parquet": {
+      "sha256": "6b5ad5ea90b20ee37293a9687127fbee388d4395eaefe9431be43122af30a07b",
+      "bytes": 14219
+    },
+    "data/cache/AXON.MX.parquet": {
+      "sha256": "54626bb32ea3755d1d458cb40955ca9a9773df48710f0ebf9d3e8e5e1f2a4c8e",
+      "bytes": 11956
+    },
+    "data/cache/AXP.MX.parquet": {
+      "sha256": "26d74528fe825ec15fdf5d2979d46f833cac7eed6d1071ed9a47f699c7052077",
+      "bytes": 39889
+    },
+    "data/cache/AXTELCPO.MX.parquet": {
+      "sha256": "0ececb4cbc80a1aac7d32f744a8f28eb1ac6a31ce313f3c2ea01772baeeb799c",
+      "bytes": 31090
+    },
+    "data/cache/AZO.MX.parquet": {
+      "sha256": "2cb623ea3b467b4c00bdaccc0c1dfb7d6088ea88ed9263c6cf07b0c8de66db5a",
+      "bytes": 22648
+    },
+    "data/cache/BA.MX.parquet": {
+      "sha256": "6e3e5d79a9d688d4f4498434f041658be0adfbe02079cb7c1f9540c496799315",
+      "bytes": 36999
+    },
+    "data/cache/BAC.MX.parquet": {
+      "sha256": "33f444412e9cce374d572738e7ee2be2e354cd469553cd158b95040582f0f831",
+      "bytes": 42251
+    },
+    "data/cache/BAX.MX.parquet": {
+      "sha256": "2b9f4cdc74245a3ff028e0bbcb7b75c19f01aebcc03091cb3e6c2e19dbe35b32",
+      "bytes": 14875
+    },
+    "data/cache/BBAJIOO.MX.parquet": {
+      "sha256": "2e69a5ab676a234a6d8eb1eae94cf477c6c64c83cb6c4d731854098a5e863667",
+      "bytes": 44351
+    },
+    "data/cache/BBVA.MX.parquet": {
+      "sha256": "905e577da38b68594d3156aae6470924f4685e9a61168bc7ed49a115ff682842",
+      "bytes": 42298
+    },
+    "data/cache/BBY.MX.parquet": {
+      "sha256": "a81f5c67dd7f16b5258580bfc944ea156225ec1217f20fc31327cfb9b4a4bd6a",
+      "bytes": 18436
+    },
+    "data/cache/BDX.MX.parquet": {
+      "sha256": "7f040da5b69ac7f6e61c51a6142920ca73e12dce783707ef9cac0c95cde3f3b6",
+      "bytes": 17226
+    },
+    "data/cache/BE.MX.parquet": {
+      "sha256": "7b836b710fc31710359cd7a64bfa655a635ffa7cd82dd00979ee3b58dfe25338",
+      "bytes": 19675
+    },
+    "data/cache/BEN.MX.parquet": {
+      "sha256": "eacb38f4ffa0cb55826a89f3f71ce946e938e4c985872da79219e029ac6e1431",
+      "bytes": 11619
+    },
+    "data/cache/BIIB.MX.parquet": {
+      "sha256": "4260498a36aa6779e8cf67e48ebff0034d6ff8887f993ca8f6139748c0122c00",
+      "bytes": 19097
+    },
+    "data/cache/BIMBOA.MX.parquet": {
+      "sha256": "4c614cb4889d3b76a9d5cc24035bcbf6957ada3aeddcca6ce98f76bd5eccc4c4",
+      "bytes": 45212
+    },
+    "data/cache/BK.MX.parquet": {
+      "sha256": "0f434fec60a94cca1951af89ae13cbc40227870ad49978eb56093f953aab2a47",
+      "bytes": 3736
+    },
+    "data/cache/BKNG.MX.parquet": {
+      "sha256": "d6549c05ac1a4e4c90219e3ccaf4c0e150dc5b4ae8caa84b89421d4767b7eb18",
+      "bytes": 23820
+    },
+    "data/cache/BKR.MX.parquet": {
+      "sha256": "966de694e81595705eca8d30d50a7d9a2798593bbd2117a1c6c1acfd96a0299d",
+      "bytes": 18299
+    },
+    "data/cache/BLK.MX.parquet": {
+      "sha256": "1433a2a35aab106062f607387362298916289f9ea78143dd943afbb9beaab5df",
+      "bytes": 28241
+    },
+    "data/cache/BMNR.MX.parquet": {
+      "sha256": "da43d7e81b22035337ba5627d151c383cbc10a9a0ba1f184af1b156781db9b74",
+      "bytes": 13022
+    },
+    "data/cache/BMRN.MX.parquet": {
+      "sha256": "4bd78e15bdf8ffd6842fcf6c4f0a0c92d290ac0da56b7fcf05be52f0885f2051",
+      "bytes": 13937
+    },
+    "data/cache/BMY.MX.parquet": {
+      "sha256": "173e7f14e4b398bacf89f7460abfdeaab58ba3d55174427dc37f200873331911",
+      "bytes": 32307
+    },
+    "data/cache/BNS.MX.parquet": {
+      "sha256": "ccbceb15f6561de1e730a78ba4729b7d905e433a3473e0dcf201389bda5b85a4",
+      "bytes": 15069
+    },
+    "data/cache/BOLSAA.MX.parquet": {
+      "sha256": "4e6fe9673099fca5484971ddd9a900046b1cb0eec844277c2243d4a28138cdcc",
+      "bytes": 40928
+    },
+    "data/cache/BRKB.MX.parquet": {
+      "sha256": "bf17296ae6c500b30aa8c54916557e0aee6ec95eb0a5c1cfb1f5129040773c1b",
+      "bytes": 41351
+    },
+    "data/cache/BRO.MX.parquet": {
+      "sha256": "506dc41a21fec75d4c104ee40e4c500dcb53aaf63e78791a813140f302db4eb7",
+      "bytes": 19561
+    },
+    "data/cache/BSX.MX.parquet": {
+      "sha256": "d8c55567f82dfd4925500a38c5dce93c138a83ef9adc47c4429aba6bca4e21a3",
+      "bytes": 27037
+    },
+    "data/cache/BURL.MX.parquet": {
+      "sha256": "8f5406fceb3c57164f5b34b30559fb276b1f95f098c4d1ebc87b2fcd1937d0c0",
+      "bytes": 12440
+    },
+    "data/cache/BWA.MX.parquet": {
+      "sha256": "eb1b9645e7f9c4fda467f41a87d64637c2ec9cadbc323288fb715c8a228c6405",
+      "bytes": 12095
+    },
+    "data/cache/BWXT.MX.parquet": {
+      "sha256": "9ee73746f913c667afc87e0c50222eb412f079ccbc854c2ad02afcb2336b4a02",
+      "bytes": 9297
+    },
+    "data/cache/BX.MX.parquet": {
+      "sha256": "7417e34b05e6ed0c914c80a07d0ed452cfdcc6188622305b7d69e6e47c302a97",
+      "bytes": 28310
+    },
+    "data/cache/BXP.MX.parquet": {
+      "sha256": "310abd19048506c364ddda3f983fe2c3b9434c68f4d2179f9a8da65560f72d4f",
+      "bytes": 11563
+    },
+    "data/cache/C.MX.parquet": {
+      "sha256": "44e348c45846dc260545b4a4466a786a9410a3a5f5583d25e5b8de722bf76e49",
+      "bytes": 42421
+    },
+    "data/cache/CAH.MX.parquet": {
+      "sha256": "8d9867ab0144e51562bc6933bd1e3fb5fa36b1f903e115f9a35a74ffdba19f9e",
+      "bytes": 15794
+    },
+    "data/cache/CARR.MX.parquet": {
+      "sha256": "d61f43e0cc35c723c04f17bcdf71394e8cb4bd1f9847168177a550eca96b4c02",
+      "bytes": 15015
+    },
+    "data/cache/CASY.MX.parquet": {
+      "sha256": "e867f9b4010d39b2b6ed3ad81f19a34e41d679c548a65e893d419747fd2982b1",
+      "bytes": 8394
+    },
+    "data/cache/CAT.MX.parquet": {
+      "sha256": "185010cbb0ce2158b57751e903c40b6f2b65af6b872f7e700339f5d1a5f3a01d",
+      "bytes": 34934
+    },
+    "data/cache/CBOE.MX.parquet": {
+      "sha256": "5250dd6615e83b4d8684a59efa2b6e5a14da66c8d38ac9c17f60520e8f692146",
+      "bytes": 13524
+    },
+    "data/cache/CBRE.MX.parquet": {
+      "sha256": "3393992abea05619d74f8f6e37e8403675685aae79b1ab09ddec600189c87faf",
+      "bytes": 14543
+    },
+    "data/cache/CDE.MX.parquet": {
+      "sha256": "14329c617ddd5c16ff06bb82db9b18a6614d9b9f8123c2c870275e5c98606704",
+      "bytes": 17973
+    },
+    "data/cache/CDNS.MX.parquet": {
+      "sha256": "26f1f8b89fcc4a1cb1e96cf9985113acd765abd736f3231a0a47d5c94b7d026e",
+      "bytes": 29051
+    },
+    "data/cache/CDW.MX.parquet": {
+      "sha256": "a9cf336bbefe8ec1b7968eb8741c49fddd7cf9492aed3aac11a640a1fabd11fe",
+      "bytes": 12283
+    },
+    "data/cache/CEG.MX.parquet": {
+      "sha256": "26a31f60a4d43dd15c92e7b0c4879a46d58c502ce9d2a3b84e2adeac7635ae16",
+      "bytes": 28103
+    },
+    "data/cache/CEMEXCPO.MX.parquet": {
+      "sha256": "caedb41075e22987c514ad1a8c1996786b7ad4131dea52026f4d38a724e5783e",
+      "bytes": 40266
+    },
+    "data/cache/CF.MX.parquet": {
+      "sha256": "312635826b6c8d2ab878c6a8905537259fa3f184620b27cb4d42680106c6881d",
+      "bytes": 13685
+    },
+    "data/cache/CFG.MX.parquet": {
+      "sha256": "226aa8aba16fd7d12739e57127f37cec8efad93d416d1d3180c99143b6fac04b",
+      "bytes": 12146
+    },
+    "data/cache/CG.MX.parquet": {
+      "sha256": "cfeb285223d66ef96ae997e05154d4c153f2a22de6340d69f78a0ede11a1d79f",
+      "bytes": 14321
+    },
+    "data/cache/CHD.MX.parquet": {
+      "sha256": "14543260b203b48726f9acd741b47361867236b8ce4b591759585f2156b7a370",
+      "bytes": 19055
+    },
+    "data/cache/CHDRAUIB.MX.parquet": {
+      "sha256": "49d1f82c1895f6d688cfe176a8c9b7b56fbb2b1f0410ea54cb5f6618d01a3b35",
+      "bytes": 45390
+    },
+    "data/cache/CHRW.MX.parquet": {
+      "sha256": "43d657cb892edb1560f18e111c84e43596b1edd16673ea7a1c765faa8c929f1b",
+      "bytes": 5875
+    },
+    "data/cache/CHTR.MX.parquet": {
+      "sha256": "75388e766a4c55246687995ec2930b1e61f9ca798d7026bda9efeeda6aba1eb9",
+      "bytes": 16789
+    },
+    "data/cache/CI.MX.parquet": {
+      "sha256": "986df77883a337e86b473df898890dc214885b695f601c68f58641d6d8129e91",
+      "bytes": 15834
+    },
+    "data/cache/CIEN.MX.parquet": {
+      "sha256": "3e2c81d848d47411a56d5cc304f5a71150a06a3dbb3815fbe5b3dbbf21b2fe34",
+      "bytes": 19143
+    },
+    "data/cache/CL.MX.parquet": {
+      "sha256": "8eb66ff3fdc9ea7a338f87772b2fd621f45f30357596318f3789a402441b2d23",
+      "bytes": 26229
+    },
+    "data/cache/CLX.MX.parquet": {
+      "sha256": "bf534afe31d985852f187817a227ece7f685fa442d4bee7d83f9ec80cdc62dbf",
+      "bytes": 16175
+    },
+    "data/cache/CMCSA.MX.parquet": {
+      "sha256": "d8e97adeaf3cc74324fc711cb6164c484c960588013fff5cfd3f7daed6e9c0d1",
+      "bytes": 29954
+    },
+    "data/cache/CME.MX.parquet": {
+      "sha256": "db7bbd0e2a4bedb69c73c1c881dcf0bedee13ad6f757740226d477dae45183e5",
+      "bytes": 17987
+    },
+    "data/cache/CMG.MX.parquet": {
+      "sha256": "04be86dee603b7b2d75d4741d4b5ad94ed4308e577a2f9871b91b2a0b22f5047",
+      "bytes": 32644
+    },
+    "data/cache/CMI.MX.parquet": {
+      "sha256": "5a85467eb35d265820edfcc854ec03027895321d2fa82c07ddcafcc4c40dedcd",
+      "bytes": 15375
+    },
+    "data/cache/CNC.MX.parquet": {
+      "sha256": "f4d03b198e2078b67e33bcf62c6000a2682a4daf69db1436222e005f0becd317",
+      "bytes": 20112
+    },
+    "data/cache/COF.MX.parquet": {
+      "sha256": "7bfa6d0d09e0a36effa2450f38cd1564599ef3fce9ff72ba7eddfbbee14f8580",
+      "bytes": 19588
+    },
+    "data/cache/COHR.MX.parquet": {
+      "sha256": "d0d35f1fef00eedc1ec5aa051eed07e0b7b0f456463da05d3449f7d56faf5c7d",
+      "bytes": 7381
+    },
+    "data/cache/COIN.MX.parquet": {
+      "sha256": "01a7c4a35f89f8142a2ae24602bfba35600c082def72b59d382097cceab363db",
+      "bytes": 39694
+    },
+    "data/cache/COO.MX.parquet": {
+      "sha256": "868cc89b3bc7528fede0a2d8579e99e4fe4689ec0b7e3b1f52d044d21287156f",
+      "bytes": 16276
+    },
+    "data/cache/COP.MX.parquet": {
+      "sha256": "f61def2392f4859ae2378c45933979bc3bc7e34bb8bcf7617cc6cd706e8e580b",
+      "bytes": 27553
+    },
+    "data/cache/COR.MX.parquet": {
+      "sha256": "31caca5352cb3c72f9b8340efab719ca6ac285200b707f4d3c3ed33bf4e4c742",
+      "bytes": 9156
+    },
+    "data/cache/COST.MX.parquet": {
+      "sha256": "d8bb91d66d54bf6bcf4d9f232017baf97f14f5a6d86af7b8f69e8543175a263e",
+      "bytes": 40938
+    },
+    "data/cache/CPNG.MX.parquet": {
+      "sha256": "2c8ec3035684528b2b06b952541e07ee202342616d79e3003fc762710270d9e7",
+      "bytes": 20147
+    },
+    "data/cache/CPRT.MX.parquet": {
+      "sha256": "ba8caf8b156f2506db4cfd7d73643d770de232ae65b1d605389111627ebbba0a",
+      "bytes": 26182
+    },
+    "data/cache/CR.MX.parquet": {
+      "sha256": "0f434fec60a94cca1951af89ae13cbc40227870ad49978eb56093f953aab2a47",
+      "bytes": 3736
+    },
+    "data/cache/CRCL.MX.parquet": {
+      "sha256": "d2c60538e41618616001612b0a5f48130c907ef643aa5f9ab639523562fbe5a4",
+      "bytes": 11606
+    },
+    "data/cache/CRL.MX.parquet": {
+      "sha256": "dc35fef540eb6de82e7778ebd158494e541a22ac5977c1b09f9f0fc451268249",
+      "bytes": 12661
+    },
+    "data/cache/CRM.MX.parquet": {
+      "sha256": "82609215917f2ef56f2245f9ac643296eb46b7a72bcf7dc6223085cfecf2df36",
+      "bytes": 42608
+    },
+    "data/cache/CRWD.MX.parquet": {
+      "sha256": "e88427d9b7f2e72fed3bf04ba3a58bc19717449e7846cab1da455af6dec1a3da",
+      "bytes": 38588
+    },
+    "data/cache/CRWV.MX.parquet": {
+      "sha256": "4678e84b26e93a6b9dcc3fa339a9b4d8893fb662e39cacc12914706da1e4b6a0",
+      "bytes": 14259
+    },
+    "data/cache/CSCO.MX.parquet": {
+      "sha256": "09f1acbbdb57a18b7cf4790b55e849496867a934a8b50f251d515fa4a8dbd5aa",
+      "bytes": 35444
+    },
+    "data/cache/CSX.MX.parquet": {
+      "sha256": "25c5b30f32a6780d0423fb7a13303d09911cd57f93532cd548236bfda8d78115",
+      "bytes": 13733
+    },
+    "data/cache/CTAS.MX.parquet": {
+      "sha256": "8fefe93046a48ec9eb23cf8d71866dca366c9bd3aca81a8e0046438ebb6f43ae",
+      "bytes": 13684
+    },
+    "data/cache/CTSH.MX.parquet": {
+      "sha256": "72326126b66ff01d47f5ba8c36056ece8ba85ff36acea0ea3fad23b526e68826",
+      "bytes": 13482
+    },
+    "data/cache/CTVA.MX.parquet": {
+      "sha256": "df233533ad168593c40899de244e2049b3f7c499ede968d14b98c7644b417392",
+      "bytes": 13748
+    },
+    "data/cache/CUERVO.MX.parquet": {
+      "sha256": "b09210b5af34a19e377e3aa5768f4b4e27fbdb6f210ff41ff7509357eb2be2c5",
+      "bytes": 44130
+    },
+    "data/cache/CVNA.MX.parquet": {
+      "sha256": "f43fe050a09624c2aebcd6ce6f58fa25735a4592d0486af399a6080208c422d6",
+      "bytes": 34835
+    },
+    "data/cache/CVS.MX.parquet": {
+      "sha256": "83e794dfa6e7db4e616079101318d4ca2508d23f08a450e86109738aa2ca84ed",
+      "bytes": 37158
+    },
+    "data/cache/CVX.MX.parquet": {
+      "sha256": "e0589b40027e3a09227de587338da204036f4c6b89e2ff211f3b7a0c6a8cf070",
+      "bytes": 37958
+    },
+    "data/cache/D.MX.parquet": {
+      "sha256": "ad24c005f0a26189d2f7cb53aac840eb74d694de40fb41f744159222773913e5",
+      "bytes": 13267
+    },
+    "data/cache/DAL.MX.parquet": {
+      "sha256": "879c79c563a9334573cb71fa53295143c55001cef0332a9d7c500a070eb782a4",
+      "bytes": 39491
+    },
+    "data/cache/DANHOS13.MX.parquet": {
+      "sha256": "ea7409e3b407d8a5b2266ee416cf97d29e23d3ba6ae43a849e05ea0335d0a423",
+      "bytes": 37903
+    },
+    "data/cache/DASH.MX.parquet": {
+      "sha256": "371e43c789b3937bf08e530e5c186882a311c89aadd55fd5c82188b5218f072d",
+      "bytes": 18818
+    },
+    "data/cache/DD.MX.parquet": {
+      "sha256": "d00d9e6ade3055112a180619893180d233899c8fdb60713428d8801db74462f1",
+      "bytes": 14551
+    },
+    "data/cache/DDOG.MX.parquet": {
+      "sha256": "81af6347fa027348062fe2f195058d0cb8ee9b63ce1dc630112c0773a2e783c5",
+      "bytes": 27265
+    },
+    "data/cache/DE.MX.parquet": {
+      "sha256": "f993318df96a9dc7835b9c0ba84aa3f6249aeab718ec099cb4f331ebda13fec1",
+      "bytes": 30653
+    },
+    "data/cache/DELLC.MX.parquet": {
+      "sha256": "ac1b0100a6c2dd7c984ecd6a3d5259ca7bc366495ff51891f45f298f1560411b",
+      "bytes": 32838
+    },
+    "data/cache/DGG.MX.parquet": {
+      "sha256": "a777c060294623f7452915f5e037ddb5c3629d4c8bcca7322176e2291c93287b",
+      "bytes": 19054
+    },
+    "data/cache/DGX.MX.parquet": {
+      "sha256": "dfb4c0a7bec70bda32d33453f0768697f231f07569b5e2a222067b7eeaf32a69",
+      "bytes": 12423
+    },
+    "data/cache/DHI.MX.parquet": {
+      "sha256": "cb1b34ffe2663aeeb465357be6a75f0cb2a2c4e74c29a870938b62a19d661567",
+      "bytes": 14026
+    },
+    "data/cache/DHR.MX.parquet": {
+      "sha256": "12882082f1d2038af83ab8440d0bf94eaddf244e25b71b9c885967da71a223e2",
+      "bytes": 33746
+    },
+    "data/cache/DIS.MX.parquet": {
+      "sha256": "46865bbe0ba293244174d964a456c0c5c5e9a544861dfbdcff86d279df31779b",
+      "bytes": 42554
+    },
+    "data/cache/DKS.MX.parquet": {
+      "sha256": "be6e18d7dd4bf24c272d5b3b8b14b6e37229669e13ee6be9e5694d26429829ad",
+      "bytes": 5298
+    },
+    "data/cache/DLR.MX.parquet": {
+      "sha256": "956bc186efece3747b2b67b41d7297f9d9b13eefea2aa503c69d7ef361cf7e7c",
+      "bytes": 13803
+    },
+    "data/cache/DLTR.MX.parquet": {
+      "sha256": "c129ced3d24e0cd7797a1285b63a06e963548ea4f9d03d6165f13d33d2658782",
+      "bytes": 21208
+    },
+    "data/cache/DPZ.MX.parquet": {
+      "sha256": "1fed3fed4fbe537b6521c13efda92999aadf2fd9a19aa90cc1109774f3f4864d",
+      "bytes": 28303
+    },
+    "data/cache/DUK.MX.parquet": {
+      "sha256": "81a15194b10f58cda9c923066b1c954f797c000fe43b82ea59aa6437d1bab15c",
+      "bytes": 14052
+    },
+    "data/cache/DVA.MX.parquet": {
+      "sha256": "27d3914ba3087e8711a463b87d7143716512d4fef2d65684da679c8dbd050c17",
+      "bytes": 11701
+    },
+    "data/cache/DVN.MX.parquet": {
+      "sha256": "823c13156aee6667f7c8b8dcdcfed95cbb556093da266af53ef67c0f879ec405",
+      "bytes": 30934
+    },
+    "data/cache/DXCM.MX.parquet": {
+      "sha256": "2ce66c904f7805299e7d6e096b0308891a7433de9e7dea1fd609f64668d80d75",
+      "bytes": 18592
+    },
+    "data/cache/EA.MX.parquet": {
+      "sha256": "0f434fec60a94cca1951af89ae13cbc40227870ad49978eb56093f953aab2a47",
+      "bytes": 3736
+    },
+    "data/cache/EBAY.MX.parquet": {
+      "sha256": "c08758f15dd95561d09d01f4e00c3cae7680d315b0d575002d0eddf939a03ca8",
+      "bytes": 27268
+    },
+    "data/cache/ECHO.MX.parquet": {
+      "sha256": "0dd9c91504432bf58fcfb308e8d4303bf4090349f45f2d1eb8375150fab76119",
+      "bytes": 7232
+    },
+    "data/cache/ECL.MX.parquet": {
+      "sha256": "de0440d1192f9b77845ff93d73833b36b350944c5c8d33e241144b3bb14c7d49",
+      "bytes": 15612
+    },
+    "data/cache/EFX.MX.parquet": {
+      "sha256": "24df3c154b8b5a5e1f64c85bca164d99a76e926b0695c9e0e1fdf7470bb4583f",
+      "bytes": 12195
+    },
+    "data/cache/EHC.MX.parquet": {
+      "sha256": "a5da9a470d792fd3713a0c302ac87d7addda204a47bb088e6a660c3b3b6cc2bd",
+      "bytes": 8635
+    },
+    "data/cache/EL.MX.parquet": {
+      "sha256": "d381ab188ffaa6362f74b57fa1d5bc3988fc12553fca0cedd09d952a206d3287",
+      "bytes": 30291
+    },
+    "data/cache/ELAN.MX.parquet": {
+      "sha256": "44c5b678dc1372e38cf2ed1d123ca49d9a29134e9764d22ac633cd5a885955e9",
+      "bytes": 11506
+    },
+    "data/cache/ELV.MX.parquet": {
+      "sha256": "0be0215e2d2ea005fd3654943aed14f3110e184ca5fe059647e8db9fa58c7ad1",
+      "bytes": 18723
+    },
+    "data/cache/EMR.MX.parquet": {
+      "sha256": "2f7502364dafdb792ec76163d2d36f38e4af75e4e601e7e876a3d754a5f59da8",
+      "bytes": 15823
+    },
+    "data/cache/ENTG.MX.parquet": {
+      "sha256": "ece9aceacd15153c78ad7f193bfbfd7b3681d7ed8f8afc479abcf74ac1be5a74",
+      "bytes": 13271
+    },
+    "data/cache/EOG.MX.parquet": {
+      "sha256": "effc22749b6be3126cf64a846056c269763ecce2ef25685d2980ece1cd2fd062",
+      "bytes": 21081
+    },
+    "data/cache/EQIX.MX.parquet": {
+      "sha256": "2645836bb846d74c92cb45214604ed1d649b44931377f431a2a3b719953c759b",
+      "bytes": 15563
+    },
+    "data/cache/EQR.MX.parquet": {
+      "sha256": "b7746709bccb89c95ce16c033d36a36bad7cdb0e064338dc53a90e6d06d31cb1",
+      "bytes": 11714
+    },
+    "data/cache/EQT.MX.parquet": {
+      "sha256": "c18d69de0e753904a240c5a531491543c5bec5f7ed170fcfd8eca90d97977472",
+      "bytes": 14218
+    },
+    "data/cache/ES.MX.parquet": {
+      "sha256": "fae9671bafd25be95ed78c151e8b7a0fed9119c4dbcb16e4d31426952579ce42",
+      "bytes": 5758
+    },
+    "data/cache/ETR.MX.parquet": {
+      "sha256": "c97618c70ea827c6b93831e3e4403ef87aebb66e9c39d0857f9499499263edb1",
+      "bytes": 11917
+    },
+    "data/cache/EVR.MX.parquet": {
+      "sha256": "bd286d74916e16588c9248eba0c38eb64e1bd5e232dd4fe9c73a215fa0a8c0e7",
+      "bytes": 11666
+    },
+    "data/cache/EW.MX.parquet": {
+      "sha256": "5ef4a342190c5740c22d64fc93a9ff99e63f4790b8d61a1c049f327b35a86d8a",
+      "bytes": 20213
+    },
+    "data/cache/EXC.MX.parquet": {
+      "sha256": "a764016c335c538554f408c66eb8a8b7b41d87587da0f7dbba47db4cfd97a100",
+      "bytes": 13156
+    },
+    "data/cache/EXE.MX.parquet": {
+      "sha256": "f5663995b40e3e568e82f29e35495b70419316e1709dcb66f2fa790a1c6b3835",
+      "bytes": 12487
+    },
+    "data/cache/EXPD.MX.parquet": {
+      "sha256": "5e3c3202f72e1edcea7d4531dcedb7d551fbb20b38451ea38330e112700b5ed4",
+      "bytes": 12399
+    },
+    "data/cache/EXPE.MX.parquet": {
+      "sha256": "3e85e1939293f60d03af272e5278a2fafa2b9dea709ca820005260717158d762",
+      "bytes": 27275
+    },
+    "data/cache/EXR.MX.parquet": {
+      "sha256": "945da4188d13af2a75f017ede8f4d549c1ee7ff247aeebc0b6948eab180ad653",
+      "bytes": 11599
+    },
+    "data/cache/F.MX.parquet": {
+      "sha256": "185e30d3bf672425e5e2f566a0a74c44e135ef4eb455920617185aaddb9b23c0",
+      "bytes": 38742
+    },
+    "data/cache/FANG.MX.parquet": {
+      "sha256": "4055a3ba8c3a735665b6b18460a09777587344e1e1eaa6a50e7aa6fe061e1ece",
+      "bytes": 17291
+    },
+    "data/cache/FAST.MX.parquet": {
+      "sha256": "6f9bddc7975ecf1dc54589470da02a6d4fe88386411f2f0b8d07ab59ad3c3ee7",
+      "bytes": 12092
+    },
+    "data/cache/FCX.MX.parquet": {
+      "sha256": "557c59ee4bcdad822b86baca6ac1158d21630e952cc0dfcaccc0d5a801feae76",
+      "bytes": 36249
+    },
+    "data/cache/FDX.MX.parquet": {
+      "sha256": "af622f1d98dd396370cec10e1e19aadc65ce34b750bd014b14b59e376748e2ec",
+      "bytes": 31526
+    },
+    "data/cache/FDXF.MX.parquet": {
+      "sha256": "b71862c27622f9255ec42bc5f58a72bfb46064ef98645948fb7c4c9b6e427826",
+      "bytes": 5161
+    },
+    "data/cache/FE.MX.parquet": {
+      "sha256": "943f01298834fa57b63be4d55e2ca1c15ff379c8a25a6a45d6e82ab8ad0fa784",
+      "bytes": 11501
+    },
+    "data/cache/FEMSAUBD.MX.parquet": {
+      "sha256": "2e9a7ab56d18d54613ecd53d8473a99d2316eea0121a7f9895b44d473a1f8141",
+      "bytes": 45922
+    },
+    "data/cache/FFIV.MX.parquet": {
+      "sha256": "583da477452252122ce080fedadc426a863c9bbf83325dd2b7658aeb5f1f43a1",
+      "bytes": 12574
+    },
+    "data/cache/FIBRAPL14.MX.parquet": {
+      "sha256": "119e0791aafdbf1cdbba13a3f587634464c6c9d3ebea3d6e706f2361dd4fa612",
+      "bytes": 45186
+    },
+    "data/cache/FIHO12.MX.parquet": {
+      "sha256": "7b5eef1082ee378f1c7432c9fa436d3b474eae5a84d570e28604738deb1f1c9b",
+      "bytes": 32645
+    },
+    "data/cache/FIS.MX.parquet": {
+      "sha256": "0472e5cd67a3e42616d3db83c6c6182523f5edc4486a67ad46b45b2b23b72ffe",
+      "bytes": 16471
+    },
+    "data/cache/FISV.MX.parquet": {
+      "sha256": "80bd9f8d19ca4524035aa8e0cc1ae67672df405dfd6d2f67b5c958b49ea339e2",
+      "bytes": 24808
+    },
+    "data/cache/FIVE.MX.parquet": {
+      "sha256": "df8104e62d58455610669267ea303148ed9fcd760b7b98a24e2e4042b873d224",
+      "bytes": 12128
+    },
+    "data/cache/FIX.MX.parquet": {
+      "sha256": "0f1440ad9f1cad9850cff65978d864181e5ec113be07320a35b02c9e7c2890a7",
+      "bytes": 7362
+    },
+    "data/cache/FMTY14.MX.parquet": {
+      "sha256": "4f4a43d8141fa45a7c6f2f580e4a1c2eb48107934df90fd3bbf2a9d1e72b890f",
+      "bytes": 35847
+    },
+    "data/cache/FRES.MX.parquet": {
+      "sha256": "2326fd3e19f42d01f4b8b147741ad04987e6fef0e98dfb1f594bb72480ab2d13",
+      "bytes": 19998
+    },
+    "data/cache/FSLR.MX.parquet": {
+      "sha256": "5532de39825920976782844cbe5d836b692dfa663e19999a10aa253692885cd7",
+      "bytes": 34429
+    },
+    "data/cache/FTNT.MX.parquet": {
+      "sha256": "22bffeaacf6556d568520d7faea7e0257d47ff02672fbcdbbc59d886b3a596bb",
+      "bytes": 35057
+    },
+    "data/cache/FUNO11.MX.parquet": {
+      "sha256": "7b0dc664b0d856d2469228293d5380232b328eae6052c14b4bd5fe0308a33513",
+      "bytes": 40533
+    },
+    "data/cache/GAPB.MX.parquet": {
+      "sha256": "79f557db454075c228a74ce6f0c51337811819d7f8663a77513cfe7ae89ac39f",
+      "bytes": 46580
+    },
+    "data/cache/GCARSOA1.MX.parquet": {
+      "sha256": "89878468d16ee833e50b36f33d8a8e14d972fdfe924ed0c12d06bbcddd2d605b",
+      "bytes": 44772
+    },
+    "data/cache/GCC.MX.parquet": {
+      "sha256": "9129d11df516315f7210d0852571574d5e8b56f5a2c98fa884dcbaa57664b000",
+      "bytes": 45476
+    },
+    "data/cache/GD.MX.parquet": {
+      "sha256": "295b60fd8e8dfcbee12bfdf943274fa41a7af014b61efb4c0d635206c9fee316",
+      "bytes": 15252
+    },
+    "data/cache/GDDY.MX.parquet": {
+      "sha256": "0d106933923f6aef33a462bb957324df72568c31a2e4fe82044022ea09db7070",
+      "bytes": 14649
+    },
+    "data/cache/GE.MX.parquet": {
+      "sha256": "d10d69f790961a928ecfb7c6f0839d957398887820456dd3cbc2d22898b1e7ad",
+      "bytes": 35987
+    },
+    "data/cache/GEHC.MX.parquet": {
+      "sha256": "6621aa765e2ec2c0c92063ffd0180c2d7d58f8cc2536c66c0f59465880f02ad9",
+      "bytes": 20904
+    },
+    "data/cache/GENTERA.MX.parquet": {
+      "sha256": "42619c9217547f69ff1da2eeecbc175ef1094b98b94dc0c9770f4d251b7be78e",
+      "bytes": 44178
+    },
+    "data/cache/GEV.MX.parquet": {
+      "sha256": "9fc0ff41ecf39a7b8b9c55f8fc02474fec906e3bf3d74592608ef5c595a74742",
+      "bytes": 22890
+    },
+    "data/cache/GFINBURO.MX.parquet": {
+      "sha256": "5d73d779c9ae253eda68d34aba0cc2d1d993e2bf55f42360aa531d42faa7bc5e",
+      "bytes": 42397
+    },
+    "data/cache/GFNORTEO.MX.parquet": {
+      "sha256": "749486d156796b941b1608f65ecf9af23fc0a3d78931ccd05364a8eba8e4fe71",
+      "bytes": 45365
+    },
+    "data/cache/GH.MX.parquet": {
+      "sha256": "af853279f26b0f4705ac99c26549eefaa2f8ba35fb4265fe0c4fa80f38f3f84b",
+      "bytes": 12977
+    },
+    "data/cache/GILD.MX.parquet": {
+      "sha256": "7997f7d21ea692946e899d1b9830950671869ca05423e8efed66db8addc6fd97",
+      "bytes": 25477
+    },
+    "data/cache/GIS.MX.parquet": {
+      "sha256": "081ae660e26f647a425a80f0ea23a10a31087e39c8b6e3ba0d2fc0499acfb74b",
+      "bytes": 24158
+    },
+    "data/cache/GLPI.MX.parquet": {
+      "sha256": "0f434fec60a94cca1951af89ae13cbc40227870ad49978eb56093f953aab2a47",
+      "bytes": 3736
+    },
+    "data/cache/GLW.MX.parquet": {
+      "sha256": "0bb7bb7ea789b0bbd4b9bedc519c434584513ad2b3dc042d21a87350514ca950",
+      "bytes": 19693
+    },
+    "data/cache/GM.MX.parquet": {
+      "sha256": "e5192260aa351d5d25bd99b44d07b298be65d57b35b3849566f58887a2f9db12",
+      "bytes": 39360
+    },
+    "data/cache/GMEXICOB.MX.parquet": {
+      "sha256": "acb9fadb7b5e04c1043f82d18152b467a6708021ef395b70599ffc0566f95914",
+      "bytes": 46231
+    },
+    "data/cache/GNRC.MX.parquet": {
+      "sha256": "55194076f6c8d01ecc8a755a10ff819a13a76aa37cddd467b797eb85a0a8efc7",
+      "bytes": 17023
+    },
+    "data/cache/GOOG.MX.parquet": {
+      "sha256": "28c3021ef14f9727e095da5da94fcfcaf0fafdec64e3ef192d0d30e6e23633de",
+      "bytes": 44329
+    },
+    "data/cache/GOOGL.MX.parquet": {
+      "sha256": "9311d5b518d563dc149d72e1f554ce7179d27ef462dd13bcfac77630292a153e",
+      "bytes": 44784
+    },
+    "data/cache/GPC.MX.parquet": {
+      "sha256": "e442be6eda827f412e9c5c3441388b2c6f9cb2c2595ce2cf269581a67af4352c",
+      "bytes": 13773
+    },
+    "data/cache/GPN.MX.parquet": {
+      "sha256": "b1417bddfd4577b3140137ef4411055774a43e69d57833b10d1cc175132bc7f7",
+      "bytes": 17993
+    },
+    "data/cache/GRUMAB.MX.parquet": {
+      "sha256": "109ec2a4593a84e5690c5f2d0f3270d79c96235c7d78f0e36798b7384c832001",
+      "bytes": 45510
+    },
+    "data/cache/GS.MX.parquet": {
+      "sha256": "3241304c29af466de638915effd0aa548fc70e916e4f8b199d9e95632957c813",
+      "bytes": 36560
+    },
+    "data/cache/GWRE.MX.parquet": {
+      "sha256": "1b3dae82dc52e7fb747f3ca0798db0612a60661d14e244267f5c0dbbdb77a577",
+      "bytes": 12382
+    },
+    "data/cache/GWW.MX.parquet": {
+      "sha256": "48a01a34a009d39861c69d171aa98ffa4aa2f6ce6d2f72e4df35ff67a013c96a",
+      "bytes": 11825
+    },
+    "data/cache/HAL.MX.parquet": {
+      "sha256": "3204dc3254374b6f9ccfbab12c243a743e851956e066db93b056b19a1abfdc62",
+      "bytes": 29507
+    },
+    "data/cache/HAS.MX.parquet": {
+      "sha256": "32e2bdb21f0fd6918c794dc3624bd4564b7ce2ee688b69a37dadb3e519378856",
+      "bytes": 13642
+    },
+    "data/cache/HBAN.MX.parquet": {
+      "sha256": "c29d9b86ab41d7b14531a2276be7489128de2fbd67a51ca19a03d7bf076228fc",
+      "bytes": 12318
+    },
+    "data/cache/HCA.MX.parquet": {
+      "sha256": "9dabaffbd880c0f7b3dbb068c62097f69ad508656f8116d95124bac1b7860151",
+      "bytes": 19382
+    },
+    "data/cache/HD.MX.parquet": {
+      "sha256": "8c37ffb8cf955d53ec93887ac79721cc659a73614e0f8790a7bfff55bca7d110",
+      "bytes": 38153
+    },
+    "data/cache/HIG.MX.parquet": {
+      "sha256": "ce801d3733019cc8363733b52b63a228720fcc3863d37f7484c8a2c8b00c4400",
+      "bytes": 9739
+    },
+    "data/cache/HII.MX.parquet": {
+      "sha256": "a3e758e8d898e6a8c1eb51e9426e39d6749b8bb6f74549c1e1fac342e096551e",
+      "bytes": 5822
+    },
+    "data/cache/HLT.MX.parquet": {
+      "sha256": "5bead9d82453b26303b65d960d17654a8102d237d5872f53c897da99692bb5cf",
+      "bytes": 13711
+    },
+    "data/cache/HON.MX.parquet": {
+      "sha256": "857c01b987d8a1c98494fb7452ae74569b937d27a1e40b41535e9fa1fb61e4dd",
+      "bytes": 28767
+    },
+    "data/cache/HONA.MX.parquet": {
+      "sha256": "0f434fec60a94cca1951af89ae13cbc40227870ad49978eb56093f953aab2a47",
+      "bytes": 3736
+    },
+    "data/cache/HOOD.MX.parquet": {
+      "sha256": "5453f53aea73f2f123a11db69b9ba6601b94d7725067d0da18fb07a136a41cfa",
+      "bytes": 33742
+    },
+    "data/cache/HPE.MX.parquet": {
+      "sha256": "a910729386f3d8569ac7423ad195e99e726c2b627ef8792d36a0c4c7294c0a55",
+      "bytes": 25203
+    },
+    "data/cache/HPQ.MX.parquet": {
+      "sha256": "19bad69cfa515b936081747c7720201634a74dd3e3f48665d343fe6aa77dae6f",
+      "bytes": 27490
+    },
+    "data/cache/HRL.MX.parquet": {
+      "sha256": "885cf781fad9fb2a11ad404d5cf0abfa10a181bdcdb906457f46e7e1fcb66bf9",
+      "bytes": 10838
+    },
+    "data/cache/HST.MX.parquet": {
+      "sha256": "6b0b0bb29bc359e6894e97cbf12386c72ce15f20c29ed51aa55fd959a0c13394",
+      "bytes": 8717
+    },
+    "data/cache/HSY.MX.parquet": {
+      "sha256": "d48f7c443a3e0bae15bd3089e8383167ae8b9c2a73179dd5d82b5213d8ccd37d",
+      "bytes": 18675
+    },
+    "data/cache/HUBB.MX.parquet": {
+      "sha256": "b2a6eda5e71b29d943434b727c97888f4d5fd748a50929a93e164aec0764ebae",
+      "bytes": 12050
+    },
+    "data/cache/HUBS.MX.parquet": {
+      "sha256": "8375af502ff24f4838f1618acfafe9c7bddff9b0f631ed58463437c31deb9e35",
+      "bytes": 17204
+    },
+    "data/cache/HUM.MX.parquet": {
+      "sha256": "13ae2de607e8198549668a877b9e036fbe616d2e8ee649c1b5e6debb58e267c1",
+      "bytes": 24695
+    },
+    "data/cache/HWM.MX.parquet": {
+      "sha256": "db9dd0d603fffc0a8983f2e7e60f83d10150f13b49199fc70345641628e04f32",
+      "bytes": 20312
+    },
+    "data/cache/IBKR.MX.parquet": {
+      "sha256": "13dba719ed120187a6aee277c52a99a0a3c6f9be2a431e9091f02584e8a41e31",
+      "bytes": 15844
+    },
+    "data/cache/IBM.MX.parquet": {
+      "sha256": "32c9ece0775a32460cc4ac6fd673ee300b4a7c3492d47363de7b25ca05a5c67e",
+      "bytes": 32214
+    },
+    "data/cache/ICE.MX.parquet": {
+      "sha256": "722c5762cc12b0ebe482ec944f0d386a7dcfcd03f4b84641c7617b23f1495e10",
+      "bytes": 17708
+    },
+    "data/cache/IDXX.MX.parquet": {
+      "sha256": "9c0f0e6fb837bbe6f2e0baeae01ad725395efe2c2afa67277969f14943577c4e",
+      "bytes": 21204
+    },
+    "data/cache/ILMN.MX.parquet": {
+      "sha256": "4c080944c871b9539d3ff851d6adbf2aa2b2ed6e78b65fa0705930abeaf29b94",
+      "bytes": 18336
+    },
+    "data/cache/INCY.MX.parquet": {
+      "sha256": "81a5e09809dd8eec5cd03f7145d2c7eca1c7f182aa8b499e3c7f1e9c66622efb",
+      "bytes": 13476
+    },
+    "data/cache/INSM.MX.parquet": {
+      "sha256": "685962645af92802ccaf0b715fbabb7f09a25dba9ae2e51724aa02a889852683",
+      "bytes": 11494
+    },
+    "data/cache/INTC.MX.parquet": {
+      "sha256": "402c9bedec592b392cc5465f80563d010c303383e812edc188dbabd8aded76e4",
+      "bytes": 42809
+    },
+    "data/cache/INTU.MX.parquet": {
+      "sha256": "319a4e7cb78ba9ffe6662339f762bc085697f864024eaa69ff51d170757e61c1",
+      "bytes": 31158
+    },
+    "data/cache/INVH.MX.parquet": {
+      "sha256": "69cfc3a4457e62721ee21cf0acc9edaa718b3f5de9334e479f8a92014f3c0e52",
+      "bytes": 11760
+    },
+    "data/cache/IONQ.MX.parquet": {
+      "sha256": "0f434fec60a94cca1951af89ae13cbc40227870ad49978eb56093f953aab2a47",
+      "bytes": 3736
+    },
+    "data/cache/IOT.MX.parquet": {
+      "sha256": "0986ce1bc42ecbbf4fdad0e8a57866f83c69323b5cf1d3980d13459f4422cf93",
+      "bytes": 10085
+    },
+    "data/cache/IP.MX.parquet": {
+      "sha256": "e32ca7f7292bdb62117c211647ca835bb10c0c31e6afea5450b8e7c46949af0c",
+      "bytes": 12140
+    },
+    "data/cache/ISRG.MX.parquet": {
+      "sha256": "72d99f0cfc7bc1f29d50eee9ac53c1529da1c072c23ae4010b50f3a353521023",
+      "bytes": 32436
+    },
+    "data/cache/ITT.MX.parquet": {
+      "sha256": "de9fd0e74ae2c473b911e3a010b37aee554f8ab28b90c15e0c17a271a0402518",
+      "bytes": 5061
+    },
+    "data/cache/J.MX.parquet": {
+      "sha256": "ad45ed14de28b380c99d41c6a3f454d72affdd5b57b7b66207d162cb3081fed4",
+      "bytes": 6282
+    },
+    "data/cache/JBHT.MX.parquet": {
+      "sha256": "935b4b4821aa30706b2a3ba83fa48d50060b7f3e67309c7eff052aa9a0547652",
+      "bytes": 10679
+    },
+    "data/cache/JBL.MX.parquet": {
+      "sha256": "0d6e6e99a3f475cd4a40a1b52308794da5a31ea98741dcd0f676010529252136",
+      "bytes": 14567
+    },
+    "data/cache/JNJ.MX.parquet": {
+      "sha256": "092cb0bdbf4b5f57fbc41d6d50cdf8bb8d560dd5ae2d4991cfa2a537a9b78bfa",
+      "bytes": 37817
+    },
+    "data/cache/JPM.MX.parquet": {
+      "sha256": "6ea771c593bf40d37b047b1229ce265df487a43d3f73c0ab11317fd8ca94dbbc",
+      "bytes": 41314
+    },
+    "data/cache/KEYS.MX.parquet": {
+      "sha256": "ea1cb93b773d56060502061a086529fb00b0b868f675f13ccbe073638f7e014d",
+      "bytes": 13454
+    },
+    "data/cache/KHC.MX.parquet": {
+      "sha256": "ed72ac1fc389bf1f1c631ec165ea8778fad30554dd7d8b3bce8f799fffa68482",
+      "bytes": 29024
+    },
+    "data/cache/KIM.MX.parquet": {
+      "sha256": "bce988684736f13ae4b995723b518ff4205ab84e03f74339efb64c4cf9683789",
+      "bytes": 11975
+    },
+    "data/cache/KIMBERA.MX.parquet": {
+      "sha256": "50ef42f1913ab731b174e3a2fcf3ea427a159d48213541dbe4ea4be7247b28cf",
+      "bytes": 41702
+    },
+    "data/cache/KKRC.MX.parquet": {
+      "sha256": "e48d432d59bf617280bc7da0e3485493a30b3e66be79f16a553e072351981618",
+      "bytes": 18795
+    },
+    "data/cache/KLAC.MX.parquet": {
+      "sha256": "41e76cd023a44f90ab705028b2d4b28104bb4bb87d274a59734bcc0a3c05dfe5",
+      "bytes": 20018
+    },
+    "data/cache/KMB.MX.parquet": {
+      "sha256": "17ec3566325c6d9638149fe3dfe780b31c720c02885fc2596a3ccf01720bcce2",
+      "bytes": 17091
+    },
+    "data/cache/KMI.MX.parquet": {
+      "sha256": "dd0e424e4e06751fac781f3b82acb32ba209b9d0678e769028ca87fddcb07fde",
+      "bytes": 21208
+    },
+    "data/cache/KO.MX.parquet": {
+      "sha256": "d359db7c14c9cf011e72789fb036c401d913c82e26783d23e04917668b843478",
+      "bytes": 41227
+    },
+    "data/cache/KOFUBL.MX.parquet": {
+      "sha256": "b1b7b15994f0174842c707b909651594796458f8df4b87191035b91c5441d8c0",
+      "bytes": 45742
+    },
+    "data/cache/KR.MX.parquet": {
+      "sha256": "50bfaaf54b479959633dc74a8165077f175779ba54580de4dacec4e74d2e930b",
+      "bytes": 18445
+    },
+    "data/cache/KVUE.MX.parquet": {
+      "sha256": "afcf3e7cb313249f06a4a74d799378c30613f035d29f3491b832ce030a2bc9e8",
+      "bytes": 14005
+    },
+    "data/cache/L.MX.parquet": {
+      "sha256": "40271ad1889cde2ae159c5780132576205379d8ddf26934cd6f5aaa19e7d6336",
+      "bytes": 15400
+    },
+    "data/cache/LABB.MX.parquet": {
+      "sha256": "cd4f38d8c61ef665eeb67a653f693f7b8883bc35ce3c8da510e496a50838b0a4",
+      "bytes": 41257
+    },
+    "data/cache/LACOMERUBC.MX.parquet": {
+      "sha256": "a89d84c64fd3388dead20d13d501b7c51c5f740775f39fb55988e9cb79642d61",
+      "bytes": 41746
+    },
+    "data/cache/LDOS.MX.parquet": {
+      "sha256": "5931d56b72736fff41e7f5061d58d408db68d22f8412719c7534f3e631a0c196",
+      "bytes": 14063
+    },
+    "data/cache/LECO.MX.parquet": {
+      "sha256": "2ae73a77dc1806c90520ea741017e7a39eface6a838e5adf0be232b091c0eb5f",
+      "bytes": 9034
+    },
+    "data/cache/LEN.MX.parquet": {
+      "sha256": "9e56c9976db1f7ab7af15fcc977df50371daace13c3394cca765bd7ad41c36d5",
+      "bytes": 22169
+    },
+    "data/cache/LH.MX.parquet": {
+      "sha256": "875c4cbd24bbde02f028f071ccb2a19d421a9d23b2ab0593d1172726cd2f258c",
+      "bytes": 13140
+    },
+    "data/cache/LHX.MX.parquet": {
+      "sha256": "a3b0506d107730dd5363261f080dc0a7fc78ce80fd91a7f6d800befeaf7f41d6",
+      "bytes": 13568
+    },
+    "data/cache/LII.MX.parquet": {
+      "sha256": "a6c05fd5cfb1a3a5d124dcae1e709a67174cbfe63daa2c029e9664426a0f8ee6",
+      "bytes": 11460
+    },
+    "data/cache/LITE.MX.parquet": {
+      "sha256": "97e0e3c50249b26689c6ec6c97c34880f0780f593af94f5c56b1634abec790ad",
+      "bytes": 17393
+    },
+    "data/cache/LIVEPOLC-1.MX.parquet": {
+      "sha256": "78d7a28d5bb416acc88ea9473ea58d54f93357c2543b6e5e224c5dcec89920a8",
+      "bytes": 44896
+    },
+    "data/cache/LLY.MX.parquet": {
+      "sha256": "846dc92e354ececd0f1e6b5a89f4fcceee58fbb5a476767abb6520ac0a74df49",
+      "bytes": 40674
+    },
+    "data/cache/LMT.MX.parquet": {
+      "sha256": "57c979efba434b890f7c3adaba8529e2830a4d33e9c27c87f487eb79c7de6c51",
+      "bytes": 26014
+    },
+    "data/cache/LNG.MX.parquet": {
+      "sha256": "1416e87d98d5b41333a92904295bfc4a04b3749bebccd0a6791635304235c75d",
+      "bytes": 17699
+    },
+    "data/cache/LOW.MX.parquet": {
+      "sha256": "5516755ada9df3cbb1fe5dd992486a2dfd6e5ef870a12d70bb87d0d1dfd1658d",
+      "bytes": 25257
+    },
+    "data/cache/LPLA.MX.parquet": {
+      "sha256": "a179a81e17b230a89f86006234c52cf7d7f3af71150550fe9ee21f4902d218c8",
+      "bytes": 11648
+    },
+    "data/cache/LRCX.MX.parquet": {
+      "sha256": "8d2e6f20971f2998965e381134053f27e2fcf9970e1d6600b0c3a53580001814",
+      "bytes": 26820
+    },
+    "data/cache/LULU.MX.parquet": {
+      "sha256": "2658aedd6a6061613ee4a70da196f0903e556ef7bf15145b40a02835482b3ff9",
+      "bytes": 35269
+    },
+    "data/cache/LUV.MX.parquet": {
+      "sha256": "7882ef99320541508159caf2e573a74ecab53a95652902011d61a17ea98989cb",
+      "bytes": 30098
+    },
+    "data/cache/LVS.MX.parquet": {
+      "sha256": "1e92c358d04d93834198cb90be759f7b060c32fc9fda4589a35a067c6a973c8e",
+      "bytes": 31255
+    },
+    "data/cache/LYV.MX.parquet": {
+      "sha256": "398670ddb4269ad1a4beb12cc4c072941377fb7af72ab66d470bcad9ab326c7b",
+      "bytes": 14201
+    },
+    "data/cache/MA.MX.parquet": {
+      "sha256": "0bb01179862bb21437895bda8ecbd46558235b76a687e3cff516f0b97209305c",
+      "bytes": 39986
+    },
+    "data/cache/MAR.MX.parquet": {
+      "sha256": "3d3b28cd0daa7262fed281aaffc8ff1840dc628ef6635e7085fa4e503283d4ef",
+      "bytes": 16627
+    },
+    "data/cache/MCD.MX.parquet": {
+      "sha256": "f221dcdb997647c6e8dbcff0a70b3048ad37bc220a4426494750b2d5b74038dd",
+      "bytes": 34502
+    },
+    "data/cache/MCHP.MX.parquet": {
+      "sha256": "2820e4d26c20a97ecfacd19ec5e06db21b1319262fcc5928c39264d1912d92e2",
+      "bytes": 17419
+    },
+    "data/cache/MCK.MX.parquet": {
+      "sha256": "2bb2d770bca6f1dfaf379ae44e8f797a81ebaf4f19c6d2d90a8fcd8046609b79",
+      "bytes": 15763
+    },
+    "data/cache/MCO.MX.parquet": {
+      "sha256": "cf3d06de6b3ff6b763cf9b0f05691356ae5011d3976c21f4aeb16985f035f8f9",
+      "bytes": 18769
+    },
+    "data/cache/MDB.MX.parquet": {
+      "sha256": "9b6ac5a0f0ab83fe6f3250b107a006aa4de7f9ec6c009a47465e1149721e00af",
+      "bytes": 21737
+    },
+    "data/cache/MDLZ.MX.parquet": {
+      "sha256": "163b6c7e8abac9ab1d1484ad92f5171392df579198d912443efae2ad924460c9",
+      "bytes": 25318
+    },
+    "data/cache/MEDP.MX.parquet": {
+      "sha256": "09e7a351d6a76f40ca351b1c1c7c4936a77a7b6f964536d9765a5e62f72f68df",
+      "bytes": 12126
+    },
+    "data/cache/MEGACPO.MX.parquet": {
+      "sha256": "9457f77c9786e4d771c81d1f33285ea81eaa4a084614e33a2ed5979bd224c864",
+      "bytes": 43711
+    },
+    "data/cache/MET.MX.parquet": {
+      "sha256": "5529b32ffdb6223216ccf05fc4bceddc06fee6431cab35f244583172ec461eb2",
+      "bytes": 23375
+    },
+    "data/cache/META.MX.parquet": {
+      "sha256": "d701383cdc1f94391ded619d3affa6081395a95e3b3c80c60d825173434d09a4",
+      "bytes": 45159
+    },
+    "data/cache/MGM.MX.parquet": {
+      "sha256": "0ca005b7b088f7f880a643cd56a103c15276c6cfe814ef512e0884b3174a3634",
+      "bytes": 28236
+    },
+    "data/cache/MKC.MX.parquet": {
+      "sha256": "42f5472a670d7be36c2797aeebca0c364234b09d352745858be6a86dbdbbccd2",
+      "bytes": 13531
+    },
+    "data/cache/MKL.MX.parquet": {
+      "sha256": "21563b3e5d2ab8a2023023fd705843a5035d8528cefb4ed1046ccb1bcb386470",
+      "bytes": 12521
+    },
+    "data/cache/MKSI.MX.parquet": {
+      "sha256": "435ea6ed5fa399c037f0e1973fbb6c5d5c74ece86945b2e326eddedcc4f25eca",
+      "bytes": 12908
+    },
+    "data/cache/MLI.MX.parquet": {
+      "sha256": "ca0e98c0ed8881e0728d8d7f72d826f083249c9836c4841628e7528febf6ad82",
+      "bytes": 6298
+    },
+    "data/cache/MLM.MX.parquet": {
+      "sha256": "2df79b9af248dc5886c40c2edeec936c4a8848220b84ca11f64ede6f12171a61",
+      "bytes": 18255
+    },
+    "data/cache/MMM.MX.parquet": {
+      "sha256": "146695a8cc2d75e77fced419cac85cb4bb4597f0eecdfe7d6cb7aa8fe35130ba",
+      "bytes": 31390
+    },
+    "data/cache/MNST.MX.parquet": {
+      "sha256": "a5c4089c90390de21f328b6be478493921bd7f2b440a441e93f9c7cb8100ef8f",
+      "bytes": 25694
+    },
+    "data/cache/MO.MX.parquet": {
+      "sha256": "2e8808c41a996377349484cd642b13335673aaf49988f3f498f4ad03a3abd59a",
+      "bytes": 28490
+    },
+    "data/cache/MPC.MX.parquet": {
+      "sha256": "a981ae0039d5b68ea58f32da31d334c05b9a1dfa47c8c67b3d35b3f1f1f4c1b0",
+      "bytes": 16240
+    },
+    "data/cache/MPWR.MX.parquet": {
+      "sha256": "311603b86c88db60c46215c9ca4994a37d4a8d65e68b6880d0338716906dcf6b",
+      "bytes": 15993
+    },
+    "data/cache/MRK.MX.parquet": {
+      "sha256": "0372790b4c1e8f219f4eb8ee5f5da1b979eb38df257aed84a34707d86807be1f",
+      "bytes": 36616
+    },
+    "data/cache/MRNA.MX.parquet": {
+      "sha256": "1d4f6d6563f9f47ce0ebef1e87272d9203f32521bf0249776199cfba4b96db1e",
+      "bytes": 39128
+    },
+    "data/cache/MRSH.MX.parquet": {
+      "sha256": "ba53d774e44527c9975be5c74bdf58bcb9a4fe25562516fc9eb785c6af0e2322",
+      "bytes": 13854
+    },
+    "data/cache/MS.MX.parquet": {
+      "sha256": "c0ca7a53df6c0f13e270d05d83b2cd38e9db593f6db5bb99878e0116f7c161a0",
+      "bytes": 34971
+    },
+    "data/cache/MSCI.MX.parquet": {
+      "sha256": "d6fdc1846891aaa0811d0e8a6296fc9cce8441ae1db8c3fb17ab7398a2c4e9dd",
+      "bytes": 23788
+    },
+    "data/cache/MSFT.MX.parquet": {
+      "sha256": "9ac4ea5cac906d111f22dacd5e9be19a4c81d0e64fbaf73f734ad5c88fc1b149",
+      "bytes": 44744
+    },
+    "data/cache/MSI.MX.parquet": {
+      "sha256": "8c4d1a2181919328a576ee39c36f80d0638ce0348bd2ab708915a98122d63e96",
+      "bytes": 10596
+    },
+    "data/cache/MSTR.MX.parquet": {
+      "sha256": "e0a3e9584d84ba5dd05ac69212f9bf7a4d9cdb2b51b00e3a472751adc814339a",
+      "bytes": 40174
+    },
+    "data/cache/MTB.MX.parquet": {
+      "sha256": "812456288890849d0de0609e782a35ece0ef1029ac65bcf1ec4f653020c74596",
+      "bytes": 12245
+    },
+    "data/cache/MTD.MX.parquet": {
+      "sha256": "53fe07eacdce4722fbfbbe25df35e1a686c9a0011211951b2325d07ee44474bc",
+      "bytes": 17392
+    },
+    "data/cache/MU.MX.parquet": {
+      "sha256": "e8e011bcfc149b6a831f96a962f926fca23865fddb0d39a3495b6fbbb63fc28e",
+      "bytes": 42571
+    },
+    "data/cache/NBIX.MX.parquet": {
+      "sha256": "6a6d7d391a7ae550399564fda14ac5a8a8df0f971d1c45336397df6df09e5490",
+      "bytes": 5378
+    },
+    "data/cache/NDAQ.MX.parquet": {
+      "sha256": "4e113533d6a4a7f7fabd89750cf46a2646457172b35e28a17af5f27a9e22f8ba",
+      "bytes": 21284
+    },
+    "data/cache/NEE.MX.parquet": {
+      "sha256": "d7d22651cd46743ff91a946400ff18b1dd17508c80174e18e368731d2ccf67f6",
+      "bytes": 33857
+    },
+    "data/cache/NEM.MX.parquet": {
+      "sha256": "8a00e8fa9296a84470ed22ca5f1ab8df954f77e2d821ba0bfc83c54bbd765abe",
+      "bytes": 30334
+    },
+    "data/cache/NEMAKA.MX.parquet": {
+      "sha256": "88225582c71bd95b78e9959877e06b90ff4b1274595c48ff5242aa44a2d6ae00",
+      "bytes": 30864
+    },
+    "data/cache/NET.MX.parquet": {
+      "sha256": "0e6f4a839a9931455464f676f33d2e78ba29b0f2d3b8d0484f358ec8a19bded6",
+      "bytes": 30473
+    },
+    "data/cache/NFLX.MX.parquet": {
+      "sha256": "411a33d220910bdf36e18ea80c46889c1ebf516516af550e441b38fe617a3194",
+      "bytes": 44100
+    },
+    "data/cache/NKE.MX.parquet": {
+      "sha256": "d3bede5e5871a893d2d3a93b10bd90d40fcb1b40a953330453fcdbb4ebc5047c",
+      "bytes": 42828
+    },
+    "data/cache/NOC.MX.parquet": {
+      "sha256": "f39dc35f57f05ef5a7fd8aed86c9292e693f97ca5f30340abdd94b41e8f5b82a",
+      "bytes": 17906
+    },
+    "data/cache/NOWW.MX.parquet": {
+      "sha256": "35600ef7802e97c3d483dba66a51dfa68042fa235704ccf52fdfb7df37f22d16",
+      "bytes": 31851
+    },
+    "data/cache/NRG.MX.parquet": {
+      "sha256": "171d545206e5fb64d83b4c25c40fe053c9df8f35602aa97c3e49512dcfe5e0c5",
+      "bytes": 11950
+    },
+    "data/cache/NSC.MX.parquet": {
+      "sha256": "5d1f5462498d8858c735b01955073036d1b94633c66324540251d3fd53b80f2b",
+      "bytes": 13126
+    },
+    "data/cache/NTAP.MX.parquet": {
+      "sha256": "3f9f41958b280e7ecd49ef2ec5d43f585ea347c7791ef9e25ab679dce6a6cbe9",
+      "bytes": 8905
+    },
+    "data/cache/NTNX.MX.parquet": {
+      "sha256": "566092c8b4c979536db7caf0ab144692c6d19ed368a6f54527db168235340cc7",
+      "bytes": 7973
+    },
+    "data/cache/NUE.MX.parquet": {
+      "sha256": "693647ecac9ba01f765311fae82d6dfcb04e78624d8746e0e91c5ba6a8566d7b",
+      "bytes": 17794
+    },
+    "data/cache/NVDA.MX.parquet": {
+      "sha256": "6ccfe2c931b63b3f8dfd9ba07cc47265e80e5ccd8dbda743ce8ae00f262e2f50",
+      "bytes": 45890
+    },
+    "data/cache/NVR.MX.parquet": {
+      "sha256": "9cce65588dd98458de4c4625ffe7894b52db42326188446b86aacb6554d667cb",
+      "bytes": 11855
+    },
+    "data/cache/O.MX.parquet": {
+      "sha256": "d9d14fd71607b35ac9e0134470c5bbdf2150662cb81a297fe185897af7ebaadc",
+      "bytes": 28575
+    },
+    "data/cache/ODFL.MX.parquet": {
+      "sha256": "b57ba0c246a5f83274834b80a8e6f278cced3b33ab4df1ec7e8704bdd347ff2b",
+      "bytes": 25603
+    },
+    "data/cache/OHI.MX.parquet": {
+      "sha256": "00f26450e8763feecefe0da7f7707ce3ef0e33ae17a1bc1eef06cf85ab3bd240",
+      "bytes": 5906
+    },
+    "data/cache/OKE.MX.parquet": {
+      "sha256": "c085a8ba548ad8235d986104aebc3084ca3b254ada083dc0e7e6386734e4868d",
+      "bytes": 7842
+    },
+    "data/cache/OKTA.MX.parquet": {
+      "sha256": "cf69bb08ea5464dc7c762585a5f2927cb4bec271df8f72715057c0f1f197b916",
+      "bytes": 20625
+    },
+    "data/cache/OMAB.MX.parquet": {
+      "sha256": "f4725a11b9f357e02a74e89d4525179a8ea4a60fca258b7ffd18e80016ae42f9",
+      "bytes": 46417
+    },
+    "data/cache/ON.MX.parquet": {
+      "sha256": "0eaab70b95a2d5f4612508d4194a1f68f2628556491ec4c55141a8759dbd5b82",
+      "bytes": 22761
+    },
+    "data/cache/ONTO.MX.parquet": {
+      "sha256": "56b98531f18e723334b7ff6a33ea539bbfed7e287b5f223a57460ab0adafa122",
+      "bytes": 11214
+    },
+    "data/cache/ORBIA.MX.parquet": {
+      "sha256": "1fc1b0417f22c66d80c124095f19197e68c7dabcb7335912b1156c13602d2cf2",
+      "bytes": 43987
+    },
+    "data/cache/ORCL.MX.parquet": {
+      "sha256": "d5bd6b733870739433058e03f69554aaa3a9dde95bdf06a589e2badba79f8de9",
+      "bytes": 40360
+    },
+    "data/cache/ORLY.MX.parquet": {
+      "sha256": "2012e921ae25b2f895cda12891324ae6648172dcfe36ce91d2734b29c213a87d",
+      "bytes": 16884
+    },
+    "data/cache/OTIS.MX.parquet": {
+      "sha256": "8035c9b390dc5824d49f22a173dd3d3d1ddf00045d1dac8d05e2edb59f35fa75",
+      "bytes": 16303
+    },
+    "data/cache/PANW.MX.parquet": {
+      "sha256": "bce517e6b2264146a5f0fbd52638ff8460741e518f9a11306900c04a3bf59095",
+      "bytes": 39054
+    },
+    "data/cache/PAYX.MX.parquet": {
+      "sha256": "714182dbcd6f21ec71b4b6cf1ab1ca9fb42c3fdddc91f01a44201628c1e4f6f3",
+      "bytes": 12049
+    },
+    "data/cache/PCAR.MX.parquet": {
+      "sha256": "0f434fec60a94cca1951af89ae13cbc40227870ad49978eb56093f953aab2a47",
+      "bytes": 3736
+    },
+    "data/cache/PCG.MX.parquet": {
+      "sha256": "8d44ef8f2b7a72f7b87fc939bc0a06472aa01b233b8db18012861b888b362c73",
+      "bytes": 15893
+    },
+    "data/cache/PE.MX.parquet": {
+      "sha256": "0f434fec60a94cca1951af89ae13cbc40227870ad49978eb56093f953aab2a47",
+      "bytes": 3736
+    },
+    "data/cache/PEG.MX.parquet": {
+      "sha256": "fc3a7ff2a6e13c9ae5973f8575c1adc02641915d40552b1a1bf66181918fcc59",
+      "bytes": 9784
+    },
+    "data/cache/PEN.MX.parquet": {
+      "sha256": "0153b16199689b170e2b176f6037cdf478c1c45589b9c9e66b02f855591adb25",
+      "bytes": 12557
+    },
+    "data/cache/PEP.MX.parquet": {
+      "sha256": "3320e5ecf0b96cb65de30b3f80ecc32347593a9b402b1d84047977367624c1a8",
+      "bytes": 35931
+    },
+    "data/cache/PFE.MX.parquet": {
+      "sha256": "cbd9b5d4ccfedecc04c8ab3d93c119c68e17e8eb7c1a8dcb0443cd045b62325b",
+      "bytes": 41744
+    },
+    "data/cache/PG.MX.parquet": {
+      "sha256": "c0a7d76e9c937dea87d0a6d1aaffc255bc0e6b8e31c828f71cb80ab5fff769cc",
+      "bytes": 38025
+    },
+    "data/cache/PGR.MX.parquet": {
+      "sha256": "c5a4e3087f451ad87d96f021c3444410d7b5e43222116cec8a5978dab3b6bb79",
+      "bytes": 30597
+    },
+    "data/cache/PH.MX.parquet": {
+      "sha256": "eacf9dc3ae8f8e1bbbebb6c1e69dfa26dc5547babd82f48da450f4061c5938a2",
+      "bytes": 13027
+    },
+    "data/cache/PHM.MX.parquet": {
+      "sha256": "048425f353834fc4bbe39962ddef0bdd452e506e938ee3dc1f39f75cefe14b74",
+      "bytes": 18157
+    },
+    "data/cache/PINFRA.MX.parquet": {
+      "sha256": "98d92bb714d98216bda4177253bc0897f3b57bbddcab5dec8555359e09cb2c6f",
+      "bytes": 45750
+    },
+    "data/cache/PINS.MX.parquet": {
+      "sha256": "34cbbe81b548d9a82f4f972ee2385178d5657f43fbf1ba3429b5c19fd726748c",
+      "bytes": 31012
+    },
+    "data/cache/PKG.MX.parquet": {
+      "sha256": "4075d076650ff3bd1cfaac369ddc048151aa2ee68b01b45390b607d7313b0887",
+      "bytes": 10999
+    },
+    "data/cache/PLD.MX.parquet": {
+      "sha256": "5013cca3a59234289290cfa256db060829f1243fc87dd420e23f8967748f862f",
+      "bytes": 26747
+    },
+    "data/cache/PLTR.MX.parquet": {
+      "sha256": "e562d1f74b5922f9da586ee73009227dcf9086c9f15a071a257431db9337ec61",
+      "bytes": 43078
+    },
+    "data/cache/PM.MX.parquet": {
+      "sha256": "0b5feced891d96c16b7ca40a53801eede2ee5c254f41724cf8302da10f322f51",
+      "bytes": 22520
+    },
+    "data/cache/PNC.MX.parquet": {
+      "sha256": "d11db633f1caeccd200bfce1c50bb409865b5876cf90a79726e9dc8623f43815",
+      "bytes": 13516
+    },
+    "data/cache/PODD.MX.parquet": {
+      "sha256": "ae0f4319e0ad4104a563826679a76cbca6c2eb8f370e1f707c89523166ac8814",
+      "bytes": 13351
+    },
+    "data/cache/PPG.MX.parquet": {
+      "sha256": "e0fbf7172b2ca2ff8f888a4c10f78ad019d7a31cd990fb07a11595cf6d590c1b",
+      "bytes": 13316
+    },
+    "data/cache/PPLC.MX.parquet": {
+      "sha256": "fa703a5da5f5fd5f62088cbd474e68e5e583db74c3cfaabf2f0d5ab17b618be0",
+      "bytes": 6107
+    },
+    "data/cache/PR.MX.parquet": {
+      "sha256": "43e77ffec4cb0d5284864aae20443ff87dba2c687eb00ee795f38c17791fd5dd",
+      "bytes": 16180
+    },
+    "data/cache/PRU.MX.parquet": {
+      "sha256": "c34a6da12677d80c649b83f935debc1a9cf18154a89dc2adafad6040359b1365",
+      "bytes": 12579
+    },
+    "data/cache/PSA.MX.parquet": {
+      "sha256": "fab95111ae686f71a8b42a59c2b384fbccabe7157f8df6d5a5a7c99edc695ca4",
+      "bytes": 15596
+    },
+    "data/cache/PSTG.MX.parquet": {
+      "sha256": "0f434fec60a94cca1951af89ae13cbc40227870ad49978eb56093f953aab2a47",
+      "bytes": 3736
+    },
+    "data/cache/PSX.MX.parquet": {
+      "sha256": "555a50b2708bfbc2c0bc20befffa5f63d334d37a5df07d1beaa5f24f5252649e",
+      "bytes": 11954
+    },
+    "data/cache/PTC.MX.parquet": {
+      "sha256": "96afc6d6d3ea71f32c5f1cd6d49bda22f3d077c6108433996063f0fcbde0fcc1",
+      "bytes": 13228
+    },
+    "data/cache/PWR.MX.parquet": {
+      "sha256": "4e7bcef681ab6d278d1ac691f79c58d821f3b55b980f2b5627e06e7d3d148e30",
+      "bytes": 13382
+    },
+    "data/cache/PYPL.MX.parquet": {
+      "sha256": "459edadf195c92a6b177378057f17aadd523f4206304ab6e696d5a0723450456",
+      "bytes": 42192
+    },
+    "data/cache/Q.MX.parquet": {
+      "sha256": "94c95d6e1fd7a1f31dba2a4dabfbd0ce1df7e47441dd734db537e1b50fb7ec3b",
+      "bytes": 46053
+    },
+    "data/cache/QCOM.MX.parquet": {
+      "sha256": "3c7a413893f0b465fabb3c7ba7b50858ed79edf17a3f8ac51b82ea84a34f6633",
+      "bytes": 40026
+    },
+    "data/cache/RA.MX.parquet": {
+      "sha256": "c225fb1e286dc3357cea016234236cb2b5e1432f2965608cef936a87aae6c379",
+      "bytes": 45274
+    },
+    "data/cache/RBLX.MX.parquet": {
+      "sha256": "a7821c61aa0f39be1d01634d6781917bfca50cda516089eca6040f1e3d3bdb67",
+      "bytes": 30645
+    },
+    "data/cache/RBRK.MX.parquet": {
+      "sha256": "c3d3d08cdc7754752ba212e5d517b251686af7a4eccdd1e689cdb18ff3848aac",
+      "bytes": 13633
+    },
+    "data/cache/RCL.MX.parquet": {
+      "sha256": "dcc103f9e45593bf67bcb112be53c5e703b62ad5b099742d0baa40aceadbab1a",
+      "bytes": 35381
+    },
+    "data/cache/RDDT.MX.parquet": {
+      "sha256": "0670906cb728a3db0c107134c1878444db677a7f85fd8e7cb010034ec485c555",
+      "bytes": 20059
+    },
+    "data/cache/REGN.MX.parquet": {
+      "sha256": "6737ca3d6cc6551ca3fd161c0f55e3b7c95c239227486c8beb223a78ba9fb65b",
+      "bytes": 23691
+    },
+    "data/cache/RF.MX.parquet": {
+      "sha256": "43b350aad2fb64b5c444c185e9e40d405bae6b50af6c3b532160a7ec8f8b127b",
+      "bytes": 11674
+    },
+    "data/cache/RGLD.MX.parquet": {
+      "sha256": "8d91261a207b472d11c36787066dda8e604d3b55647ab052b5987f9a8c14fc38",
+      "bytes": 13178
+    },
+    "data/cache/RIVN.MX.parquet": {
+      "sha256": "845fd985b891322b195261a16a7475ed2ba87811a42c8df45d107a4838414bf7",
+      "bytes": 38409
+    },
+    "data/cache/RKLB.MX.parquet": {
+      "sha256": "023b9ae0b83aa1ce7b4d0fdeb80ac7e5057411e4cbb6ac0f263eb79fb3a2ca45",
+      "bytes": 15393
+    },
+    "data/cache/RKT.MX.parquet": {
+      "sha256": "13257a9846579b29b3c56314228e82f845d9b0a322398ede8edb0ccc97d44bfd",
+      "bytes": 14678
+    },
+    "data/cache/RMD.MX.parquet": {
+      "sha256": "fc852c4f24484a2d9597006bc882af72658bc3542c93e30d2161cf2b3274d633",
+      "bytes": 13332
+    },
+    "data/cache/ROK.MX.parquet": {
+      "sha256": "2fb1776806a766bba3ae97e98dc7e4e795a34441c49b4a30d6bf45b4490521bc",
+      "bytes": 13558
+    },
+    "data/cache/ROKU.MX.parquet": {
+      "sha256": "45fbad4acecae47b0fceec16b4d186114e767cb3cf7165058ae04b413e92b848",
+      "bytes": 34875
+    },
+    "data/cache/ROL.MX.parquet": {
+      "sha256": "5ce7cf24aac0b968dc8f0b5886e9a458675c531432e39594687d4da219c6a782",
+      "bytes": 11500
+    },
+    "data/cache/ROST.MX.parquet": {
+      "sha256": "d45091680222607791880af872aeb9e943b023a4623348404868e70032326157",
+      "bytes": 21787
+    },
+    "data/cache/RRX.MX.parquet": {
+      "sha256": "5c35da2d0973e5759e970703ea272fe4cb24457fc0992d315d618842949c4a96",
+      "bytes": 11933
+    },
+    "data/cache/RSGA.MX.parquet": {
+      "sha256": "fd433095024650a59dd06b288983c49ae14dd03cd159626b5d2a6238326d9cf0",
+      "bytes": 16891
+    },
+    "data/cache/RTX.MX.parquet": {
+      "sha256": "918184a7258079cf175e9e312a5bda8b480019ef38826a63d00c8b0c0e53b11a",
+      "bytes": 23624
+    },
+    "data/cache/RVMD.MX.parquet": {
+      "sha256": "0f434fec60a94cca1951af89ae13cbc40227870ad49978eb56093f953aab2a47",
+      "bytes": 3736
+    },
+    "data/cache/SAIA.MX.parquet": {
+      "sha256": "d06037b9aa33d6219cd7892aad8b6a826875050a3e80cf58366c9763120259ac",
+      "bytes": 8878
+    },
+    "data/cache/SBAC.MX.parquet": {
+      "sha256": "8bfcabefc75471b039a1fda8996c5938d129dabdda108ad3461abc9a99f10181",
+      "bytes": 12171
+    },
+    "data/cache/SBUX.MX.parquet": {
+      "sha256": "906eb6e7d2680040927372e5987e4f96d7f6126b595868976f35deba3bebc553",
+      "bytes": 40111
+    },
+    "data/cache/SCCO.MX.parquet": {
+      "sha256": "a76915ac6ed310593d831eb200e0aba8c66b44b8c806080f7fcfa8214d7744ac",
+      "bytes": 17282
+    },
+    "data/cache/SCHW.MX.parquet": {
+      "sha256": "453205fe418a3799819ad9a03643fcca215069cc5968bec1dcced3834eedfddc",
+      "bytes": 27920
+    },
+    "data/cache/SCI.MX.parquet": {
+      "sha256": "c923a1384840c0c14cebf8beff69f383feae0c2109d5fc19fb39940d578c1cc8",
+      "bytes": 13563
+    },
+    "data/cache/SHW.MX.parquet": {
+      "sha256": "c6854cd5f3dff63398392b9296130cc9c83509cfa78fd14127c5e381fc54e035",
+      "bytes": 29512
+    },
+    "data/cache/SITM.MX.parquet": {
+      "sha256": "4c0a0ecdf0e1d1867feae0fdd11600537620e2d404cb5e5bc2016a5f9797cd46",
+      "bytes": 6798
+    },
+    "data/cache/SJM.MX.parquet": {
+      "sha256": "bc06fd33ca532b069d0baeef03acef848333d8f0a5cb8283ae981c41189670e4",
+      "bytes": 11671
+    },
+    "data/cache/SMCI.MX.parquet": {
+      "sha256": "c00177b84cf6aeb56ff4ade756018807ac7d690f4c99485be9565bd81e412b83",
+      "bytes": 31430
+    },
+    "data/cache/SMTC.MX.parquet": {
+      "sha256": "523b73300039d712316f7295bb931a56887441169f9d492283e2d53fb89dcedf",
+      "bytes": 8844
+    },
+    "data/cache/SNOW.MX.parquet": {
+      "sha256": "aaf6d6bf1d643585d74968c973e4e8eb0cd9e22dfbf179360e8a5c67dc59da46",
+      "bytes": 35620
+    },
+    "data/cache/SNPS.MX.parquet": {
+      "sha256": "a0ce8344ba0c00943e6cfc89e038e4deafe4ffe9aae7d40452baf8ba5972a654",
+      "bytes": 21410
+    },
+    "data/cache/SO.MX.parquet": {
+      "sha256": "054bb52f1998455f68886d56a0377a20e50ca357d5f914ec7e3761dc9b76bf1a",
+      "bytes": 14813
+    },
+    "data/cache/SOFI.MX.parquet": {
+      "sha256": "6d8ff1943c45f8600496402780ad2de98296f237175b10e3eab4384126699305",
+      "bytes": 39621
+    },
+    "data/cache/SOLV.MX.parquet": {
+      "sha256": "48145828a1593d9fd1f7924b4d855ea2347d7176c2f3739a8c62add43eb8405d",
+      "bytes": 11025
+    },
+    "data/cache/SPG.MX.parquet": {
+      "sha256": "d29663b2ba434351055a4d5748015b3e5895909290242642874edbe6efe3483b",
+      "bytes": 18722
+    },
+    "data/cache/SPGI.MX.parquet": {
+      "sha256": "088b90d2034b893bb889cbc704c6779ff83a72f85186b75abeb7659a56df1927",
+      "bytes": 30858
+    },
+    "data/cache/SRE.MX.parquet": {
+      "sha256": "84496d91bbd68bcb493a91f9c370a834e6e95a180ff56c90582619ddec28e70b",
+      "bytes": 13490
+    },
+    "data/cache/SSNC.MX.parquet": {
+      "sha256": "259c1345301f07de2f71c87ff12a591fc595db3322c0e841eb28249c6b1924ad",
+      "bytes": 13142
+    },
+    "data/cache/STLD.MX.parquet": {
+      "sha256": "a8bdb0b91e45c0015660693272c52820fab2f64bc86693bad74077545efc81de",
+      "bytes": 16421
+    },
+    "data/cache/STT.MX.parquet": {
+      "sha256": "cff8329c380af20dce5dd22784059cce733d7a98678abcdd9151619e06fbf1e3",
+      "bytes": 12659
+    },
+    "data/cache/STZ.MX.parquet": {
+      "sha256": "faf9b5d18a85870f0217c46f560853f502d22a6fbc01cbd298a5ccfd37e38118",
+      "bytes": 33321
+    },
+    "data/cache/SUI.MX.parquet": {
+      "sha256": "97a01d32817e2bcf6c3396b5181f249d9554ad1a5c450ebc2fe45624a957a000",
+      "bytes": 11983
+    },
+    "data/cache/SWK.MX.parquet": {
+      "sha256": "03214fd3e7165fa74e4e1f0aa89f96a8952bdf9bc025dce082e2b102f4dc4c97",
+      "bytes": 13631
+    },
+    "data/cache/SYF.MX.parquet": {
+      "sha256": "e05e957cd3d4aca9a5901dc38d73a93ba3819dcfaf8a9575ea5d2659d8976d50",
+      "bytes": 13761
+    },
+    "data/cache/SYK.MX.parquet": {
+      "sha256": "0a8e8801b13f65e8ea72d538c93342583dd5f0915da48e453c9fd6b76d20f98d",
+      "bytes": 19666
+    },
+    "data/cache/SYY.MX.parquet": {
+      "sha256": "04b3f1c53d1c6492d82909d91e486384e5d4a227c8d9b0d66514c10bcaada6fd",
+      "bytes": 11812
+    },
+    "data/cache/T.MX.parquet": {
+      "sha256": "41f408e411545e8f93bf667254d75dc7794c0c468b24cecce049e3db6e9a0280",
+      "bytes": 39334
+    },
+    "data/cache/TDG.MX.parquet": {
+      "sha256": "cd3cfa84c0faee2074d20ade4b9251d34132f7ad82d0f8c308b5f18e0e2758a3",
+      "bytes": 17665
+    },
+    "data/cache/TDY.MX.parquet": {
+      "sha256": "3378bf36f96e3469edf9e6b272c51498c246216da10809a636639b2ac9c47670",
+      "bytes": 8171
+    },
+    "data/cache/TEAM.MX.parquet": {
+      "sha256": "fd13c2f37e1557395e89aa779fc7cb279d8a094be74e415f3ee9453b0eddd809",
+      "bytes": 16832
+    },
+    "data/cache/TER.MX.parquet": {
+      "sha256": "a486d1dfbe1b7580822e71e11745f28f61e9bce3afb4a3cc68da8de7a1ab14db",
+      "bytes": 20989
+    },
+    "data/cache/TFC.MX.parquet": {
+      "sha256": "0610dd58dbce7a60b630a805aefa36c3a7e2c92d34bf1f2f3c85d074436c23ab",
+      "bytes": 14755
+    },
+    "data/cache/TGT.MX.parquet": {
+      "sha256": "92f32938cc08c5139c33f76b8f009d933aacd7fd9db99ef779ae10476855d418",
+      "bytes": 38935
+    },
+    "data/cache/THC.MX.parquet": {
+      "sha256": "9f0fa2f41d8a26721f193f5d87b0b0bc489af6bf2603065b56af88942b35815a",
+      "bytes": 12775
+    },
+    "data/cache/TJX.MX.parquet": {
+      "sha256": "356545eb3b5db1a7e1dcfeb53136e45f2fa22d1a59e80daa3920ec1b526e82e6",
+      "bytes": 29092
+    },
+    "data/cache/TMO.MX.parquet": {
+      "sha256": "3c4c1a5a742018f40c4f211b435ebc85ab293b7d6e0786f9086bbf02e2d33aaa",
+      "bytes": 34882
+    },
+    "data/cache/TMUS.MX.parquet": {
+      "sha256": "cabe1fe22b332b89315888ad093a3838f1ba0e63dd9549521319bdeb60dc0e9a",
+      "bytes": 29386
+    },
+    "data/cache/TOL.MX.parquet": {
+      "sha256": "0f434fec60a94cca1951af89ae13cbc40227870ad49978eb56093f953aab2a47",
+      "bytes": 3736
+    },
+    "data/cache/TOST.MX.parquet": {
+      "sha256": "57da3ebc684fb9d913863d2b87cd9603dbbdad82b994e29e9a910f582124c97f",
+      "bytes": 17220
+    },
+    "data/cache/TPL.MX.parquet": {
+      "sha256": "0f434fec60a94cca1951af89ae13cbc40227870ad49978eb56093f953aab2a47",
+      "bytes": 3736
+    },
+    "data/cache/TPR.MX.parquet": {
+      "sha256": "3c050d9fa13f1641ace8a3af49834bc2a146ed4a4cfc4d5a360d453345aeb991",
+      "bytes": 12305
+    },
+    "data/cache/TRGP.MX.parquet": {
+      "sha256": "aa8f18147d8bf6a2af0280887150f42efc001d90045fd0df3a5ae1ff167f32c4",
+      "bytes": 12945
+    },
+    "data/cache/TRMB.MX.parquet": {
+      "sha256": "bcf7686be59a70427d86ba7187eab2349ef861b3a1001e54f83cb23bdc393b46",
+      "bytes": 11652
+    },
+    "data/cache/TROW.MX.parquet": {
+      "sha256": "8c5e77d12b266ec268135bc8137beedadc011b33e7918b0602a4cab604038149",
+      "bytes": 12711
+    },
+    "data/cache/TRV.MX.parquet": {
+      "sha256": "26ee7ebe5a8c6ae92291f1092e452f54530b4d7d8a679917f76b45a104ebef05",
+      "bytes": 13836
+    },
+    "data/cache/TS.MX.parquet": {
+      "sha256": "ed3a93522987a6d13728d2e5e2d61be2d2ba91e12df8d44cc6e6182f057967a6",
+      "bytes": 12629
+    },
+    "data/cache/TSLA.MX.parquet": {
+      "sha256": "2e1be7a6765c769e4dfb7b00271b80b44eb97107d6aa9c4de41cea91a08f88fd",
+      "bytes": 44799
+    },
+    "data/cache/TSN.MX.parquet": {
+      "sha256": "77779e4a4ddc968c9d84fa813f8c255c152027f251a67c53375dfca947885980",
+      "bytes": 24146
+    },
+    "data/cache/TTMI.MX.parquet": {
+      "sha256": "9b2f9cff7c9774caa526fa1fb1d0671e1531ee863d0554495ebd4c3424179342",
+      "bytes": 5819
+    },
+    "data/cache/TTWO.MX.parquet": {
+      "sha256": "0bbf7b58204a28c2ce5c8d7b7ea57f1c8637f2979d547e733d32942822ed1cea",
+      "bytes": 25211
+    },
+    "data/cache/TWLO.MX.parquet": {
+      "sha256": "41d3f50aae91d7213baf32bee3bf59575c8ef80419efdbc700216a726863790d",
+      "bytes": 28199
+    },
+    "data/cache/TXN.MX.parquet": {
+      "sha256": "2e4edd83e4cc691b21acc7079307b6298ed1d1f50485c751e5ab96692338041b",
+      "bytes": 25790
+    },
+    "data/cache/TXRH.MX.parquet": {
+      "sha256": "fdef4301047ec2a41f0681c89cf213a59f8f7de86fe4b9e5ae832e26d5efc1c9",
+      "bytes": 7403
+    },
+    "data/cache/TXT.MX.parquet": {
+      "sha256": "1986f8509f8c228df765e1c7a0d5c2702a661588a9c33f75e7156619d5d9446d",
+      "bytes": 13028
+    },
+    "data/cache/TYL.MX.parquet": {
+      "sha256": "4b7bb54cf508b1baad4a773f4312df34d800c411922592487f2f0ee3b9c5c0d8",
+      "bytes": 11999
+    },
+    "data/cache/U.MX.parquet": {
+      "sha256": "2903107efd08559511645c29b02f346504ccc791b9cdd3f1f9dff0d70ac476e2",
+      "bytes": 31264
+    },
+    "data/cache/UAL.MX.parquet": {
+      "sha256": "4c0c681c0c4e8aeacda35b0ce5ce537add5a65322c4758e27ac27318fcb17eb3",
+      "bytes": 36307
+    },
+    "data/cache/UBER.MX.parquet": {
+      "sha256": "014058d556d5c2d284a89a14e3e70188e1796ed4431bdac48a0d74d31b327571",
+      "bytes": 42315
+    },
+    "data/cache/ULTA.MX.parquet": {
+      "sha256": "16450619e9310a3bc422233ce95d84b29da89a71b5aafeec96f6b5d76c891ebd",
+      "bytes": 21048
+    },
+    "data/cache/UNH.MX.parquet": {
+      "sha256": "d9b8e3a097a3a140e978c919c133c4c1076bd5261d537078ba7db42677aa43e5",
+      "bytes": 41719
+    },
+    "data/cache/UNP.MX.parquet": {
+      "sha256": "856e7bb519cca51cc3db6aa4d04795d64e926bb1643d78191c39f6ae9b38f95f",
+      "bytes": 22720
+    },
+    "data/cache/UPS.MX.parquet": {
+      "sha256": "e78f5faa5129e76c60eb2aa714ab4dec4f580d381656a662ab5a9408e3ddcdec",
+      "bytes": 31127
+    },
+    "data/cache/URI.MX.parquet": {
+      "sha256": "40779682b38ca812233ac410d6c0446f2b7f06b2d3941242a6519f6aa0e667f4",
+      "bytes": 16966
+    },
+    "data/cache/USB.MX.parquet": {
+      "sha256": "90d7f4938ae1f8300b7c823fbba6733b268adc4adf92682ac9510d10f5b43337",
+      "bytes": 17954
+    },
+    "data/cache/USDMXN_EQ_X.parquet": {
+      "sha256": "0c22174dd74fb4e4f05ab085b4bf8304f8dabcb3fe0e43c05619f0aee69c86b7",
+      "bytes": 42555
+    },
+    "data/cache/USFD.MX.parquet": {
+      "sha256": "a57e3172036f82deb07efd79f2c43aaae53ddfc06e3da96c4ab9c21f58b008c1",
+      "bytes": 11365
+    },
+    "data/cache/UTHR.MX.parquet": {
+      "sha256": "06d74a86567209df079db55a595356f2443f149f9dbe6d7dc8ae14840119bf53",
+      "bytes": 4774
+    },
+    "data/cache/V.MX.parquet": {
+      "sha256": "416fe7c1be1daeb1e888dec18a4259384c698f69cb96e4576c615115ad753003",
+      "bytes": 42279
+    },
+    "data/cache/VEEV.MX.parquet": {
+      "sha256": "a464dedccde12c1ebbfd4706a59d9c00645dda69e64dfc36e4f6ff3ae03387d3",
+      "bytes": 18728
+    },
+    "data/cache/VESTA.MX.parquet": {
+      "sha256": "22e48ce495f7a6c0608eece660a7c6ee198f746529b8e0f645ffea35780154d8",
+      "bytes": 43550
+    },
+    "data/cache/VG.MX.parquet": {
+      "sha256": "519b464c3d400b6d6f8d65f104ca431fbe1a04c64c337a1fc7dd83861e0887f1",
+      "bytes": 7142
+    },
+    "data/cache/VICI.MX.parquet": {
+      "sha256": "2893667540edc1d4073ffed9019d72ebb99e5c0ba5c5983b795cd029549f88e0",
+      "bytes": 25474
+    },
+    "data/cache/VLO.MX.parquet": {
+      "sha256": "41b9c87fe980ad75c085239100c60ee8635db59a7cf3a385593cee1f3ae82c0b",
+      "bytes": 25244
+    },
+    "data/cache/VLTO.MX.parquet": {
+      "sha256": "03ded8e064b24a2aedd0197a090af45227d24c2d1c2ad7ae44fe7a8f941fc3a0",
+      "bytes": 12758
+    },
+    "data/cache/VMC.MX.parquet": {
+      "sha256": "1e9f71d59b549bc5fb56346b47052aca5ff6140a8360c78a2cca98b321a5094a",
+      "bytes": 9734
+    },
+    "data/cache/VOLARA.MX.parquet": {
+      "sha256": "84e0e59626aba1b470c56e1c28435de881cfc63439334fd3ca76bace8cbf895a",
+      "bytes": 40929
+    },
+    "data/cache/VRSK.MX.parquet": {
+      "sha256": "a826a41fe7ea9d3d0b2e0af3efe9c5c9f63fca9c2a5bf74c5b00d48ffbc85fa5",
+      "bytes": 14215
+    },
+    "data/cache/VRSN.MX.parquet": {
+      "sha256": "a57c5ddd6d601ace73e0e5ddfa7da88ff4e501ea87e42f4a7b960f2863912b58",
+      "bytes": 13014
+    },
+    "data/cache/VRT.MX.parquet": {
+      "sha256": "31b14cdaadf48ab8267c78c2b8ef63fd7ef9bc26f328f5a127304734c5130399",
+      "bytes": 21285
+    },
+    "data/cache/VRTX.MX.parquet": {
+      "sha256": "aecf9826d9d10ef83406a025609063c2e1978dc4d0b52abe2018bcd6bb897560",
+      "bytes": 27791
+    },
+    "data/cache/VST.MX.parquet": {
+      "sha256": "8e5e3174cf154d656a4feff79b57e15f3093a2df6053e163be04d7f74a16d5be",
+      "bytes": 26735
+    },
+    "data/cache/VTR.MX.parquet": {
+      "sha256": "f43841ba9492e2e88088689e28da0d88c4522702895387f6e954dbcaa0db62d3",
+      "bytes": 12316
+    },
+    "data/cache/VTRS.MX.parquet": {
+      "sha256": "2def4c66a8057b0875772bd785142aa662bd177af06e2a250930b6c4941a0183",
+      "bytes": 10735
+    },
+    "data/cache/VZ.MX.parquet": {
+      "sha256": "82d698435dd5f6be33936e4d0ccd70246ec02b6bb69c66de2c6173a51040d6cc",
+      "bytes": 34280
+    },
+    "data/cache/W.MX.parquet": {
+      "sha256": "9d365d65245eb58017f2b1eb35c295d2ee46cd3437908debf4f2b1ffd65dd9fd",
+      "bytes": 15069
+    },
+    "data/cache/WAB.MX.parquet": {
+      "sha256": "0c8dd25b0d910dd55488441d0701b4762dbe0d056f2c13ef7052ce08937730bc",
+      "bytes": 13874
+    },
+    "data/cache/WALMEX.MX.parquet": {
+      "sha256": "47cd139fdcf0993ad675829d861a21f8f360693ec5f173d6034b558ad9004b04",
+      "bytes": 43396
+    },
+    "data/cache/WAT.MX.parquet": {
+      "sha256": "b81eb77f31872c643de0cb77a587a73d6effae844e2be023d6b9ea193692058f",
+      "bytes": 17693
+    },
+    "data/cache/WBD.MX.parquet": {
+      "sha256": "a7a2bd495a365558972aec4549e6baea1d7862666c4354e12f63afff67a13df9",
+      "bytes": 20788
+    },
+    "data/cache/WDAY.MX.parquet": {
+      "sha256": "663620436d2f6a7227e9fa0caf755da75c83cf989241ab6da3b84d626baae8b7",
+      "bytes": 17766
+    },
+    "data/cache/WDC.MX.parquet": {
+      "sha256": "897a701af189cec0e647680c9149822b478bdb69f2149f607e30c6a52d772dc1",
+      "bytes": 25455
+    },
+    "data/cache/WELL.MX.parquet": {
+      "sha256": "428cb51c28458eba4caa9e87ffb9a5966ca543350759b055850060f8c67c4830",
+      "bytes": 14375
+    },
+    "data/cache/WFC.MX.parquet": {
+      "sha256": "f1baa93c8a3ec3aa01c97c9462ae8dc6dcbb37ed57207955436b06a12747d3ed",
+      "bytes": 37039
+    },
+    "data/cache/WMB.MX.parquet": {
+      "sha256": "7d80d41fb6212292436f4fb6789e25c27b6e93b07173aa14f9d585622437692d",
+      "bytes": 13267
+    },
+    "data/cache/WMI.MX.parquet": {
+      "sha256": "eb2ba432f52bdb518d3f2957848b15e92a1a93554075e57cc06022bd79144e85",
+      "bytes": 23948
+    },
+    "data/cache/WMS.MX.parquet": {
+      "sha256": "998a84785964d613a215a69dfd75911b16be805a1e655fdf7f2fea99ed9ebc79",
+      "bytes": 8174
+    },
+    "data/cache/WMT.MX.parquet": {
+      "sha256": "c08ac50f2d6a3cd98cce03f64916d05b15deb6ba14b06323539632d841106ada",
+      "bytes": 41265
+    },
+    "data/cache/WPC.MX.parquet": {
+      "sha256": "dec1c9141f02c86a1a1e4171273e4b2e6ac1524313ca21c01f5bb05c51818fd0",
+      "bytes": 12400
+    },
+    "data/cache/WRB.MX.parquet": {
+      "sha256": "3a3fa9b91b9dccbe422076b84ac1440fe432771627813a14ca0fca76539a7b95",
+      "bytes": 11548
+    },
+    "data/cache/WSM.MX.parquet": {
+      "sha256": "0abfc10b5c6204a25b0dbd6d42260363a5c78ea3f0eb124d5190aa903721c9aa",
+      "bytes": 14162
+    },
+    "data/cache/WSO.MX.parquet": {
+      "sha256": "0f434fec60a94cca1951af89ae13cbc40227870ad49978eb56093f953aab2a47",
+      "bytes": 3736
+    },
+    "data/cache/WST.MX.parquet": {
+      "sha256": "7dffc943a928877289639d2783c733a1242b257f5af55e449ef5b0393143b457",
+      "bytes": 12869
+    },
+    "data/cache/WTS.MX.parquet": {
+      "sha256": "19c76ddcf2a8e5d10f606d12526b0d5497dd096192d6037c6e1650997418ec2f",
+      "bytes": 12031
+    },
+    "data/cache/WWD.MX.parquet": {
+      "sha256": "0f434fec60a94cca1951af89ae13cbc40227870ad49978eb56093f953aab2a47",
+      "bytes": 3736
+    },
+    "data/cache/WY.MX.parquet": {
+      "sha256": "b82a04a9cb0ec573778d7d32a101c3054b3b8d9673930d11350b25a6e91cf2b9",
+      "bytes": 11579
+    },
+    "data/cache/XEL.MX.parquet": {
+      "sha256": "498d7fce27c3eb65af4df39e8e3f63b9a9f6eb973e402f544b66a5f2fae286d7",
+      "bytes": 13430
+    },
+    "data/cache/XOM.MX.parquet": {
+      "sha256": "233dba0ef022e136ef6f12edcf2ed596df9927ffdb2c1390e7ba8424d8d0af47",
+      "bytes": 39036
+    },
+    "data/cache/XPO.MX.parquet": {
+      "sha256": "d399b9f6dcf917ebeb5cec58d3ed7895e7e0c298c469a47374db832481ec32e1",
+      "bytes": 12023
+    },
+    "data/cache/XYL.MX.parquet": {
+      "sha256": "70d79762df39ebcdad11b3b96dfe3a9bcedb40a5b36f851a52947d67fb380b54",
+      "bytes": 12201
+    },
+    "data/cache/XYZ.MX.parquet": {
+      "sha256": "ddc7db1c3c63fc0a063ea99291eaa75eb136e21b4bb6b24a5b95e961ce1624aa",
+      "bytes": 36063
+    },
+    "data/cache/YUM.MX.parquet": {
+      "sha256": "f463312f50f7ad07e9129e7ec7b88670796ff0ba5a5028ef690bc848bfa854ee",
+      "bytes": 16235
+    },
+    "data/cache/YUMC.MX.parquet": {
+      "sha256": "6b3983a48e5163c30301559f837139d5077f84bef209731fc2eec0100274eaac",
+      "bytes": 15471
+    },
+    "data/cache/ZBH.MX.parquet": {
+      "sha256": "ef63a8d7e680e919cb34fdb6dc4aa999023f9c635351dc9b999f33edd1acc5de",
+      "bytes": 14033
+    },
+    "data/cache/ZBRA.MX.parquet": {
+      "sha256": "4838009b63c27cf29e1f4e0882c064bcf8e61280716de19834f6d79496679cf2",
+      "bytes": 13669
+    },
+    "data/cache/ZM.MX.parquet": {
+      "sha256": "417d709e39bf9649bf060af6e240287c751bdf63eafed289610d32920e2299dd",
+      "bytes": 29543
+    },
+    "data/cache/ZS.MX.parquet": {
+      "sha256": "d4ad362f8a85cfe09222fc1cde377df3b0771bb8950acd193626fe1d0067a32e",
+      "bytes": 26022
+    },
+    "data/cache/ZTS.MX.parquet": {
+      "sha256": "73062e76e1dff339070637d5c071db16c2c6faccd6ea5ec6896c062daaa1c774",
+      "bytes": 30323
+    },
+    "data/cache/_IDX_GSPC.parquet": {
+      "sha256": "7fdaf132f849bb72118f15c1945e0f2afcf0a9d39015d2fed6ca166c8a6321e2",
+      "bytes": 48212
+    },
+    "data/cache/_IDX_MXX.parquet": {
+      "sha256": "111bd856b4f0cf5cae8eb67884135b9a4025ae1fbc04a5bb96b4edb94262d310",
+      "bytes": 48215
+    },
+    "data/cache/banxico_cetes_28d.json": {
+      "sha256": "fd66114f18c87a6195913f4f2362a578682aaceaa7b15aa95bd18938d5e74eb5",
+      "bytes": 481
+    },
+    "data/cache/banxico_cetes_28d.parquet": {
+      "sha256": "4c2f7d1de8ac530dcab5820ff66d28deb3333bbc2032ca4c3f5556693868a54b",
+      "bytes": 4324
+    },
+    "data/cache/banxico_fx_fix.json": {
+      "sha256": "28adf412be31a5d41606963bf1376427b043e55cc26b379284860495a9a88b72",
+      "bytes": 467
+    },
+    "data/cache/banxico_fx_fix.parquet": {
+      "sha256": "3b764ed224e44a914e10773e5c35a6e8eb338ac858abfdd01e2a7df47b2e62e6",
+      "bytes": 15834
+    },
+    "data/features/feature_dictionary.json": {
+      "sha256": "4a26871c37e42f2868545acf3df57fa230104bc1c659b1d640bbd151dbd52577",
+      "bytes": 28346
+    },
+    "data/features/feature_exclusions.csv": {
+      "sha256": "6ee3e0286132b668beddd5cfe49d86edd965f7ab7b452a8f4a390887523e3e3e",
+      "bytes": 697312
+    },
+    "data/features/monthly_features.parquet": {
+      "sha256": "a586c3713400a19741377172732f4456f237cd8315157ecc4efc18178ec9ab7a",
+      "bytes": 8044735
+    },
+    "data/universe/candidates.csv": {
+      "sha256": "576ba0bba1f01c988ca5a4769d181c53ef28673c3c7e565363a7ba035bb1c68c",
+      "bytes": 15108
+    },
+    "data/universe/candidates_provenance.json": {
+      "sha256": "f098c913cc9bdd5023368e2e87fa08199f7e666034f3ed3feec3884dbdcc24e1",
+      "bytes": 545
+    },
+    "data/universe/candidates_public.csv": {
+      "sha256": "1825ac9835ae8a4a0cacc87138a50f977ac84b39fdf71dd2df078af28c8fde2f",
+      "bytes": 19235
+    },
+    "data/universe/coverage_2025_2026.csv": {
+      "sha256": "be02539a4acde961b82427359763ec4eef48d27d4fbe070fcac456b5d36e1011",
+      "bytes": 39666
+    },
+    "data/universe/download_list.csv": {
+      "sha256": "b44bbbe8bc3e41f2c98a66ebd272e918740aa8a140ea0a1447b6e00d01bb866a",
+      "bytes": 4091
+    },
+    "data/universe/final_universe.csv": {
+      "sha256": "0b5f97ecf5bba387d77d42eab7d64f8fcbefed2c9474d9cb9e07bf299d153dc7",
+      "bytes": 6609
+    },
+    "data/universe/quality_stale_runs.csv": {
+      "sha256": "1a5a8a578e84d8e24389b8ccf6fb37cacfc9f9ceb9ac4d7c28163156a72082ca",
+      "bytes": 439067
+    },
+    "data/universe/quality_ticker_months.csv": {
+      "sha256": "8ade7474c467e8a017cc1f31121d2e04302ae847c04b8bf006f50cbaef725731",
+      "bytes": 1806313
+    },
+    "data/universe/retrieval_report.csv": {
+      "sha256": "097dcfe58662e6dc2e90d40f79aa23aef5e71df3ab62ffedf9543892bd573694",
+      "bytes": 24707
+    },
+    "data/universe/retrieval_summary.json": {
+      "sha256": "6030ef684ec4df4803c511734242cbd9c60f861513eee748d79bf01b11b36114",
+      "bytes": 182
+    },
+    "data/universe/screen_admission.csv": {
+      "sha256": "8e6f02345e955d6fc099cc5e757c34c16fcd61f12c6291b336ad7baeb8a081dc",
+      "bytes": 24643
+    },
+    "data/universe/screen_diagnostics.json": {
+      "sha256": "6a90034079cbaecdfecb0ec6f4a46593511e3abb4a42572bdfd0225c8525cc02",
+      "bytes": 10093
+    },
+    "data/universe/screen_membership.csv": {
+      "sha256": "5f3e1784e7e10977c2727b9db0fc3b97a9f0f190587b75cd358f3c8b45b0ccce",
+      "bytes": 29775
+    }
+  }
+}

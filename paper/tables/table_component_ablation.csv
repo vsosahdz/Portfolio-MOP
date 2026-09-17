@@ -1,0 +1,7 @@
+component,ladder_effect,ladder_verdict,loo_effect,loo_verdict,minimum_detectable,disagrees
+optimisation,-0.004143956093868747,below the resolution of this design,,not evaluated,0.019904588116221162,False
+multi_objective,0.005499211626751174,below the resolution of this design,,not evaluated,0.017799735541640813,False
+screening,-0.006895132601974139,below the resolution of this design,-0.0005371948883613493,below the resolution of this design,0.035376478180604166,False
+proposed_labeling,-0.01968299971094371,below the resolution of this design,0.000925767632858425,below the resolution of this design,0.047430181323800745,False
+knee_selection,0.011710161121707856,below the resolution of this design,0.0019214903857539423,below the resolution of this design,0.03333718311975831,False
+concentration_cap,-0.001626574238165689,below the resolution of this design,-0.001626574238165689,below the resolution of this design,0.010612124762310104,False

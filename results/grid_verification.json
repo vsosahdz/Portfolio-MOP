@@ -1,0 +1,56 @@
+{
+  "completeness": {
+    "expected_rows_per_cell": 120,
+    "cells": 648,
+    "complete": 645,
+    "short_with_recorded_skip": [
+      {
+        "labeling": "historical_and_t1",
+        "screener": "neural_network",
+        "month": "2025-04",
+        "weight_cap": 0.2,
+        "present": 12,
+        "expected": 120,
+        "skip_reasons": [
+          "cap 0.2 infeasible"
+        ]
+      },
+      {
+        "labeling": "historical_and_t1",
+        "screener": "xgboost",
+        "month": "2026-04",
+        "weight_cap": 0.2,
+        "present": 12,
+        "expected": 120,
+        "skip_reasons": [
+          "cap 0.2 infeasible"
+        ]
+      },
+      {
+        "labeling": "historical_and_t1",
+        "screener": "xgboost",
+        "month": "2026-05",
+        "weight_cap": 0.2,
+        "present": 12,
+        "expected": 120,
+        "skip_reasons": [
+          "cap 0.2 infeasible"
+        ]
+      }
+    ],
+    "short_without_any_skip": [],
+    "passes": true
+  },
+  "skips": {
+    "cap 0.2 infeasible": 72,
+    "front of 1 point(s) supports no ga_knee": 32,
+    "front of 2 point(s) supports no ga_knee": 8
+  },
+  "levels": {
+    "universe_min": 88,
+    "universe_max": 101,
+    "turnover_mean": 0.6090362827909316,
+    "turnover_max": 1.0000000000000002
+  },
+  "issues": []
+}

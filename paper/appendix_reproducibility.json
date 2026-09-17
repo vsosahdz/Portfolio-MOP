@@ -1,0 +1,137 @@
+{
+  "data": {
+    "vintage": "2026-08-22",
+    "evaluation_window": "2025-01 to 2026-06",
+    "evaluation_blocks": 18,
+    "download_window": "2023-01-01 to 2026-06-30",
+    "risk_free_series": "cetes_28d",
+    "banxico_series": {
+      "cetes_28d": "SF43936",
+      "fx_fix": "SF43718"
+    }
+  },
+  "universe": {
+    "monthly_sizes": {
+      "months": 18,
+      "minimum": 88,
+      "median": 93,
+      "maximum": 101
+    },
+    "screen_thresholds": {
+      "trailing_months": 3,
+      "min_traded_day_fraction": 0.9,
+      "min_median_traded_value_mxn": 500000.0,
+      "max_stale_run_days": 5,
+      "min_universe_size": 60,
+      "require_full_window_coverage": true,
+      "min_window_coverage_fraction": 0.95,
+      "max_edge_gap_days": 7,
+      "max_zero_return_fraction": 0.5,
+      "min_month_median_volume": 1.0,
+      "max_abs_daily_return": 0.5
+    }
+  },
+  "features": {
+    "dictionary_version": "1.0.0",
+    "daily_indicators": 43,
+    "monthly_features": 129
+  },
+  "screening": {
+    "screeners": [
+      "all_stocks",
+      "svm",
+      "random_forest",
+      "neural_network",
+      "xgboost",
+      "tabpfn"
+    ],
+    "labeling_strategies": [
+      "historical",
+      "t_plus_1",
+      "historical_and_t1"
+    ],
+    "inner_metric": "balanced_accuracy",
+    "inner_folds": 3
+  },
+  "optimisation": {
+    "algorithm": "NSGA-III",
+    "population_size": 100,
+    "generations": 100,
+    "objective_evaluations": 10000,
+    "seeds": 10,
+    "weight_caps": [
+      1.0,
+      0.2
+    ],
+    "covariance_estimator": "sample",
+    "covariance_trailing_days": 252
+  },
+  "evaluation": {
+    "cost_scenarios_bps": [
+      0.0,
+      25.0,
+      50.0,
+      100.0
+    ],
+    "primary_cost_scenario_bps": 50.0,
+    "realised_turnover_mean": 0.6090362827909316
+  },
+  "environment": {
+    "python": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "platform": {
+      "cpu_count": 12,
+      "machine": "arm64",
+      "processor": "arm",
+      "release": "25.3.0",
+      "system": "Darwin",
+      "thread_env": {
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      }
+    },
+    "revision": "unavailable:not-a-git-repository",
+    "config_fingerprint": "2658d460ef0feacc",
+    "packages": {
+      "PBC4cip": "0.0.0.8",
+      "PyYAML": "6.0.3",
+      "matplotlib": "3.11.1",
+      "numpy": "2.5.1",
+      "pandas": "3.0.5",
+      "pyarrow": "25.0.0",
+      "pymoo": "0.6.2",
+      "scikit-learn": "1.9.0",
+      "scipy": "1.18.0",
+      "statsmodels": "0.14.6",
+      "yfinance": "1.5.2"
+    }
+  },
+  "substitutions": [
+    {
+      "affects_results": false,
+      "component": "pbc4cip",
+      "reason": "replaced np.object with the builtin object in PBC4cip.core.Helpers.combine_instances and .convert_to_ndarray (np.object was removed in NumPy 1.24; it was an alias for object)",
+      "used_instead": "PBC4cip reference implementation with a compatibility patch"
+    }
+  ],
+  "limitations": [
+    {
+      "name": "Survivorship exposure",
+      "statement": "The universe is screened point-in-time from the price history, not from an exchange listing record, because the exchange's listing endpoints were unavailable and no archived snapshot exists. No instrument in the evaluation window ceased trading, and 36 were excluded as new listings. That measurement is a lower bound on the exposure, not a proof of its absence: an instrument delisted before the download date cannot appear in the retrieved history at all."
+    },
+    {
+      "name": "Evaluation block count",
+      "statement": "Conclusions rest on 18 monthly blocks. The minimum detectable effect at that size is 13 to 17 percent annualised, so every reported non-rejection is a statement about the design's resolution and not evidence of equivalence. Effects below that bound are reported as unresolved rather than as null."
+    },
+    {
+      "name": "Post-hoc transaction costs",
+      "statement": "Costs are applied after optimisation, not inside the objective. The optimiser therefore never trades off return against the cost of achieving it, and the reported net figures understate what a cost-aware formulation could reach. Realised turnover averages 61% per month, so the gap is material rather than academic."
+    },
+    {
+      "name": "Flat spread assumption",
+      "statement": "Every instrument is charged the same round-trip cost, at 50 basis points in the primary scenario. Real spreads on this exchange widen for the smaller and less liquid names, which the screeners select more often than the no-screening control does. The assumption therefore flatters the screened arms relative to the control, and the direction of that bias runs against the study's own conclusion rather than toward it."
+    }
+  ]
+}

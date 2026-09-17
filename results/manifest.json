@@ -1,0 +1,320 @@
+{
+  "best_arm_rule": "max_profile_metric_at_primary_cost",
+  "best_arm_rule_predates_results": true,
+  "config": {
+    "ablation": {
+      "budget_multiplier": 10,
+      "checkpoint_evaluations": [
+        1000,
+        2500,
+        5000,
+        10000,
+        25000,
+        50000,
+        100000
+      ],
+      "enabled": true,
+      "labeling_strategy": "historical_and_t1",
+      "screeners": [
+        "svm",
+        "random_forest",
+        "xgboost"
+      ],
+      "seeds": 5,
+      "selection_sizes": [
+        10,
+        20,
+        40,
+        80,
+        null
+      ],
+      "weight_cap": 1.0
+    },
+    "benchmarks": {
+      "best_arm_rule": "max_profile_metric_at_primary_cost",
+      "momentum_formation_months": 12,
+      "momentum_selection_fraction": 0.2,
+      "momentum_skip_months": 1,
+      "reference_series": [
+        "cetes_28d",
+        "bmv_ipc",
+        "sp500_mxn"
+      ],
+      "sensitivity_estimator": "ledoit_wolf",
+      "tier1_methods": [
+        "mv_analytic_universe",
+        "equal_weight_universe",
+        "inverse_volatility",
+        "momentum_equal_weight"
+      ],
+      "tier2_methods": [
+        "l4_single_objective_ga_sharpe",
+        "l5_regression_mv",
+        "l6_l1_shrinkage_mv"
+      ]
+    },
+    "evaluation": {
+      "cost_scenarios_bps": [
+        0.0,
+        25.0,
+        50.0,
+        100.0
+      ],
+      "primary_cost_scenario_bps": 50.0,
+      "risk_free_series": "cetes_28d",
+      "trading_days_per_month": 21
+    },
+    "features": {
+      "aggregations": [
+        "mean",
+        "std",
+        "last"
+      ],
+      "dictionary_version": "1.0.0",
+      "expected_daily_indicators": 43,
+      "expected_monthly_features": 129,
+      "ma_windows": [
+        5,
+        10,
+        20,
+        40,
+        60
+      ],
+      "mfi_window": 14,
+      "min_trading_days_per_month": 15,
+      "ratio_windows": [
+        1,
+        10,
+        20,
+        40,
+        60
+      ],
+      "rsi_window": 14,
+      "stochastic_window": 14
+    },
+    "name": "default",
+    "optimization": {
+      "covariance_estimator": "sample",
+      "covariance_trailing_days": 252,
+      "generations": 100,
+      "hypervolume_reference": [
+        1.1,
+        1.1
+      ],
+      "knee_normalization": "minmax",
+      "population_size": 100,
+      "seeds": 10,
+      "weight_caps": [
+        1.0,
+        0.2
+      ]
+    },
+    "paths": {
+      "cache": "/Users/victoradriansosa/PoweredIA-Projects/SGRR-MOP-portafolio/data/cache",
+      "features": "/Users/victoradriansosa/PoweredIA-Projects/SGRR-MOP-portafolio/data/features",
+      "paper": "/Users/victoradriansosa/PoweredIA-Projects/SGRR-MOP-portafolio/paper",
+      "results": "/Users/victoradriansosa/PoweredIA-Projects/SGRR-MOP-portafolio/results",
+      "root": "/Users/victoradriansosa/PoweredIA-Projects/SGRR-MOP-portafolio",
+      "universe": "/Users/victoradriansosa/PoweredIA-Projects/SGRR-MOP-portafolio/data/universe"
+    },
+    "screening": {
+      "hyperparameter_grids": {
+        "neural_network": {
+          "activation": [
+            "identity",
+            "logistic",
+            "tanh",
+            "relu"
+          ],
+          "hidden_layer_sizes": [
+            [
+              64
+            ],
+            [
+              64,
+              32
+            ]
+          ]
+        },
+        "pbc4cip": {
+          "tree_count": [
+            100
+          ]
+        },
+        "random_forest": {
+          "criterion": [
+            "gini",
+            "entropy"
+          ],
+          "min_samples_leaf": [
+            1,
+            5
+          ],
+          "n_estimators": [
+            200
+          ]
+        },
+        "svm": {
+          "C": [
+            1.0,
+            10.0
+          ],
+          "degree": [
+            3,
+            5,
+            8
+          ],
+          "kernel": [
+            "poly",
+            "rbf"
+          ]
+        },
+        "tabpfn": {
+          "model_path": [
+            "tabpfn-v2-classifier.ckpt"
+          ],
+          "n_estimators": [
+            4
+          ]
+        },
+        "xgboost": {
+          "learning_rate": [
+            0.05,
+            0.1
+          ],
+          "max_depth": [
+            3,
+            6
+          ],
+          "n_estimators": [
+            200
+          ]
+        }
+      },
+      "inner_folds": 3,
+      "inner_metric": "balanced_accuracy",
+      "labeling_strategies": [
+        "historical",
+        "t_plus_1",
+        "historical_and_t1"
+      ],
+      "min_training_months": 6,
+      "min_training_observations": 500,
+      "screeners": [
+        "all_stocks",
+        "svm",
+        "random_forest",
+        "neural_network",
+        "xgboost",
+        "tabpfn"
+      ]
+    },
+    "stats": {
+      "alpha": 0.05,
+      "bootstrap_resamples": 10000,
+      "bootstrap_scheme": "iid_month",
+      "bootstrap_seed": 20260727,
+      "correction_method": "holm",
+      "headline_set_size": 10,
+      "primary_hypotheses": [
+        {
+          "contrast": "ml_screeners_vs_all_stocks",
+          "factor": "screener",
+          "kind": "factor_effect",
+          "metric": "return_net",
+          "name": "H1_screening_effect"
+        },
+        {
+          "contrast": "historical_and_t1_vs_others",
+          "factor": "labeling",
+          "kind": "factor_effect",
+          "metric": "return_net",
+          "name": "H2_labeling_effect"
+        },
+        {
+          "contrast": "capped_vs_uncapped",
+          "factor": "weight_cap",
+          "kind": "factor_effect",
+          "metric": "sharpe",
+          "name": "H3_concentration_cap_effect"
+        }
+      ],
+      "seed_aggregation": "median",
+      "target_power": 0.8
+    },
+    "universe": {
+      "max_abs_daily_return": 0.5,
+      "max_edge_gap_days": 7,
+      "max_stale_run_days": 5,
+      "max_zero_return_fraction": 0.5,
+      "min_median_traded_value_mxn": 500000.0,
+      "min_month_median_volume": 1.0,
+      "min_traded_day_fraction": 0.9,
+      "min_universe_size": 60,
+      "min_window_coverage_fraction": 0.95,
+      "require_full_window_coverage": true,
+      "trailing_months": 3
+    },
+    "windows": {
+      "download_end": "2026-06-30",
+      "download_start": "2023-01-01",
+      "eval_end_month": "2026-06",
+      "eval_start_month": "2025-01"
+    }
+  },
+  "config_fingerprint": "2658d460ef0feacc",
+  "config_name": "default",
+  "created_at": "2026-09-17T20:10:27+00:00",
+  "data_vintage": "2026-08-22",
+  "feature_dictionary_version": "1.0.0",
+  "notes": {
+    "banxico_series": {
+      "cetes_28d": "SF43936",
+      "fx_fix": "SF43718"
+    },
+    "banxico_token_configured": true
+  },
+  "package_versions": {
+    "PBC4cip": "0.0.0.8",
+    "PyYAML": "6.0.3",
+    "matplotlib": "3.11.1",
+    "numpy": "2.5.1",
+    "pandas": "3.0.5",
+    "pyarrow": "25.0.0",
+    "pymoo": "0.6.2",
+    "scikit-learn": "1.9.0",
+    "scipy": "1.18.0",
+    "statsmodels": "0.14.6",
+    "yfinance": "1.5.2"
+  },
+  "platform": {
+    "cpu_count": 12,
+    "machine": "arm64",
+    "processor": "arm",
+    "release": "25.3.0",
+    "system": "Darwin",
+    "thread_env": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    }
+  },
+  "python_version": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
+  "revision": "unavailable:not-a-git-repository",
+  "seeds": {
+    "ablation_seeds": 5,
+    "bootstrap_seed": 20260727,
+    "derivation": "per-run seeds are derived deterministically from the run fingerprint and the cell key; see optimization.seeding",
+    "optimization_seeds": 10
+  },
+  "substitutions": [
+    {
+      "affects_results": false,
+      "component": "pbc4cip",
+      "reason": "replaced np.object with the builtin object in PBC4cip.core.Helpers.combine_instances and .convert_to_ndarray (np.object was removed in NumPy 1.24; it was an alias for object)",
+      "used_instead": "PBC4cip reference implementation with a compatibility patch"
+    }
+  ]
+}

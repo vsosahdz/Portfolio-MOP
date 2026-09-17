@@ -1,0 +1,19 @@
+profile,metric,extraction_rule,screener,cost_bps,value,annualised,n_blocks
+aggressive,return_net,maximum-return end of the front,all_stocks,50.0,0.013680537178029636,0.16416644613635561,18
+aggressive,return_net,maximum-return end of the front,neural_network,50.0,0.011421768557680357,0.13706122269216428,18
+aggressive,return_net,maximum-return end of the front,random_forest,50.0,0.0031978897468010045,0.03837467696161205,18
+aggressive,return_net,maximum-return end of the front,svm,50.0,0.013455437490644028,0.16146524988772834,18
+aggressive,return_net,maximum-return end of the front,tabpfn,50.0,0.0009097757486760572,0.010917308984112686,18
+aggressive,return_net,maximum-return end of the front,xgboost,50.0,0.0035540713412377353,0.042648856094852826,18
+conservative,sigma_realized,minimum-risk end of the front,all_stocks,50.0,0.0060917007016334825,,18
+conservative,sigma_realized,minimum-risk end of the front,neural_network,50.0,0.007368065245529364,,18
+conservative,sigma_realized,minimum-risk end of the front,random_forest,50.0,0.007296544842971491,,18
+conservative,sigma_realized,minimum-risk end of the front,svm,50.0,0.0066439333981969315,,18
+conservative,sigma_realized,minimum-risk end of the front,tabpfn,50.0,0.007495786709080065,,18
+conservative,sigma_realized,minimum-risk end of the front,xgboost,50.0,0.007534768814767142,,18
+moderate,sharpe,"knee point, replacing an index-based midpoint",all_stocks,50.0,1.0140396285862654,,18
+moderate,sharpe,"knee point, replacing an index-based midpoint",neural_network,50.0,0.5542196176022872,,18
+moderate,sharpe,"knee point, replacing an index-based midpoint",random_forest,50.0,-0.49497631927023444,,18
+moderate,sharpe,"knee point, replacing an index-based midpoint",svm,50.0,0.11550589160916276,,18
+moderate,sharpe,"knee point, replacing an index-based midpoint",tabpfn,50.0,-0.024395617726426868,,18
+moderate,sharpe,"knee point, replacing an index-based midpoint",xgboost,50.0,-0.236135223583975,,18

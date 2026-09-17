@@ -1,0 +1,222 @@
+# Full study configuration.
+#
+# Values marked CALIBRATE are placeholders replaced by evidence from the candidate
+# universe's observed distributions (tasks 2.5). They are not defaults with any authority.
+
+name: default
+
+windows:
+  # RESULTS are confined to 2025-2026. The download window reaches further back only to
+  # supply model inputs -- indicator warm-up, the expanding training pool, the covariance
+  # estimate and the momentum formation window -- exactly as the covariance window already
+  # does. No number reported in the manuscript comes from before 2025-01.
+  #
+  # Starting the download in 2023 rather than 2025 recovers four things at once: 18
+  # evaluation blocks instead of 10, ~19 labelable training months instead of 3, a 252-day
+  # covariance window instead of 120, and the conventional 12-1 momentum baseline instead
+  # of a non-standard 6-1.
+  download_start: 2023-01-01
+  download_end: 2026-06-30
+  eval_start_month: "2025-01"
+  eval_end_month: "2026-06"   # 18 evaluation blocks
+
+universe:
+  trailing_months: 3
+  # Calibrated from the observed candidate distribution (523 series with data over the
+  # evaluation window): this threshold admits 93 instruments, 41 domestic and 52 SIC.
+  # Raising it to 5M MXN would leave 58, and to 20M would leave 42 -- at which point SIC
+  # representation collapses to 7 and the FX component of return attribution loses its
+  # basis.
+  min_traded_day_fraction: 0.90
+  min_median_traded_value_mxn: 500000.0
+  max_stale_run_days: 5
+  min_universe_size: 60
+  # Restrict to instruments that traded throughout the EVALUATION window -- not the
+  # download window. An instrument that began trading in 2024 is perfectly holdable
+  # throughout 2025-2026 and must not be excluded for lacking 2023 history; only its early
+  # training observations are unavailable.
+  #
+  # Measured cost over 2025-01..2026-06: 36 instruments excluded as new listings and ZERO
+  # excluded for ceasing to trade, so the survivorship penalty is empirically nil. That
+  # zero is a lower bound, not a proof: the candidate list was retrieved after the window
+  # closed, so an instrument that delisted inside it may already be absent from the source.
+  # The manuscript reports the measurement together with its limit.
+  require_full_window_coverage: true
+  min_window_coverage_fraction: 0.95
+  max_edge_gap_days: 7
+  # Per ticker-month gates. A session count alone does not catch an instrument that is
+  # quoted but dormant: the exchange is open and prices are published while nothing trades.
+  # AMXB spent 117 sessions of 2023 at a fixed price on median volume zero while the B
+  # series was being created; those months would otherwise enter training with every
+  # momentum and ratio indicator collapsed to zero.
+  max_zero_return_fraction: 0.50
+  min_month_median_volume: 1.0
+  max_abs_daily_return: 0.50
+
+features:
+  # Counting the thesis indicator table: 8 scalar + 5 MA + 1 TP + 3 money-flow + 1 SO
+  # + 5 ratio families x 5 windows = 43 daily columns. x {mean, std, last} = 129 monthly.
+  ma_windows: [5, 10, 20, 40, 60]
+  ratio_windows: [1, 10, 20, 40, 60]
+  rsi_window: 14
+  mfi_window: 14
+  stochastic_window: 14
+  min_trading_days_per_month: 15
+  expected_daily_indicators: 43
+  expected_monthly_features: 129
+  aggregations: [mean, std, last]
+  dictionary_version: "1.0.0"
+
+screening:
+  labeling_strategies: [historical, t_plus_1, historical_and_t1]
+  screeners: [all_stocks, svm, random_forest, neural_network, xgboost, tabpfn]
+  # A classification metric, never portfolio return: the screening stage is judged on the
+  # task it actually performs, and the portfolio outcome stays out of sample.
+  inner_metric: balanced_accuracy
+  inner_folds: 3
+  # With ~93 instruments per month and ~19 labelable training months before the first
+  # evaluation month, the screening stage has roughly 1,800 observations for 129 features
+  # at the start, growing thereafter. The 2023 download start is what makes this workable.
+  min_training_observations: 500
+  min_training_months: 6
+  hyperparameter_grids:
+    svm:
+      kernel: [poly, rbf]
+      degree: [3, 5, 8]
+      C: [1.0, 10.0]
+    random_forest:
+      criterion: [gini, entropy]
+      n_estimators: [200]
+      min_samples_leaf: [1, 5]
+    neural_network:
+      activation: [identity, logistic, tanh, relu]
+      hidden_layer_sizes: [[64], [64, 32]]
+    xgboost:
+      max_depth: [3, 6]
+      learning_rate: [0.05, 0.1]
+      n_estimators: [200]
+    tabpfn:
+      # The PUBLIC v2 checkpoint, pinned deliberately. TabPFN 8.5 defaults to gated models
+      # (tabpfn_2_5 / 2_6 / 3) that require a Prior Labs licence AND a HuggingFace account
+      # with access granted to the repo. Verified: this checkpoint downloads with no token
+      # of any kind, so a reader reproducing the study needs no registration. Choosing an
+      # older generation for reproducibility is a stated trade-off, not an oversight.
+      model_path: ["tabpfn-v2-classifier.ckpt"]
+      n_estimators: [4]
+    pbc4cip:
+      tree_count: [100]
+
+optimization:
+  population_size: 100
+  generations: 100          # 10,000 objective evaluations per run
+  weight_caps: [1.0, 0.20]  # 1.0 reproduces the unconstrained original formulation
+  seeds: 3            # replicates reduced: this arm tests estimator sensitivity, not GA variance
+  covariance_trailing_days: 252
+  # Sensitivity arm of the benchmark spec: the same cells with a shrinkage estimator, to
+  # report whether any conclusion depends on how the covariance matrix is estimated.
+  covariance_estimator: ledoit_wolf
+  knee_normalization: minmax
+  # Objectives are min-max normalised per instance before hypervolume, so the reference
+  # point sits just outside the unit square.
+  hypervolume_reference: [1.1, 1.1]
+
+ablation:
+  enabled: true
+  labeling_strategy: historical_and_t1
+  # Only screeners exposing a continuous decision score can be truncated to top-k.
+  screeners: [svm, random_forest, xgboost]
+  # null means no preselection: pass the entire monthly universe to the optimiser.
+  selection_sizes: [10, 20, 40, 80, null]
+  weight_cap: 1.0
+  seeds: 5
+  budget_multiplier: 10     # extended budget 100,000 evaluations
+  checkpoint_evaluations: [1000, 2500, 5000, 10000, 25000, 50000, 100000]
+
+evaluation:
+  cost_scenarios_bps: [0.0, 25.0, 50.0, 100.0]
+  primary_cost_scenario_bps: 50.0   # gross (0 bps) is reported only as an upper bound
+  risk_free_series: cetes_28d
+  trading_days_per_month: 21
+
+benchmarks:
+  reference_series: [cetes_28d, bmv_ipc, sp500_mxn]
+  tier1_methods:
+    - mv_analytic_universe
+    - equal_weight_universe
+    - inverse_volatility
+    - momentum_equal_weight
+  tier2_methods:
+    - l4_single_objective_ga_sharpe
+    - l5_regression_mv
+    - l6_l1_shrinkage_mv
+  # Fixed before the grid runs. The manifest records that it predates result generation.
+  best_arm_rule: max_profile_metric_at_primary_cost
+  # Conventional 12-1 cross-sectional momentum, available because the download window
+  # reaches back to 2023. Validated at config load against the available return history.
+  momentum_formation_months: 12
+  momentum_skip_months: 1
+  # DEVIATION FROM CONVENTION, declared in the manuscript. Cross-sectional momentum is
+  # conventionally a top-decile rule, but that convention assumes universes of hundreds or
+  # thousands of names. A decile of 93 instruments is nine positions: the baseline would
+  # carry enough idiosyncratic variance to look weak for reasons unrelated to momentum. A
+  # quintile gives ~19, which also lands near the typical screener selection size in this
+  # design, making the comparison like-for-like rather than a contest between a diversified
+  # portfolio and a concentrated one.
+  momentum_selection_fraction: 0.20
+  sensitivity_estimator: ledoit_wolf
+
+stats:
+  alpha: 0.05
+  bootstrap_resamples: 10000
+  bootstrap_scheme: iid_month
+  bootstrap_seed: 20260727
+  correction_method: holm
+  seed_aggregation: median
+  headline_set_size: 10
+  target_power: 0.80
+  # Pre-specified confirmatory family, fixed before the grid runs. Three tests, one per
+  # investor profile, each pitting the best proposed arm against the strongest
+  # no-machine-learning baseline on that profile's metric at the primary cost scenario.
+  # Holm correction applies across these three. Everything else the study reports --
+  # other cost scenarios, other comparators, factor effects, the ablation -- is
+  # exploratory and is labelled as such.
+  #
+  # The choice of comparator is deliberate: beating our own convex allocators would show
+  # the GA allocates better on inputs we produced, not that the pipeline beats what
+  # already exists without machine learning.
+  # Pre-specified confirmatory family, fixed before the grid runs. Holm correction applies
+  # across these three; everything else the study reports is exploratory and labelled so.
+  #
+  # These are FACTOR CONTRASTS, not head-to-head arm comparisons, and the reason is
+  # measured rather than assumed. On this universe and window the paired difference between
+  # two individual ~20-name arms carries about 2.9% monthly dispersion, giving a minimum
+  # detectable effect near 24% annualised. The real gap measured between an equal-weight
+  # arm and a momentum arm was 6.1% annualised -- four times smaller than the test could
+  # see. A factor contrast averages over the 72 cells sharing a level, dropping dispersion
+  # to about 0.44% monthly and the detectable effect to roughly 3.7% annualised.
+  #
+  # H1 is the paper's central question and the one that has to be answerable: does screening
+  # the universe before optimising change anything at all?
+  primary_hypotheses:
+    - name: H1_screening_effect
+      kind: factor_effect
+      factor: screener
+      contrast: ml_screeners_vs_all_stocks
+      metric: return_net
+    - name: H2_labeling_effect
+      kind: factor_effect
+      factor: labeling
+      contrast: historical_and_t1_vs_others
+      metric: return_net
+    - name: H3_concentration_cap_effect
+      kind: factor_effect
+      factor: weight_cap
+      contrast: capped_vs_uncapped
+      metric: sharpe
+
+paths:
+  cache: data/cache
+  universe: data/universe
+  features: data/features
+  results: results
+  paper: paper

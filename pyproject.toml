@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bmvport"
+version = "0.1.0"
+description = "Multi-objective portfolio selection with machine-learning stock screening on the Mexican Stock Exchange"
+requires-python = "==3.12.*"
+license = { text = "MIT" }
+
+authors = [
+    { name = "Víctor Adrián Sosa Hernández" },
+    { name = "Raúl Monroy Borja" },
+    { name = "Samuel Guadalupe Rodríguez Rodríguez" },
+]
+
+# Versions are pinned exactly: this is the analysis environment of record for the
+# manuscript. See requirements.lock.txt for the fully resolved set and
+# results/manifest.json of any run for what was actually used.
+dependencies = [
+    "numpy==2.5.1",
+    "pandas==3.0.5",
+    "scipy==1.18.0",
+    "scikit-learn==1.9.0",
+    "pymoo==0.6.2",
+    "statsmodels==0.14.6",
+    "matplotlib==3.11.1",
+    "pyarrow==25.0.0",
+    "PyYAML==6.0.3",
+    "yfinance==1.5.2",
+    "requests==2.34.2",
+    "PBC4cip==0.0.0.8",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==9.1.1"]
+
+[project.scripts]
+bmvport = "bmvport.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["error::FutureWarning:bmvport.*"]

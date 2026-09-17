@@ -1,0 +1,13 @@
+{
+  "series_id": "SF43718",
+  "label": "fx_fix",
+  "title": "Tipo de cambio pesos por dolar E.U.A. para solventar obligaciones denominadas en moneda extranjera - Fecha de determinacion (FIX)",
+  "observation_frequency": "daily",
+  "units": "MXN per USD",
+  "requested_start": "2023-01-01",
+  "requested_end": "2026-06-30",
+  "observations": 876,
+  "first_observation": "2023-01-02",
+  "last_observation": "2026-06-30",
+  "retrieved_at": "2026-08-22T07:24:51+00:00"
+}

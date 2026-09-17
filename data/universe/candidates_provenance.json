@@ -1,0 +1,10 @@
+{
+  "source_url": "https://stockanalysis.com/list/mexican-stock-exchange/",
+  "retrieved_at": "2026-07-29T04:57:40+00:00",
+  "symbol_count": 530,
+  "national_count": 42,
+  "public_listing_symbols": 500,
+  "national_seed_symbols": 42,
+  "national_seed_added": 30,
+  "note": "union of a public BMV listing and a curated list of liquid domestic issuers. A stated selection rule, not historical exchange membership: the public listing resolves only nine domestic issuers, and issuers already absent from it at retrieval time cannot be recovered."
+}

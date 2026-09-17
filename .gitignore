@@ -1,0 +1,35 @@
+.venv/
+
+# Credentials. Never commit.
+.env
+
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.DS_Store
+
+# Training scratch from a classifier comparison that is not part of the study.
+catboost_info/
+
+# The design record lives in a separate private repository: specification, design
+# decisions, task ledger and session notes. The public package is the replication
+# artefact, and it must stand on its own without them.
+openspec/
+
+# Spec-workflow tooling, versioned with the design record rather than the package.
+.claude/
+
+# Superseded and duplicated run outputs. results_combined.parquet is the run of record
+# (D35); these are either byte-identical to it, a component of it, or the earlier grid it
+# replaced. Shipping them invites a reader to analyse the wrong file.
+results/full/
+results/full_rerun.parquet
+results/results_combined_rerun.parquet
+results/comparators_rerun.parquet
+results/smoke/
+paper/smoke/
+
+# Everything else is deliberately committed, including data/cache/ and data/features/.
+# The reproducibility claim is that the study runs offline from the cache, and a package
+# that omits the cache cannot support it.

@@ -1,0 +1,15 @@
+{
+  "rows": 5184,
+  "failures": 0,
+  "minutes": 12.2,
+  "estimator": "ledoit_wolf",
+  "seeds": 3,
+  "labelings": [
+    "historical_and_t1"
+  ],
+  "screeners": [
+    "all_stocks",
+    "svm",
+    "random_forest"
+  ]
+}

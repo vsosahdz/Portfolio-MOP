@@ -1,0 +1,37 @@
+{
+  "reverses": false,
+  "contrasts": [
+    {
+      "arm": "muestra",
+      "contrast": "svm - all_stocks",
+      "effect": -5.015485011061332,
+      "sign": "negativo",
+      "months_negative": 12,
+      "n": 18
+    },
+    {
+      "arm": "muestra",
+      "contrast": "random_forest - all_stocks",
+      "effect": -4.907298883640541,
+      "sign": "negativo",
+      "months_negative": 11,
+      "n": 18
+    },
+    {
+      "arm": "shrinkage",
+      "contrast": "svm - all_stocks",
+      "effect": -5.679572985340749,
+      "sign": "negativo",
+      "months_negative": 12,
+      "n": 18
+    },
+    {
+      "arm": "shrinkage",
+      "contrast": "random_forest - all_stocks",
+      "effect": -5.276498432673362,
+      "sign": "negativo",
+      "months_negative": 10,
+      "n": 18
+    }
+  ]
+}

@@ -1,0 +1,454 @@
+[
+  {
+    "month": "2025-01",
+    "evaluated": 483,
+    "admitted": 92,
+    "below_minimum": false,
+    "exclusions": {
+      "insufficient_warmup": 4,
+      "median_traded_value": 379,
+      "stale_run": 312,
+      "traded_day_fraction": 374
+    },
+    "traded_value_percentiles": {
+      "10": 0.0,
+      "25": 0.0,
+      "50": 0.0,
+      "75": 221119.61541748047,
+      "90": 8739394.651927464
+    },
+    "traded_day_fraction_percentiles": {
+      "10": 0.0,
+      "25": 0.04838709677419355,
+      "50": 0.20967741935483872,
+      "75": 0.8225806451612904,
+      "90": 1.0
+    }
+  },
+  {
+    "month": "2025-02",
+    "evaluated": 483,
+    "admitted": 93,
+    "below_minimum": false,
+    "exclusions": {
+      "insufficient_warmup": 1,
+      "median_traded_value": 380,
+      "stale_run": 318,
+      "traded_day_fraction": 379
+    },
+    "traded_value_percentiles": {
+      "10": 0.0,
+      "25": 0.0,
+      "50": 0.0,
+      "75": 150616.875,
+      "90": 8312243.708607106
+    },
+    "traded_day_fraction_percentiles": {
+      "10": 0.0,
+      "25": 0.04838709677419355,
+      "50": 0.20967741935483872,
+      "75": 0.7903225806451613,
+      "90": 1.0
+    }
+  },
+  {
+    "month": "2025-03",
+    "evaluated": 483,
+    "admitted": 94,
+    "below_minimum": false,
+    "exclusions": {
+      "median_traded_value": 381,
+      "stale_run": 319,
+      "traded_day_fraction": 378
+    },
+    "traded_value_percentiles": {
+      "10": 0.0,
+      "25": 0.0,
+      "50": 0.0,
+      "75": 184609.599609375,
+      "90": 9949982.425292976
+    },
+    "traded_day_fraction_percentiles": {
+      "10": 0.0,
+      "25": 0.03278688524590164,
+      "50": 0.21311475409836064,
+      "75": 0.819672131147541,
+      "90": 1.0
+    }
+  },
+  {
+    "month": "2025-04",
+    "evaluated": 483,
+    "admitted": 95,
+    "below_minimum": false,
+    "exclusions": {
+      "median_traded_value": 379,
+      "stale_run": 313,
+      "traded_day_fraction": 379
+    },
+    "traded_value_percentiles": {
+      "10": 0.0,
+      "25": 0.0,
+      "50": 0.0,
+      "75": 229302.98315429688,
+      "90": 10074457.926865578
+    },
+    "traded_day_fraction_percentiles": {
+      "10": 0.0,
+      "25": 0.04918032786885246,
+      "50": 0.22950819672131148,
+      "75": 0.7950819672131147,
+      "90": 1.0
+    }
+  },
+  {
+    "month": "2025-05",
+    "evaluated": 483,
+    "admitted": 92,
+    "below_minimum": false,
+    "exclusions": {
+      "median_traded_value": 379,
+      "stale_run": 314,
+      "traded_day_fraction": 385
+    },
+    "traded_value_percentiles": {
+      "10": 0.0,
+      "25": 0.0,
+      "50": 0.0,
+      "75": 252652.5,
+      "90": 9699527.313671878
+    },
+    "traded_day_fraction_percentiles": {
+      "10": 0.0,
+      "25": 0.05084745762711865,
+      "50": 0.22033898305084745,
+      "75": 0.8135593220338984,
+      "90": 1.0
+    }
+  },
+  {
+    "month": "2025-06",
+    "evaluated": 483,
+    "admitted": 90,
+    "below_minimum": false,
+    "exclusions": {
+      "median_traded_value": 384,
+      "stale_run": 323,
+      "traded_day_fraction": 385
+    },
+    "traded_value_percentiles": {
+      "10": 0.0,
+      "25": 0.0,
+      "50": 0.0,
+      "75": 215210.70483398438,
+      "90": 9540136.021875024
+    },
+    "traded_day_fraction_percentiles": {
+      "10": 0.0,
+      "25": 0.03278688524590164,
+      "50": 0.21311475409836064,
+      "75": 0.7868852459016393,
+      "90": 1.0
+    }
+  },
+  {
+    "month": "2025-07",
+    "evaluated": 483,
+    "admitted": 88,
+    "below_minimum": false,
+    "exclusions": {
+      "median_traded_value": 382,
+      "stale_run": 328,
+      "traded_day_fraction": 387
+    },
+    "traded_value_percentiles": {
+      "10": 0.0,
+      "25": 0.0,
+      "50": 0.0,
+      "75": 165240.5,
+      "90": 9129250.744097713
+    },
+    "traded_day_fraction_percentiles": {
+      "10": 0.0,
+      "25": 0.04838709677419355,
+      "50": 0.22580645161290322,
+      "75": 0.7419354838709677,
+      "90": 1.0
+    }
+  },
+  {
+    "month": "2025-08",
+    "evaluated": 483,
+    "admitted": 88,
+    "below_minimum": false,
+    "exclusions": {
+      "median_traded_value": 384,
+      "stale_run": 325,
+      "traded_day_fraction": 385
+    },
+    "traded_value_percentiles": {
+      "10": 0.0,
+      "25": 0.0,
+      "50": 0.0,
+      "75": 149099.103515625,
+      "90": 10642049.266210943
+    },
+    "traded_day_fraction_percentiles": {
+      "10": 0.0030769230769231207,
+      "25": 0.046153846153846156,
+      "50": 0.2153846153846154,
+      "75": 0.7846153846153846,
+      "90": 1.0
+    }
+  },
+  {
+    "month": "2025-09",
+    "evaluated": 483,
+    "admitted": 90,
+    "below_minimum": false,
+    "exclusions": {
+      "median_traded_value": 384,
+      "stale_run": 314,
+      "traded_day_fraction": 380
+    },
+    "traded_value_percentiles": {
+      "10": 0.0,
+      "25": 0.0,
+      "50": 0.0,
+      "75": 238965.9599609375,
+      "90": 9109029.97714844
+    },
+    "traded_day_fraction_percentiles": {
+      "10": 0.015384615384615385,
+      "25": 0.06153846153846154,
+      "50": 0.24615384615384617,
+      "75": 0.8,
+      "90": 1.0
+    }
+  },
+  {
+    "month": "2025-10",
+    "evaluated": 483,
+    "admitted": 94,
+    "below_minimum": false,
+    "exclusions": {
+      "median_traded_value": 378,
+      "stale_run": 301,
+      "traded_day_fraction": 379
+    },
+    "traded_value_percentiles": {
+      "10": 0.0,
+      "25": 0.0,
+      "50": 0.0,
+      "75": 246608.0,
+      "90": 9437546.601562504
+    },
+    "traded_day_fraction_percentiles": {
+      "10": 0.015384615384615385,
+      "25": 0.06153846153846154,
+      "50": 0.2923076923076923,
+      "75": 0.8307692307692308,
+      "90": 1.0
+    }
+  },
+  {
+    "month": "2025-11",
+    "evaluated": 483,
+    "admitted": 100,
+    "below_minimum": false,
+    "exclusions": {
+      "median_traded_value": 373,
+      "stale_run": 296,
+      "traded_day_fraction": 371
+    },
+    "traded_value_percentiles": {
+      "10": 0.0,
+      "25": 0.0,
+      "50": 0.0,
+      "75": 272999.6955566406,
+      "90": 10278294.043359388
+    },
+    "traded_day_fraction_percentiles": {
+      "10": 0.015384615384615385,
+      "25": 0.06153846153846154,
+      "50": 0.2923076923076923,
+      "75": 0.8538461538461539,
+      "90": 1.0
+    }
+  },
+  {
+    "month": "2025-12",
+    "evaluated": 483,
+    "admitted": 97,
+    "below_minimum": false,
+    "exclusions": {
+      "median_traded_value": 379,
+      "stale_run": 291,
+      "traded_day_fraction": 371
+    },
+    "traded_value_percentiles": {
+      "10": 0.0,
+      "25": 0.0,
+      "50": 0.0,
+      "75": 259873.0,
+      "90": 10034721.98291016
+    },
+    "traded_day_fraction_percentiles": {
+      "10": 0.015873015873015872,
+      "25": 0.06349206349206349,
+      "50": 0.31746031746031744,
+      "75": 0.8412698412698413,
+      "90": 1.0
+    }
+  },
+  {
+    "month": "2026-01",
+    "evaluated": 483,
+    "admitted": 93,
+    "below_minimum": false,
+    "exclusions": {
+      "median_traded_value": 382,
+      "stale_run": 303,
+      "traded_day_fraction": 378
+    },
+    "traded_value_percentiles": {
+      "10": 0.0,
+      "25": 0.0,
+      "50": 0.0,
+      "75": 262848.0,
+      "90": 9242285.596484382
+    },
+    "traded_day_fraction_percentiles": {
+      "10": 0.015873015873015872,
+      "25": 0.06349206349206349,
+      "50": 0.30158730158730157,
+      "75": 0.8412698412698413,
+      "90": 1.0
+    }
+  },
+  {
+    "month": "2026-02",
+    "evaluated": 483,
+    "admitted": 93,
+    "below_minimum": false,
+    "exclusions": {
+      "median_traded_value": 379,
+      "stale_run": 305,
+      "traded_day_fraction": 378
+    },
+    "traded_value_percentiles": {
+      "10": 0.0,
+      "25": 0.0,
+      "50": 0.0,
+      "75": 210844.0,
+      "90": 10370124.343676766
+    },
+    "traded_day_fraction_percentiles": {
+      "10": 0.01639344262295082,
+      "25": 0.06557377049180328,
+      "50": 0.2786885245901639,
+      "75": 0.8278688524590164,
+      "90": 1.0
+    }
+  },
+  {
+    "month": "2026-03",
+    "evaluated": 483,
+    "admitted": 95,
+    "below_minimum": false,
+    "exclusions": {
+      "median_traded_value": 374,
+      "stale_run": 302,
+      "traded_day_fraction": 377
+    },
+    "traded_value_percentiles": {
+      "10": 0.0,
+      "25": 0.0,
+      "50": 0.0,
+      "75": 247500.50338745117,
+      "90": 10685541.367187513
+    },
+    "traded_day_fraction_percentiles": {
+      "10": 0.01639344262295082,
+      "25": 0.04918032786885246,
+      "50": 0.2786885245901639,
+      "75": 0.8524590163934426,
+      "90": 1.0
+    }
+  },
+  {
+    "month": "2026-04",
+    "evaluated": 483,
+    "admitted": 95,
+    "below_minimum": false,
+    "exclusions": {
+      "median_traded_value": 378,
+      "stale_run": 300,
+      "traded_day_fraction": 371
+    },
+    "traded_value_percentiles": {
+      "10": 0.0,
+      "25": 0.0,
+      "50": 0.0,
+      "75": 290844.62731933594,
+      "90": 12686821.418345662
+    },
+    "traded_day_fraction_percentiles": {
+      "10": 0.01639344262295082,
+      "25": 0.06557377049180328,
+      "50": 0.2786885245901639,
+      "75": 0.8524590163934426,
+      "90": 1.0
+    }
+  },
+  {
+    "month": "2026-05",
+    "evaluated": 483,
+    "admitted": 99,
+    "below_minimum": false,
+    "exclusions": {
+      "median_traded_value": 378,
+      "stale_run": 300,
+      "traded_day_fraction": 370
+    },
+    "traded_value_percentiles": {
+      "10": 0.0,
+      "25": 0.0,
+      "50": 0.0,
+      "75": 205251.25,
+      "90": 14018128.318649318
+    },
+    "traded_day_fraction_percentiles": {
+      "10": 0.01694915254237288,
+      "25": 0.05084745762711865,
+      "50": 0.2711864406779661,
+      "75": 0.864406779661017,
+      "90": 1.0
+    }
+  },
+  {
+    "month": "2026-06",
+    "evaluated": 483,
+    "admitted": 101,
+    "below_minimum": false,
+    "exclusions": {
+      "median_traded_value": 371,
+      "stale_run": 293,
+      "traded_day_fraction": 367
+    },
+    "traded_value_percentiles": {
+      "10": 0.0,
+      "25": 0.0,
+      "50": 0.0,
+      "75": 306331.28674316406,
+      "90": 14131681.035760919
+    },
+    "traded_day_fraction_percentiles": {
+      "10": 0.016666666666666666,
+      "25": 0.05,
+      "50": 0.29508196721311475,
+      "75": 0.8833333333333333,
+      "90": 1.0
+    }
+  }
+]

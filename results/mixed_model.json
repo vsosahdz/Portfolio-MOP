@@ -1,0 +1,340 @@
+{
+  "fitted": true,
+  "formula": "y ~ C(screener) + C(labeling) * C(allocator) + C(weight_cap)",
+  "metric": "return_net",
+  "cost_bps": 50.0,
+  "n_observations": 21275,
+  "n_months": 18,
+  "group_variance": 0.0007455096040747538,
+  "terms": [
+    {
+      "term": "C(screener)[T.neural_network]",
+      "estimate_monthly": -0.004018247287007232,
+      "estimate_annualised": -0.04821896744408678,
+      "std_error_monthly": 0.0006245170872996252,
+      "p_value": 1.2415223087352388e-10,
+      "is_interaction": false
+    },
+    {
+      "term": "C(screener)[T.random_forest]",
+      "estimate_monthly": -0.00807471349435716,
+      "estimate_annualised": -0.09689656193228592,
+      "std_error_monthly": 0.0006225637181979007,
+      "p_value": 1.8079502954305138e-38,
+      "is_interaction": false
+    },
+    {
+      "term": "C(screener)[T.svm]",
+      "estimate_monthly": -0.0033364851525870443,
+      "estimate_annualised": -0.04003782183104453,
+      "std_error_monthly": 0.0006225637181979006,
+      "p_value": 8.356031269892116e-08,
+      "is_interaction": false
+    },
+    {
+      "term": "C(screener)[T.tabpfn]",
+      "estimate_monthly": -0.006646847871439607,
+      "estimate_annualised": -0.07976217445727529,
+      "std_error_monthly": 0.0006225637181979009,
+      "p_value": 1.3101742054318964e-26,
+      "is_interaction": false
+    },
+    {
+      "term": "C(screener)[T.xgboost]",
+      "estimate_monthly": -0.00817906580596863,
+      "estimate_annualised": -0.09814878967162355,
+      "std_error_monthly": 0.0006255981866756354,
+      "p_value": 4.636683240215429e-39,
+      "is_interaction": false
+    },
+    {
+      "term": "C(labeling)[T.historical_and_t1]",
+      "estimate_monthly": -0.002808499501335214,
+      "estimate_annualised": -0.03370199401602257,
+      "std_error_monthly": 0.002537765562735557,
+      "p_value": 0.2684314347817388,
+      "is_interaction": false
+    },
+    {
+      "term": "C(labeling)[T.t_plus_1]",
+      "estimate_monthly": 0.0018882987681399005,
+      "estimate_annualised": 0.022659585217678805,
+      "std_error_monthly": 0.0025288657779861863,
+      "p_value": 0.4552459371101373,
+      "is_interaction": false
+    },
+    {
+      "term": "C(allocator)[T.ga_knee]",
+      "estimate_monthly": 0.002928546948276073,
+      "estimate_annualised": 0.035142563379312874,
+      "std_error_monthly": 0.0018754570556766604,
+      "p_value": 0.1184032146711232,
+      "is_interaction": false
+    },
+    {
+      "term": "C(allocator)[T.ga_max_return]",
+      "estimate_monthly": 0.00768016348765158,
+      "estimate_annualised": 0.09216196185181896,
+      "std_error_monthly": 0.0018754570556766613,
+      "p_value": 4.220063118528093e-05,
+      "is_interaction": false
+    },
+    {
+      "term": "C(allocator)[T.ga_min_risk]",
+      "estimate_monthly": -0.0001906865484436208,
+      "estimate_annualised": -0.0022882385813234496,
+      "std_error_monthly": 0.001875457055676659,
+      "p_value": 0.919014878203457,
+      "is_interaction": false
+    },
+    {
+      "term": "C(allocator)[T.max_sharpe]",
+      "estimate_monthly": 0.002312677932276719,
+      "estimate_annualised": 0.02775213518732063,
+      "std_error_monthly": 0.0025288657779860657,
+      "p_value": 0.3604479102306938,
+      "is_interaction": false
+    },
+    {
+      "term": "C(allocator)[T.min_volatility]",
+      "estimate_monthly": -0.002024613057471782,
+      "estimate_annualised": -0.02429535668966138,
+      "std_error_monthly": 0.002528865777986066,
+      "p_value": 0.4233625372729346,
+      "is_interaction": false
+    },
+    {
+      "term": "C(weight_cap)[T.1.0]",
+      "estimate_monthly": 9.052830571726992e-05,
+      "estimate_annualised": 0.001086339668607239,
+      "std_error_monthly": 0.00036040286358736005,
+      "p_value": 0.8016699819243216,
+      "is_interaction": false
+    },
+    {
+      "term": "C(labeling)[T.historical_and_t1]:C(allocator)[T.ga_knee]",
+      "estimate_monthly": -0.0009872813665968614,
+      "estimate_annualised": -0.011847376399162337,
+      "std_error_monthly": 0.0026619099564027743,
+      "p_value": 0.710717901463906,
+      "is_interaction": true
+    },
+    {
+      "term": "C(labeling)[T.t_plus_1]:C(allocator)[T.ga_knee]",
+      "estimate_monthly": -0.0037095347063964435,
+      "estimate_annualised": -0.04451441647675732,
+      "std_error_monthly": 0.002652296803786623,
+      "p_value": 0.16192930150545204,
+      "is_interaction": true
+    },
+    {
+      "term": "C(labeling)[T.historical_and_t1]:C(allocator)[T.ga_max_return]",
+      "estimate_monthly": -0.004164700880021285,
+      "estimate_annualised": -0.049976410560255424,
+      "std_error_monthly": 0.002661619492650161,
+      "p_value": 0.11764755208780762,
+      "is_interaction": true
+    },
+    {
+      "term": "C(labeling)[T.t_plus_1]:C(allocator)[T.ga_max_return]",
+      "estimate_monthly": -0.004169862020198122,
+      "estimate_annualised": -0.050038344242377464,
+      "std_error_monthly": 0.002652296803786623,
+      "p_value": 0.11591108244978932,
+      "is_interaction": true
+    },
+    {
+      "term": "C(labeling)[T.historical_and_t1]:C(allocator)[T.ga_min_risk]",
+      "estimate_monthly": 0.000993372088758605,
+      "estimate_annualised": 0.011920465065103261,
+      "std_error_monthly": 0.0026616194926501586,
+      "p_value": 0.7089840236972674,
+      "is_interaction": true
+    },
+    {
+      "term": "C(labeling)[T.t_plus_1]:C(allocator)[T.ga_min_risk]",
+      "estimate_monthly": -0.0027605742702410643,
+      "estimate_annualised": -0.033126891242892774,
+      "std_error_monthly": 0.00265229680378662,
+      "p_value": 0.29795722142204706,
+      "is_interaction": true
+    },
+    {
+      "term": "C(labeling)[T.historical_and_t1]:C(allocator)[T.max_sharpe]",
+      "estimate_monthly": -0.0004229086905928589,
+      "estimate_annualised": -0.005074904287114306,
+      "std_error_monthly": 0.0035889269917483858,
+      "p_value": 0.906196745627428,
+      "is_interaction": true
+    },
+    {
+      "term": "C(labeling)[T.t_plus_1]:C(allocator)[T.max_sharpe]",
+      "estimate_monthly": -0.0015891813236618118,
+      "estimate_annualised": -0.01907017588394174,
+      "std_error_monthly": 0.003576356280649359,
+      "p_value": 0.6567840165799733,
+      "is_interaction": true
+    },
+    {
+      "term": "C(labeling)[T.historical_and_t1]:C(allocator)[T.min_volatility]",
+      "estimate_monthly": 0.0021542499264244493,
+      "estimate_annualised": 0.02585099911709339,
+      "std_error_monthly": 0.0035889269917483866,
+      "p_value": 0.5483402856034099,
+      "is_interaction": true
+    },
+    {
+      "term": "C(labeling)[T.t_plus_1]:C(allocator)[T.min_volatility]",
+      "estimate_monthly": -0.0012754760018744728,
+      "estimate_annualised": -0.015305712022493673,
+      "std_error_monthly": 0.003576356280649359,
+      "p_value": 0.7213604285926921,
+      "is_interaction": true
+    }
+  ],
+  "interaction_terms": [
+    {
+      "term": "C(labeling)[T.historical_and_t1]:C(allocator)[T.ga_knee]",
+      "estimate_monthly": -0.0009872813665968614,
+      "estimate_annualised": -0.011847376399162337,
+      "std_error_monthly": 0.0026619099564027743,
+      "p_value": 0.710717901463906,
+      "is_interaction": true
+    },
+    {
+      "term": "C(labeling)[T.t_plus_1]:C(allocator)[T.ga_knee]",
+      "estimate_monthly": -0.0037095347063964435,
+      "estimate_annualised": -0.04451441647675732,
+      "std_error_monthly": 0.002652296803786623,
+      "p_value": 0.16192930150545204,
+      "is_interaction": true
+    },
+    {
+      "term": "C(labeling)[T.historical_and_t1]:C(allocator)[T.ga_max_return]",
+      "estimate_monthly": -0.004164700880021285,
+      "estimate_annualised": -0.049976410560255424,
+      "std_error_monthly": 0.002661619492650161,
+      "p_value": 0.11764755208780762,
+      "is_interaction": true
+    },
+    {
+      "term": "C(labeling)[T.t_plus_1]:C(allocator)[T.ga_max_return]",
+      "estimate_monthly": -0.004169862020198122,
+      "estimate_annualised": -0.050038344242377464,
+      "std_error_monthly": 0.002652296803786623,
+      "p_value": 0.11591108244978932,
+      "is_interaction": true
+    },
+    {
+      "term": "C(labeling)[T.historical_and_t1]:C(allocator)[T.ga_min_risk]",
+      "estimate_monthly": 0.000993372088758605,
+      "estimate_annualised": 0.011920465065103261,
+      "std_error_monthly": 0.0026616194926501586,
+      "p_value": 0.7089840236972674,
+      "is_interaction": true
+    },
+    {
+      "term": "C(labeling)[T.t_plus_1]:C(allocator)[T.ga_min_risk]",
+      "estimate_monthly": -0.0027605742702410643,
+      "estimate_annualised": -0.033126891242892774,
+      "std_error_monthly": 0.00265229680378662,
+      "p_value": 0.29795722142204706,
+      "is_interaction": true
+    },
+    {
+      "term": "C(labeling)[T.historical_and_t1]:C(allocator)[T.max_sharpe]",
+      "estimate_monthly": -0.0004229086905928589,
+      "estimate_annualised": -0.005074904287114306,
+      "std_error_monthly": 0.0035889269917483858,
+      "p_value": 0.906196745627428,
+      "is_interaction": true
+    },
+    {
+      "term": "C(labeling)[T.t_plus_1]:C(allocator)[T.max_sharpe]",
+      "estimate_monthly": -0.0015891813236618118,
+      "estimate_annualised": -0.01907017588394174,
+      "std_error_monthly": 0.003576356280649359,
+      "p_value": 0.6567840165799733,
+      "is_interaction": true
+    },
+    {
+      "term": "C(labeling)[T.historical_and_t1]:C(allocator)[T.min_volatility]",
+      "estimate_monthly": 0.0021542499264244493,
+      "estimate_annualised": 0.02585099911709339,
+      "std_error_monthly": 0.0035889269917483866,
+      "p_value": 0.5483402856034099,
+      "is_interaction": true
+    },
+    {
+      "term": "C(labeling)[T.t_plus_1]:C(allocator)[T.min_volatility]",
+      "estimate_monthly": -0.0012754760018744728,
+      "estimate_annualised": -0.015305712022493673,
+      "std_error_monthly": 0.003576356280649359,
+      "p_value": 0.7213604285926921,
+      "is_interaction": true
+    }
+  ],
+  "dependence_check": {
+    "available": true,
+    "n_boot": 10000,
+    "unit_of_analysis": "evaluation month",
+    "contrasts": [
+      {
+        "level": "neural_network",
+        "reference": "all_stocks",
+        "n_blocks": 18,
+        "effect_monthly": -0.004035892466787988,
+        "effect_annualised": -0.04843070960145585,
+        "std_error_monthly": 0.004468173387087513,
+        "p_value": 0.3766,
+        "ci_low_monthly": -0.01295335762544437,
+        "ci_high_monthly": 0.004555954828909643
+      },
+      {
+        "level": "random_forest",
+        "reference": "all_stocks",
+        "n_blocks": 18,
+        "effect_monthly": -0.008074713494356948,
+        "effect_annualised": -0.09689656193228338,
+        "std_error_monthly": 0.005265961745671952,
+        "p_value": 0.1008,
+        "ci_low_monthly": -0.019311462810264628,
+        "ci_high_monthly": 0.0013466090623676214
+      },
+      {
+        "level": "svm",
+        "reference": "all_stocks",
+        "n_blocks": 18,
+        "effect_monthly": -0.0033364851525868283,
+        "effect_annualised": -0.04003782183104194,
+        "std_error_monthly": 0.003467268255202432,
+        "p_value": 0.3358,
+        "ci_low_monthly": -0.010258743486014998,
+        "ci_high_monthly": 0.0033844757526755986
+      },
+      {
+        "level": "tabpfn",
+        "reference": "all_stocks",
+        "n_blocks": 18,
+        "effect_monthly": -0.006646847871439394,
+        "effect_annualised": -0.07976217445727272,
+        "std_error_monthly": 0.00502845578947031,
+        "p_value": 0.1696,
+        "ci_low_monthly": -0.017387041884276623,
+        "ci_high_monthly": 0.0022666648825387693
+      },
+      {
+        "level": "xgboost",
+        "reference": "all_stocks",
+        "n_blocks": 18,
+        "effect_monthly": -0.008484326782839953,
+        "effect_annualised": -0.10181192139407944,
+        "std_error_monthly": 0.00573694406279987,
+        "p_value": 0.1232,
+        "ci_low_monthly": -0.02052355883651917,
+        "ci_high_monthly": 0.0020692983640968384
+      }
+    ]
+  },
+  "inference_basis": "The month-paired confirmatory tests govern. The p-values above are reported for completeness and are anti-conservative by the factor in dependence_check: a single random intercept absorbs a month's common shift but not the cross-sectional dependence among cells that hold overlapping stocks."
+}

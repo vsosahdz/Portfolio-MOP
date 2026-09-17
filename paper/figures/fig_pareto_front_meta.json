@@ -1,0 +1,34 @@
+{
+  "month": "2025-10",
+  "labeling": "historical_and_t1",
+  "screener": "all_stocks",
+  "weight_cap": 1.0,
+  "seed": 4030741368,
+  "n_assets": 94,
+  "front_size": 75,
+  "hypervolume": 0.8260598522938878,
+  "selection_rule": "median evaluation month, no-screening control, unconstrained cap, base replicate",
+  "extracted": [
+    {
+      "allocator": "ga_knee",
+      "expected_return_monthly": 0.0014116880678202417,
+      "sigma_ex_ante_monthly": 0.007109648661132823,
+      "max_weight": 0.036279732647910894,
+      "effective_names": 94
+    },
+    {
+      "allocator": "ga_max_return",
+      "expected_return_monthly": 0.001796508307579871,
+      "sigma_ex_ante_monthly": 0.008539423434306597,
+      "max_weight": 0.03454700371628306,
+      "effective_names": 93
+    },
+    {
+      "allocator": "ga_min_risk",
+      "expected_return_monthly": 0.0009983687249519849,
+      "sigma_ex_ante_monthly": 0.0063937254339886465,
+      "max_weight": 0.034995193230820426,
+      "effective_names": 92
+    }
+  ]
+}
