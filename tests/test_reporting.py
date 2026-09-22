@@ -82,18 +82,19 @@ def test_every_section_placeholder_resolves():
     """An unresolved placeholder would ship as literal braces in the manuscript."""
     import pytest
 
-    from bmvport.reporting.manuscript import SECTIONS, render_sections
+    from bmvport.reporting.manuscript import (SECTIONS, render_sections,
+                                               required_facts)
 
     with pytest.raises(KeyError):
         render_sections({})
 
-    import re
-    needed = set()
-    for template in SECTIONS.values():
-        needed |= {m[1:-1] for m in re.findall(r"\{[a-z0-9_]+\}", template)}
+    needed = required_facts()
     rendered = render_sections({k: "X" for k in needed})
+    # Braces alone are not evidence of a stray placeholder: the method section carries a
+    # displayed equation whose braces belong to the mathematics.
     for name, text in rendered.items():
-        assert "{" not in text and "}" not in text, f"{name} kept a placeholder"
+        leftover = [key for key in needed if "{" + key + "}" in text]
+        assert not leftover, f"{name} kept placeholders: {leftover}"
 
 
 def test_detectable_effect_never_annualises_a_ratio_metric():
@@ -227,3 +228,21 @@ def test_front_matter_rejects_a_role_outside_the_credit_vocabulary():
         build_front_matter(authors, credit={authors[0]: ["Thesis supervision"]})
     with pytest.raises(ValueError, match="not an author"):
         build_front_matter(authors, credit={"Someone Else": ["Methodology"]})
+
+
+def test_every_section_renders_with_literal_braces_intact():
+    """LaTeX braces and str.format share a delimiter, and format wins.
+
+    The method section carries a displayed equation. Written naively its braces are read as
+    format fields and rendering raises before any check on content can run, so every brace
+    that belongs to the mathematics has to be doubled in the template.
+    """
+    import re
+
+    from bmvport.reporting.manuscript import (SECTIONS, render_sections,
+                                               required_facts)
+
+    rendered = render_sections({key: "X" for key in required_facts()})
+
+    assert "\\frac{" in rendered["method"], "the equation lost its braces"
+    assert "{X}" not in rendered["method"], "a fact was wrapped in stray braces"

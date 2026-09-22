@@ -28,7 +28,7 @@ import pandas as pd
 from ..config import RunConfig
 
 __all__ = ["collect_facts", "SECTIONS", "render_sections", "write_manuscript",
-           "template_digit_violations", "venue_limit_violations",
+           "template_digit_violations", "venue_limit_violations", "required_facts",
            "ABSTRACT_WORD_LIMIT", "HIGHLIGHT_CHAR_LIMIT", "KEYWORD_LIMIT"]
 
 # Expert Systems with Applications: abstract about 250 words, highlights of at most 85
@@ -44,7 +44,10 @@ KEYWORD_LIMIT = 7
 # result, and a result must be resolved from the run rather than typed. The list is explicit
 # rather than a loosened pattern, so adding a name is a visible decision.
 _CITATION_YEAR = re.compile(r"(?<![\d.])(?:1[89]|20)\d{2}(?![\d.])")
-_PLACEHOLDER = re.compile(r"\{[a-z0-9_]+\}")
+# A doubled brace is an escape for a literal one, not a placeholder: the method section's
+# equation writes \hat{{a}} to survive str.format, and matching inside it would invent a
+# fact called "a".
+_PLACEHOLDER = re.compile(r"(?<!\{)\{[a-z0-9_]+\}(?!\})")
 _PROPER_NOUNS = ("CETES 28-day", "S&P 500", "L1-regularised", "NSGA-III")
 
 
@@ -250,6 +253,52 @@ Multi-objective optimisation; performance assessment; evolutionary computation; 
 selection; machine learning screening; reproducibility
 """,
 
+    "introduction": """\
+## Introduction
+
+A decision-support system built on multi-objective optimisation presents its user with a set
+of trade-offs rather than a single answer, and the value of the system rests on that set
+being a fair picture of what is achievable. Validating it is therefore a question about the
+produced front, not about the objective values of any one solution, and the field answers
+that question with indicators: hypervolume, inverted generational distance, attainment. Each
+requires something to compare against.
+
+On synthetic benchmarks the comparison is exact, because the true front is known by
+construction. In an application it is not known, and practice substitutes a reference front
+assembled from the algorithms under study -- commonly the same algorithm run under a larger
+budget. The substitution is treated as a practical necessity with no consequences for what
+the indicator means.
+
+This paper shows the consequence is real and can invert a conclusion. A reference front
+produced by the same optimiser inherits whatever that optimiser cannot reach, so an indicator
+computed against it reports agreement between two runs rather than quality. Where the search
+systematically fails to reach part of the objective space, both runs fail the same way, the
+indicator sees nothing, and the system passes validation while presenting its user with a
+fraction of the available trade-offs.
+
+We make the failure measurable. For problems whose objective extremes have a closed form --
+which includes the constrained mean-variance formulation and any problem where a linear
+objective is optimised over a simplex -- the attainable range can be computed rather than
+estimated, and the fraction of it a front spans is a quantity no shared bias can move. We
+call it coverage, give the condition under which a reported attainment is untrustworthy, and
+show that on our problem the two measures disagree in direction across the full range of
+problem sizes tested.
+
+The setting is a screening-plus-optimisation system for equity portfolio selection: a
+supervised classifier admits or rejects candidate instruments, and a multi-objective
+optimiser allocates over what survives. This architecture is common, and the preselection
+step is justified on two grounds that are usually asserted together -- that it improves the
+portfolio, and that it makes the optimisation tractable by reducing decision variables. Our
+diagnostic separates them, and they come apart: the tractability claim holds and the quality
+claim fails.
+
+Section headings below follow the order in which the argument is built. We state the
+diagnostic and its guard condition, describe the system and the evaluation protocol, report
+what both measures say about problem size, report the system's own performance against
+deterministic, index and published comparators, and close with what the design can and cannot
+resolve.
+""",
+
     "related_work": """\
 ## Related work
 
@@ -299,6 +348,57 @@ cross-sectional momentum portfolio. Momentum is the demanding one, at {momentum_
 every arm the studied method produces.
 """,
 
+    "method": """\
+## The diagnostic
+
+### What a self-produced reference cannot show
+
+Let an optimiser produce a front $F$ on an instance, and let $R$ be a reference front
+produced by the same optimiser under a larger budget. Any indicator of the form
+$I(F, R)$ is a statement about the relationship between two samples from the same procedure.
+If the procedure cannot reach a region of the objective space at all, neither $F$ nor $R$
+contains points there, the region is absent from the comparison, and $I(F, R)$ is unaffected
+by its absence. The indicator does not fail; it answers a different question than the one
+the analyst intends.
+
+This matters most exactly where reassurance is most wanted. As an instance grows, a search
+that degrades will produce a narrower $F$ -- and a correspondingly narrower $R$. The ratio
+can rise while both collapse.
+
+### Coverage against a computable bound
+
+Where the extremes of each objective can be computed in closed form, the comparison need not
+be self-referential. For the constrained mean-variance problem over a simplex, the maximum
+expected return is attained by placing the whole budget on the single highest-mean asset, and
+the minimum variance is the analytic minimum-variance portfolio. Both are exact and neither
+involves the optimiser.
+
+Writing $[\\,a_j, b_j\\,]$ for the attainable range of objective $j$ and
+$[\\,\\hat{{a}}_j, \\hat{{b}}_j\\,]$ for the range the produced front spans, coverage is
+
+$$ C_j(F) \\;=\\; \\frac{{\\hat{{b}}_j - \\hat{{a}}_j}}{{b_j - a_j}}. $$
+
+Coverage is bounded above by one, is comparable across instance sizes because it is
+normalised by what is attainable on each, and cannot be moved by a bias the produced and
+reference fronts share, because no reference front enters it.
+
+The requirement is that the extremes be computable, not that the whole front be known. This
+is weaker than it first appears: it holds whenever each objective, taken alone, is optimised
+by a solution with a closed form, which covers linear objectives over a simplex, convex
+quadratic objectives with analytic minimisers, and any objective whose single-objective
+optimum is available from a solver the analyst already trusts.
+
+### The guard condition
+
+Coverage does not replace attainment, which answers a legitimate question about budget
+sufficiency. It constrains how attainment may be read. We report the pair, and flag the
+configuration in which the two disagree in the dangerous direction: attainment at or above
+nine tenths beside coverage below one quarter. That combination says the search is
+consistent with itself and narrow against the problem, which is the signature this paper is
+about. A reported attainment unaccompanied by coverage is, on this evidence, not
+interpretable.
+""",
+
     "contributions": """\
 ## Contributions
 
@@ -344,6 +444,132 @@ fingerprint that is checked against the manifest, a property added after the dri
 undetected during development.
 """,
 
+    "experimental_setup": """\
+## Experimental setup
+
+**Market and window.** Equities on the Mexican Stock Exchange, evaluated monthly over
+{n_blocks} blocks from {window_start} to {window_end}. The universe is screened
+point-in-time on liquidity and data quality, admitting between {universe_min} and
+{universe_max} instruments per month. Price history reaches further back than the evaluation
+window to supply indicator warm-up, the expanding training pool and the covariance estimate.
+
+**Screening arms.** {n_screeners} arms, comprising a no-screening control that passes the
+whole admitted universe to the optimiser and machine-learning screeners spanning support
+vector machines, random forests, neural networks, gradient boosting and a tabular foundation
+model. Each is tuned by inner cross-validation on a classification metric, never on portfolio
+return, so the portfolio outcome stays out of sample. Three labelling strategies are crossed
+with the screeners.
+
+**Optimisation.** NSGA-III on the two-objective mean-variance problem, with expected return
+and ex-ante risk estimated from trailing daily returns. Three portfolios are extracted from
+each front -- minimum risk, knee and maximum return -- and evaluated under two concentration
+caps, the looser of which reproduces the unconstrained formulation. Independent seeds are
+replicated per cell, giving {n_cell_months} evaluated cell-months in the factorial.
+
+**Evaluation.** Portfolios are priced on executable prices, charged round-trip transaction
+costs under four scenarios, and reported at {cost_bps} basis points as the primary scenario;
+the zero-cost scenario is reported only as an upper bound. Returns are decomposed into
+market, selection, allocation and a currency tilt by an identity whose residual is zero by
+construction, which the no-screening control exercises as an internal check.
+
+**Comparators.** Three tiers: deterministic analytic allocators over the same universe;
+reference series an investor would hold instead, including the local index and the sovereign
+short-rate instrument; and adapted published approaches, among them a single-objective
+genetic algorithm on the Sharpe ratio and a cross-sectional momentum portfolio.
+
+**Ablation.** The search-space ablation truncates each screener's ranked output to fixed
+sizes and adds no-preselection as an explicit level, giving {ablation_instances} instances
+from {ablation_small_n} to {ablation_large_n} decision variables. Both attainment against an
+extended-budget reference and coverage against the closed-form range are recorded per
+instance.
+
+**Statistical protocol.** The confirmatory hypotheses, their contrasts and their metrics are
+fixed before execution; everything else is labelled exploratory. Tests are paired on the
+evaluation block, corrected across the confirmatory family, and reported with the minimum
+effect the design can detect, which is {mde_low} to {mde_high} annualised. A result below
+that bound is reported as unresolved, never as evidence of equivalence.
+""",
+
+    "results": """\
+## Results
+
+### The two measures disagree in direction
+
+Across {ablation_instances} ablation instances, attainment against an extended-budget
+reference rises monotonically with problem size, from {ablation_attain_small} at
+{ablation_small_n} decision variables to {ablation_attain_large} at {ablation_large_n}.
+Read alone, this says the larger instances are solved as completely as the smaller ones and
+that a fixed-budget comparison across sizes is sound.
+
+Coverage says the opposite. Over {coverage_instances} instances, the fraction of the
+attainable return range the front spans falls from {coverage_return_small} at
+{coverage_small_n} variables to {coverage_return_large} at {coverage_large_n}, and the risk
+range from {coverage_risk_small} to {coverage_risk_large}. The rank correlation between
+problem size and return coverage is {coverage_rho}. Because the asset pools are nested, the
+attainable range can only widen with size -- and it does, while the range the optimiser spans
+narrows.
+
+The effect is visible in the portfolios themselves rather than only in the indicator. On the
+no-screening control at the median evaluation month, the three extracted profiles hold
+nearly the entire universe at a maximum weight close to a thirtieth, and their expected
+returns differ by less than a tenth of a percentage point per month. The aggressive and
+conservative profiles are, in substance, the same portfolio. The concentration ratio against
+equal weight stays roughly constant across sizes, so the optimiser is finding structure; it
+is the span that collapses.
+
+### Search cost does not grow with the problem
+
+Wall-clock rises from {ablation_wall_small} to {ablation_wall_large} seconds between
+{ablation_small_n} and {ablation_large_n} variables, a factor of {ablation_wall_factor},
+while the covariance matrix grows by a factor of {ablation_cov_factor}. Preselection is
+therefore not buying computation at this scale, whatever it may buy in search quality.
+
+### The system's own performance
+
+No screening arm beats the no-screening control. At {cost_bps} basis points the control
+returns {control_return} annualised against {best_ml_return} for the best machine-learning
+arm, {best_ml}, and {worst_ml_return} for the worst, {worst_ml}. Return attribution locates
+the cause: the selection component is negative for every screening arm, between
+{selection_worst} and {selection_best} annualised, while the same decomposition returns
+exactly zero for the control.
+
+Against the comparator suite the ordering is unfavourable to the proposed architecture. The
+cross-sectional momentum portfolio returns {momentum_bar}, the local index {ipc_bar}, and the
+sovereign short-rate instrument {cetes_bar}, all above every screening arm and the first two
+above the control.
+
+### Nothing separates statistically, and the design says why
+
+None of the confirmatory hypotheses rejects, and every estimated effect falls below the
+detectable bound of {mde_low} to {mde_high}. The hierarchical tests, each holding the other
+factors at their best level, return probabilities between {friedman_p_low} and
+{friedman_p_high}. The critical difference over the pre-registered headline set of
+{headline_cells} cells is {critical_difference} ranks against an observed spread far smaller,
+so no pair is separated.
+
+These are statements about resolution, not about equivalence, and we report them as such.
+
+### Inference is sensitive to how dependence is handled
+
+Fitting a mixed model over {n_cell_months} cell-months with the evaluation block as a random
+effect yields standard errors {se_ratio_low} to {se_ratio_high} times smaller than resampling
+whole blocks. The point estimates agree; only the precision differs. Cells within a block
+hold overlapping instruments and move together, and a random intercept removes the block's
+common level while leaving that dependence intact, so the model treats correlated
+configurations as replicates. The block-paired tests, named confirmatory in advance, govern;
+the model is reported as descriptive.
+
+The labelling-by-allocator interaction, which is the direct test of whether an apparent
+labelling advantage is a concentration effect in disguise, has {interaction_terms} terms and
+none reaches significance even at the model's overstated precision.
+
+### Robustness
+
+Substituting a shrinkage covariance estimator moves the reported contrasts by at most
+{shrinkage_max_shift} annualised, and {shrinkage_reverses}. The estimator is therefore not
+promoted to a design factor.
+""",
+
     "screening_justification": """\
 ## Does preselection justify itself?
 
@@ -381,6 +607,38 @@ preselection helps, because the screening signal is negative enough to outweigh 
 smaller search space buys. A reader who wants the tractability benefit without the
 selection penalty should look at dimension reduction that does not condition on a predicted
 return.
+""",
+
+    "conclusions": """\
+## Conclusions
+
+An indicator computed against a reference the system produced itself cannot detect a failure
+the system makes consistently. We gave a case where this is not a theoretical concern: on a
+constrained portfolio problem, attainment against an extended-budget reference rises with
+problem size while coverage against the closed-form attainable range falls by a factor of
+roughly six, and the two readings support opposite conclusions about whether preselection is
+needed for tractability.
+
+The correction is cheap where it applies. Coverage requires only that each objective's
+extreme be computable alone, which holds for a wide class of constrained formulations, and it
+is bounded, normalised and immune to any bias the produced and reference fronts share. We
+recommend it be reported alongside attainment rather than instead of it, and we give the
+condition -- high attainment beside low coverage -- under which an attainment figure should
+not be believed.
+
+For the system studied, the diagnostic separated two claims that are usually made together.
+Supervised preselection does make the search easier, measurably and in the direction its
+proponents assert. It does not improve the portfolio: no screening arm beat passing the whole
+admitted universe to the optimiser, and return attribution located the shortfall in a
+negative selection component present in every arm. A practitioner who wants the search
+benefit should seek it from dimension reduction that does not condition on a predicted
+return.
+
+We are explicit about what this study cannot settle. {n_blocks} evaluation blocks give a
+detectable effect of {mde_low} to {mde_high} annualised, and no effect we estimated exceeds
+it, so the performance comparisons are unresolved rather than null. The coverage result does
+not depend on that bound: it is a measurement against a computed quantity, replicated across
+months and seeds, and its direction is unambiguous.
 """,
 
     "limitations": """\
@@ -517,6 +775,18 @@ def _reflow(text: str, width: int = 88) -> str:
             paragraph.append(stripped)
     flush()
     return "\n".join(out).rstrip() + "\n"
+
+
+def required_facts() -> set[str]:
+    """Every fact name the templates ask for, using the module's own placeholder rule.
+
+    Exposed so a test cannot drift from it by re-implementing the pattern -- which it did,
+    and then reported the equation's \\hat{a} as a missing fact called "a".
+    """
+    names: set[str] = set()
+    for template in SECTIONS.values():
+        names |= {match[1:-1] for match in _PLACEHOLDER.findall(template)}
+    return names
 
 
 def venue_limit_violations(rendered: Mapping[str, str]) -> list[str]:

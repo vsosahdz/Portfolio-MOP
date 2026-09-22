@@ -72,7 +72,13 @@ everything after it is minutes.
 .venv/bin/python scripts/run_comparators.py             # comparator tiers, combines with the grid
 .venv/bin/python scripts/verify_grid.py                 # completeness, skips, levels — must report 0 issues
 .venv/bin/python scripts/regenerate_reports.py          # manifest, statistics, tables, figures, manuscript, appendix
+.venv/bin/python scripts/build_paper.py                 # assembles paper/main.tex and compiles main.pdf
 ```
+
+`build_paper.py` converts the generated Markdown sections to LaTeX and typesets them with
+the tables and figures. It needs a LaTeX engine on the path; `tectonic` is the one used here
+and fetches the `elsarticle` class itself. Without an engine the script still writes
+`paper/main.tex`, which compiles anywhere.
 
 The supporting experiments are independent of each other and of the order above:
 

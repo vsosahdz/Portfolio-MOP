@@ -33,3 +33,11 @@ paper/smoke/
 # Everything else is deliberately committed, including data/cache/ and data/features/.
 # The reproducibility claim is that the study runs offline from the cache, and a package
 # that omits the cache cannot support it.
+
+# LaTeX build products. main.tex and main.pdf are committed; the intermediates are not.
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.synctex.gz
