@@ -1,12 +1,15 @@
-\begin{tabular}{lrrrrrrrr}
+\small
+\begin{tabular}{lrrrrrr}
 \toprule
-screener & cost\_bps & market\_annualised & selection\_annualised & allocation\_annualised & fx\_tilt\_annualised & portfolio\_sic\_weight & universe\_sic\_share & max\_abs\_residual \\
+Screening arm & Market & Selection & Allocation & FX tilt & Portfolio SIC & Universe SIC \\
 \midrule
-all\_stocks & 50.0000 & 0.1535 & 0.0000 & 0.0058 & 0.0049 & 0.5165 & 0.5600 & 0.0000 \\
-neural\_network & 50.0000 & 0.1524 & -0.0308 & 0.0392 & 0.0056 & 0.5277 & 0.5601 & 0.0000 \\
-svm & 50.0000 & 0.1535 & -0.0363 & 0.0402 & 0.0032 & 0.5350 & 0.5600 & 0.0000 \\
-random\_forest & 50.0000 & 0.1535 & -0.0627 & 0.0141 & 0.0044 & 0.5477 & 0.5600 & 0.0000 \\
-tabpfn & 50.0000 & 0.1535 & -0.0682 & 0.0294 & 0.0059 & 0.5275 & 0.5600 & 0.0000 \\
-xgboost & 50.0000 & 0.1431 & -0.0732 & 0.0372 & 0.0032 & 0.5337 & 0.5597 & 0.0000 \\
+all stocks & 15.4\% & 0.0\% & 0.6\% & 0.5\% & 51.7\% & 56.0\% \\
+neural network & 15.2\% & -3.1\% & 3.9\% & 0.6\% & 52.8\% & 56.0\% \\
+svm & 15.4\% & -3.6\% & 4.0\% & 0.3\% & 53.5\% & 56.0\% \\
+random forest & 15.4\% & -6.3\% & 1.4\% & 0.4\% & 54.8\% & 56.0\% \\
+tabpfn & 15.4\% & -6.8\% & 2.9\% & 0.6\% & 52.7\% & 56.0\% \\
+xgboost & 14.3\% & -7.3\% & 3.7\% & 0.3\% & 53.4\% & 56.0\% \\
 \bottomrule
 \end{tabular}
+\par\vspace{2pt}
+\begin{minipage}{\linewidth}\footnotesize\raggedright cost bps: 50.00\end{minipage}

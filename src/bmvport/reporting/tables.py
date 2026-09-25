@@ -26,6 +26,8 @@ import numpy as np
 import pandas as pd
 
 __all__ = [
+    "to_latex",
+    "COLUMN_LABELS",
     "performance_table",
     "comparator_table",
     "attribution_table",
@@ -34,6 +36,141 @@ __all__ = [
 ]
 
 RETURN_METRICS = frozenset({"return_net", "return_gross"})
+
+# Human column headings for the typeset tables. The CSV keeps the machine names, because a
+# reader loading it into a dataframe wants stable identifiers; a reader of the paper wants a
+# heading that fits and reads. Escaped underscores in a machine name also render as visible
+# gaps, which is how the first typeset draft came out.
+COLUMN_LABELS: dict[str, str] = {
+    "screener": "Screening arm", "arm": "Arm", "tier": "Tier", "profile": "Profile",
+    "metric": "Metric", "extraction_rule": "Extraction rule",
+    "net_annualised": "Net (ann.)",
+    "gross_annualised_upper_bound": "Gross (ann.)\\textsuperscript{a}",
+    "median_sharpe": "Sharpe", "mean_turnover": "Turnover",
+    "mean_selection_size": "Names", "positive_months": "Up months", "n_blocks": "Blocks",
+    "market_annualised": "Market", "selection_annualised": "Selection",
+    "allocation_annualised": "Allocation", "fx_tilt_annualised": "FX tilt",
+    "portfolio_sic_weight": "Portfolio SIC", "universe_sic_share": "Universe SIC",
+    "max_abs_residual": "Max residual",
+    "difference_vs_best_proposed": "Diff. vs best cell",
+    "p_adjusted": "$p$ adj.", "minimum_detectable_annualised": "MDE",
+    "verdict": "Verdict", "value": "Value", "annualised": "Annualised",
+}
+
+# Columns rendered as percentages rather than as fractions, so the table agrees with the
+# prose. Everything the study annualises is a rate; Sharpe and the counts are not.
+PERCENT_COLUMNS = frozenset({
+    "net_annualised", "gross_annualised_upper_bound", "mean_turnover",
+    "market_annualised", "selection_annualised", "allocation_annualised",
+    "fx_tilt_annualised", "portfolio_sic_weight", "universe_sic_share",
+    "difference_vs_best_proposed", "minimum_detectable_annualised", "annualised",
+})
+
+# A verdict sentence is too wide for a table column and says the same thing every time.
+VERDICT_SHORT = {
+    "not rejected; effect below the design's resolution": "unresolved",
+    "not tested": "--", "": "",
+}
+
+
+def _format_cell(column: str, value) -> str:
+    if value is None or (isinstance(value, float) and not np.isfinite(value)):
+        return "--"
+    if column == "verdict":
+        return VERDICT_SHORT.get(str(value), str(value))
+    if column in PERCENT_COLUMNS:
+        return f"{float(value) * 100:.1f}\\%"
+    if isinstance(value, (int, np.integer)):
+        return f"{int(value):d}"
+    if isinstance(value, float):
+        return f"{value:.2f}"
+    return str(value).replace("_", " ")
+
+
+def _best_proposed_cell(results: pd.DataFrame, cost_bps: float) -> tuple[str, float]:
+    """The single cell the comparator confrontation is measured against.
+
+    Needed for the table's footnote. The confrontation compares each comparator with the
+    best individual cell, while the table's return column shows screener-level aggregates,
+    so a reader who subtracts the two visible columns gets a third number. Naming the
+    reference is the difference between a table that is precise and one that misleads.
+    """
+    frame = results[
+        (results["arm_kind"] == "proposed") & (results["cost_bps"] == cost_bps)
+        & (~results["skip_reason"].astype(bool))
+    ]
+    per_cell = (
+        frame.groupby(["labeling", "screener", "allocator", "weight_cap", "month"])
+        ["return_net"].median()
+        .groupby(level=[0, 1, 2, 3]).mean()
+    )
+    key = per_cell.idxmax()
+    label = f"{key[1]}, {key[2]}, cap {float(key[3]):g}, {key[0]} labelling"
+    return label.replace("_", " "), float(per_cell.max()) * 12
+
+
+def to_latex(
+    table: pd.DataFrame, *, drop: Sequence[str] = (), size: str = "small",
+    notes: Sequence[str] = (),
+) -> str:
+    """Render a table as a booktabs tabular sized to the text block.
+
+    Columns whose value is constant down the table are dropped rather than repeated: the
+    cost scenario belongs in the caption, and a column of identical numbers is width spent
+    on nothing. The first typeset draft kept them and both tables ran off the page, losing
+    their rightmost columns silently -- LaTeX does not warn when a tabular overflows into
+    the margin.
+    """
+    frame = table.drop(columns=[c for c in drop if c in table.columns])
+    # Constant among the rows that have a value at all. A column whose only distinct entry
+    # is repeated down the table carries nothing per row and costs width the table does not
+    # have; what it says goes into a footnote instead of being lost. Missing entries do not
+    # make a column informative -- the verdict column read "unresolved" wherever it applied
+    # and blank elsewhere, and kept the table over the text block until it was dropped.
+    lifted: list[str] = []
+    for column in list(frame.columns):
+        distinct = {
+            v for v in frame[column].tolist()
+            if v is not None and str(v) != "" and not (isinstance(v, float) and pd.isna(v))
+        }
+        if len(distinct) <= 1 and len(frame) > 1:
+            label = COLUMN_LABELS.get(column, column.replace("_", " "))
+            if distinct:
+                lifted.append(f"{label}: {_format_cell(column, distinct.pop())}")
+            frame = frame.drop(columns=[column])
+    notes = list(notes) + ([" -- ".join(lifted)] if lifted else [])
+
+    # Tested on the dtype, not on equality with object: pandas stores strings in an Arrow
+    # dtype here, so the object comparison silently right-aligns every text column.
+    alignment = "".join(
+        "r" if pd.api.types.is_numeric_dtype(frame[c]) else "l" for c in frame.columns
+    )
+    header = " & ".join(
+        COLUMN_LABELS.get(c, c.replace("_", " ").capitalize()) for c in frame.columns
+    )
+    body = [
+        " & ".join(_format_cell(c, row[c]) for c in frame.columns) + r" \\"
+        for _, row in frame.iterrows()
+    ]
+    # Notes sit after the tabular rather than in a \multicolumn row: a multicolumn cell is
+    # as wide as the columns it spans and does not wrap, so a sentence-length note runs off
+    # the page exactly like the columns this function exists to keep on it.
+    block = [
+        f"\\{size}",
+        r"\begin{tabular}{" + alignment + "}",
+        r"\toprule",
+        header + r" \\",
+        r"\midrule",
+        *body,
+        r"\bottomrule",
+        r"\end{tabular}",
+    ]
+    for note in notes:
+        if note:
+            block.append(r"\par\vspace{2pt}")
+            block.append(r"\begin{minipage}{\linewidth}\footnotesize\raggedright " + note
+                         + r"\end{minipage}")
+    return "\n".join(block) + "\n"
 
 
 def _annualise(monthly: float) -> float:
@@ -172,6 +309,16 @@ def profile_tables(results: pd.DataFrame, cost_bps: float) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+# Columns carried in the CSV for completeness but omitted from the typeset table, where
+# width is the binding constraint. Nothing analytical is dropped: these are either recorded
+# elsewhere in the paper or reconstructible from what remains.
+DROPPED: dict[str, tuple[str, ...]] = {
+    "comparators": ("reference_series_uncosted",),
+    "attribution": ("max_abs_residual",),
+    "profiles": ("extraction_rule",),
+}
+
+
 def write_tables(
     results: pd.DataFrame, tests: Sequence, cost_bps: float, directory: str | Path
 ) -> dict[str, Path]:
@@ -189,8 +336,19 @@ def write_tables(
         csv_path = directory / f"table_{name}.csv"
         table.to_csv(csv_path, index=False)
         tex_path = directory / f"table_{name}.tex"
+        notes = []
+        if name == "comparators":
+            label, value = _best_proposed_cell(results, cost_bps)
+            notes.append(
+                f"Differences are against the best individual cell "
+                f"({label}, {value * 100:.1f}\\% annualised), not against the "
+                f"screener-level figures in this table."
+            )
+        if name == "performance":
+            notes.append(
+                r"\textsuperscript{a}Gross is an upper bound, reported to show the cost drag."
+            )
         tex_path.write_text(
-            table.to_latex(index=False, float_format="%.4f", escape=True), encoding="utf-8"
-        )
+            to_latex(table, drop=DROPPED.get(name, ()), notes=notes), encoding="utf-8")
         paths[name] = csv_path
     return paths

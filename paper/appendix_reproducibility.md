@@ -71,7 +71,7 @@
   - release: `25.3.0`
   - system: `Darwin`
   - thread env: `{'MKL_NUM_THREADS': '1', 'NUMEXPR_NUM_THREADS': '1', 'OMP_NUM_THREADS': '1', 'OPENBLAS_NUM_THREADS': '1', 'VECLIB_MAXIMUM_THREADS': '1'}`
-- **revision**: `1241d1f887f5c6bb3864112e7ff82df75d2f2ace+dirty`
+- **revision**: `3adbefc23d375a91bb5bcee180103405b4519774+dirty`
 - **config fingerprint**: `2658d460ef0feacc`
 - **packages**:
   - PBC4cip: `0.0.0.8`

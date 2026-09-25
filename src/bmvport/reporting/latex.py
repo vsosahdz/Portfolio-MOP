@@ -40,8 +40,9 @@ SECTION_ORDER: tuple[str, ...] = (
 # Figures in the main text, with their captions and the label the prose can reference.
 FIGURES: tuple[tuple[str, str, str], ...] = (
     ("fig_search_cost", "search-cost",
-     "Search cost and attainment against the number of decision variables. The rising "
-     "attainment panel is the reading this paper argues is not interpretable on its own."),
+     "Search cost and attainment against problem size, by ablation level, with standard "
+     "deviations across seeds. The attainment axis is not zero-based. The rising attainment "
+     "is the reading this paper argues is not interpretable on its own."),
     ("fig_pareto_front", "pareto",
      "One Pareto front with the three extracted portfolios marked, at the median evaluation "
      "month under the no-screening control. The three profiles are nearly the same "
@@ -61,7 +62,8 @@ TABLES: tuple[tuple[str, str, str], ...] = (
     ("table_performance", "performance",
      "Per-screener performance at the primary cost scenario."),
     ("table_comparators", "comparators",
-     "Every arm ranked, with the confrontation verdict and the detectable bound."),
+     "Every arm ranked against the comparator confrontation. No comparison resolves: "
+     "the detectable bound exceeds every difference, as the notes record."),
     ("table_attribution", "attribution",
      "Return decomposition into market, selection, allocation and currency tilt."),
     ("table_profiles", "profiles",

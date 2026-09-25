@@ -246,3 +246,54 @@ def test_every_section_renders_with_literal_braces_intact():
 
     assert "\\frac{" in rendered["method"], "the equation lost its braces"
     assert "{X}" not in rendered["method"], "a fact was wrapped in stray braces"
+
+
+def test_typeset_table_is_narrow_enough_and_reads_as_a_table():
+    """The first typeset draft ran off the page and lost its rightmost columns in silence.
+
+    LaTeX does not warn when a tabular overflows into the margin, so the check is on the
+    source: a constant column is width spent on nothing, a machine name renders with visible
+    gaps where its underscores were escaped, and a raw fraction contradicts a prose sentence
+    that quotes the same quantity as a percentage.
+    """
+    import pandas as pd
+
+    from bmvport.config import load_config
+    from bmvport.reporting.tables import performance_table, to_latex
+
+    config = load_config("configs/default.yaml")
+    results = pd.read_parquet("results/results_combined.parquet")
+    table = performance_table(results, config.evaluation.primary_cost_scenario_bps)
+    latex = to_latex(table)
+
+    assert "cost_bps" not in latex and "50.0000" not in latex, "a constant column survived"
+    assert r"\_" not in latex, "a machine name reached the typeset heading"
+    assert r"12.0\%" in latex, "returns must be typeset as percentages, as the prose quotes them"
+    header = [line for line in latex.splitlines() if "Screening arm" in line][0]
+    assert header.count("&") <= 7, f"too many columns to fit the text block: {header}"
+    assert latex.splitlines()[1].startswith(r"\begin{tabular}{l"), (
+        "the label column must be left-aligned"
+    )
+
+
+def test_no_table_prints_a_bare_nan():
+    """A literal NaN in a typeset table reads as a mistake even where it is a true absence."""
+    import json
+
+    import pandas as pd
+
+    from bmvport.config import load_config
+    from bmvport.reporting.tables import comparator_table, to_latex
+
+    config = load_config("configs/default.yaml")
+    results = pd.read_parquet("results/results_combined.parquet")
+    tests = json.loads(open("results/tests.json", encoding="utf-8").read())
+
+    class _Test:
+        def __init__(self, record):
+            self.__dict__.update(record)
+
+    latex = to_latex(comparator_table(
+        results, [_Test(r) for r in tests], config.evaluation.primary_cost_scenario_bps))
+
+    assert "NaN" not in latex and "nan" not in latex

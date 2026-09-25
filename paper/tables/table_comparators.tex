@@ -1,21 +1,26 @@
-\begin{tabular}{llrrrrrrrlr}
+\small
+\begin{tabular}{llrrrrr}
 \toprule
-arm & tier & cost\_bps & net\_annualised & median\_sharpe & mean\_turnover & difference\_vs\_best\_proposed & p\_adjusted & minimum\_detectable\_annualised & verdict & reference\_series\_uncosted \\
+Arm & Tier & Net (ann.) & Sharpe & Turnover & Diff. vs best cell & MDE \\
 \midrule
-momentum\_equal\_weight & tier1 & 50.0000 & 0.2824 & 2.1397 & 0.2744 & -0.0311 & 1.0000 & 0.3870 & not rejected; effect below the design's resolution & False \\
-bmv\_ipc & tier0 & 50.0000 & 0.1943 & NaN & 0.0000 & 0.0570 & 1.0000 & 0.5291 & not rejected; effect below the design's resolution & True \\
-l4\_single\_objective\_ga\_sharpe & tier2 & 50.0000 & 0.1732 & 1.3710 & 0.3408 & 0.0780 & 1.0000 & 0.3062 & not rejected; effect below the design's resolution & False \\
-equal\_weight\_universe & tier1 & 50.0000 & 0.1390 & 0.1751 & 0.0987 & 0.1122 & 1.0000 & 0.4083 & not rejected; effect below the design's resolution & False \\
-proposed:all\_stocks & factorial & 50.0000 & 0.1200 & 0.8348 & 0.3196 & NaN & NaN & NaN &  & False \\
-inverse\_volatility & tier1 & 50.0000 & 0.1036 & -0.2261 & 0.1004 & 0.1477 & 1.0000 & 0.4353 & not rejected; effect below the design's resolution & False \\
-mv\_analytic\_universe & tier1 & 50.0000 & 0.0893 & -0.6446 & 0.2518 & 0.1620 & 1.0000 & 0.4804 & not rejected; effect below the design's resolution & False \\
-sp500\_mxn & tier0 & 50.0000 & 0.0859 & NaN & 0.0000 & 0.1654 & 1.0000 & 0.3904 & not rejected; effect below the design's resolution & True \\
-proposed:neural\_network & factorial & 50.0000 & 0.0789 & -0.3509 & 0.7123 & NaN & NaN & NaN &  & False \\
-cetes\_28d & tier0 & 50.0000 & 0.0783 & NaN & 0.0000 & 0.1730 & 1.0000 & 0.4889 & not rejected; effect below the design's resolution & True \\
-l6\_l1\_shrinkage\_mv & tier2 & 50.0000 & 0.0760 & -0.8789 & 0.2210 & 0.1753 & 1.0000 & 0.4881 & not rejected; effect below the design's resolution & False \\
-proposed:svm & factorial & 50.0000 & 0.0441 & -0.5810 & 0.6372 & NaN & NaN & NaN &  & False \\
-proposed:tabpfn & factorial & 50.0000 & 0.0319 & -0.4716 & 0.6126 & NaN & NaN & NaN &  & False \\
-proposed:xgboost & factorial & 50.0000 & 0.0212 & -0.5125 & 0.7017 & NaN & NaN & NaN &  & False \\
-proposed:random\_forest & factorial & 50.0000 & 0.0012 & -0.8801 & 0.6738 & NaN & NaN & NaN &  & False \\
+momentum equal weight & tier1 & 28.2\% & 2.14 & 27.4\% & -3.1\% & 38.7\% \\
+bmv ipc & tier0 & 19.4\% & -- & 0.0\% & 5.7\% & 52.9\% \\
+l4 single objective ga sharpe & tier2 & 17.3\% & 1.37 & 34.1\% & 7.8\% & 30.6\% \\
+equal weight universe & tier1 & 13.9\% & 0.18 & 9.9\% & 11.2\% & 40.8\% \\
+proposed:all stocks & factorial & 12.0\% & 0.83 & 32.0\% & -- & -- \\
+inverse volatility & tier1 & 10.4\% & -0.23 & 10.0\% & 14.8\% & 43.5\% \\
+mv analytic universe & tier1 & 8.9\% & -0.64 & 25.2\% & 16.2\% & 48.0\% \\
+sp500 mxn & tier0 & 8.6\% & -- & 0.0\% & 16.5\% & 39.0\% \\
+proposed:neural network & factorial & 7.9\% & -0.35 & 71.2\% & -- & -- \\
+cetes 28d & tier0 & 7.8\% & -- & 0.0\% & 17.3\% & 48.9\% \\
+l6 l1 shrinkage mv & tier2 & 7.6\% & -0.88 & 22.1\% & 17.5\% & 48.8\% \\
+proposed:svm & factorial & 4.4\% & -0.58 & 63.7\% & -- & -- \\
+proposed:tabpfn & factorial & 3.2\% & -0.47 & 61.3\% & -- & -- \\
+proposed:xgboost & factorial & 2.1\% & -0.51 & 70.2\% & -- & -- \\
+proposed:random forest & factorial & 0.1\% & -0.88 & 67.4\% & -- & -- \\
 \bottomrule
 \end{tabular}
+\par\vspace{2pt}
+\begin{minipage}{\linewidth}\footnotesize\raggedright Differences are against the best individual cell (neural network, ga max return, cap 1, historical labelling, 25.1\% annualised), not against the screener-level figures in this table.\end{minipage}
+\par\vspace{2pt}
+\begin{minipage}{\linewidth}\footnotesize\raggedright cost bps: 50.00 -- $p$ adj.: 1.00 -- Verdict: unresolved\end{minipage}

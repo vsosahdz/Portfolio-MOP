@@ -1,12 +1,17 @@
-\begin{tabular}{lrrrrrrrr}
+\small
+\begin{tabular}{lrrrrrr}
 \toprule
-screener & cost\_bps & net\_annualised & gross\_annualised\_upper\_bound & median\_sharpe & mean\_turnover & mean\_selection\_size & positive\_months & n\_blocks \\
+Screening arm & Net (ann.) & Gross (ann.)\textsuperscript{a} & Sharpe & Turnover & Names & Up months \\
 \midrule
-all\_stocks & 50.0000 & 0.1200 & 0.1591 & 0.8348 & 0.3196 & 93.8333 & 12 & 18 \\
-neural\_network & 50.0000 & 0.0789 & 0.1624 & -0.3509 & 0.7123 & 32.6578 & 11 & 18 \\
-svm & 50.0000 & 0.0441 & 0.1205 & -0.5810 & 0.6372 & 35.7407 & 10 & 18 \\
-tabpfn & 50.0000 & 0.0319 & 0.1004 & -0.4716 & 0.6126 & 39.9815 & 10 & 18 \\
-xgboost & 50.0000 & 0.0212 & 0.0966 & -0.5125 & 0.7017 & 33.2830 & 11 & 18 \\
-random\_forest & 50.0000 & 0.0012 & 0.0834 & -0.8801 & 0.6738 & 32.6852 & 10 & 18 \\
+all stocks & 12.0\% & 15.9\% & 0.83 & 32.0\% & 93.83 & 12 \\
+neural network & 7.9\% & 16.2\% & -0.35 & 71.2\% & 32.66 & 11 \\
+svm & 4.4\% & 12.0\% & -0.58 & 63.7\% & 35.74 & 10 \\
+tabpfn & 3.2\% & 10.0\% & -0.47 & 61.3\% & 39.98 & 10 \\
+xgboost & 2.1\% & 9.7\% & -0.51 & 70.2\% & 33.28 & 11 \\
+random forest & 0.1\% & 8.3\% & -0.88 & 67.4\% & 32.69 & 10 \\
 \bottomrule
 \end{tabular}
+\par\vspace{2pt}
+\begin{minipage}{\linewidth}\footnotesize\raggedright \textsuperscript{a}Gross is an upper bound, reported to show the cost drag.\end{minipage}
+\par\vspace{2pt}
+\begin{minipage}{\linewidth}\footnotesize\raggedright cost bps: 50.00 -- Blocks: 18\end{minipage}

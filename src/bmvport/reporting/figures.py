@@ -175,30 +175,43 @@ def figure_hypervolume_dispersion(results: pd.DataFrame, path: Path) -> Path:
 
 
 def figure_search_cost(ablation: pd.DataFrame, path: Path) -> Path:
-    """Wall-clock and attainment against the decision-variable count.
+    """Wall-clock and coverage against the ablation level.
 
-    The two panels are the ablation's engineering and tractability evidence. A flat
-    attainment line is the informative outcome: it says the larger instances were solved as
-    completely as the small ones, and therefore that the fixed-budget contrast is readable.
+    Grouped by ablation level, not by the raw variable count. The no-preselection level takes
+    whichever universe the month admitted, which ranges over a dozen values, so grouping on
+    the count splits one level into thin groups and the line zigzags through replicate noise
+    that looks like structure.
+
+    The attainment axis is not zero-based, and says so on the axis. Attainment varies between
+    the mid-nineties and ninety-six hundredths; drawn from zero it is a flat line, which
+    reads as "nothing happens here" when the point of the panel is that the rise is real and
+    is the wrong thing to trust.
     """
-    grouped = ablation.groupby("n_variables").agg(
+    grouped = ablation.groupby("level").agg(
+        variables=("n_variables", "mean"),
         wall_clock=("wall_clock", "mean"),
+        wall_sd=("wall_clock", "std"),
         attainment=("attainment_at_base", "mean"),
+        attainment_sd=("attainment_at_base", "std"),
         covariance_entries=("covariance_entries", "mean"),
-    ).reset_index()
+    ).reset_index().sort_values("variables")
 
     fig, (left, right) = plt.subplots(1, 2, figsize=(10, 4))
-    left.plot(grouped["n_variables"], grouped["wall_clock"], "o-", color=_PALETTE[0])
-    left.set_xlabel("decision variables")
+    left.errorbar(grouped["variables"], grouped["wall_clock"], yerr=grouped["wall_sd"],
+                  fmt="o-", color=_PALETTE[0], capsize=3)
+    left.set_xlabel("decision variables (ablation level)")
     left.set_ylabel("search wall-clock (s)")
     left.set_title("Search cost")
-    right.plot(grouped["n_variables"], grouped["attainment"], "o-", color=_PALETTE[1])
-    right.axhline(1.0, color="#6B7280", linewidth=0.8, linestyle="--")
-    right.set_ylim(0, 1.15)
-    right.set_xlabel("decision variables")
+
+    right.errorbar(grouped["variables"], grouped["attainment"],
+                   yerr=grouped["attainment_sd"], fmt="o-", color=_PALETTE[1], capsize=3)
+    span = grouped["attainment"]
+    margin = max(float(grouped["attainment_sd"].max()) * 1.5, 0.01)
+    right.set_ylim(float(span.min()) - margin, min(1.005, float(span.max()) + margin))
+    right.set_xlabel("decision variables (ablation level)")
     right.set_ylabel("attainment at the main-grid budget")
-    right.set_title("Tractability")
-    fig.suptitle("Preselection: cost and tractability against problem size")
+    right.set_title("Attainment (axis not zero-based)")
+    fig.suptitle("Preselection: cost and attainment against problem size")
     return _save(fig, path, grouped)
 
 
