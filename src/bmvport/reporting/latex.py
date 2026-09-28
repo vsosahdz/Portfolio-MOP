@@ -20,21 +20,32 @@ from pathlib import Path
 from typing import Mapping, Sequence
 
 __all__ = ["markdown_to_latex", "build_document", "write_latex", "compile_pdf",
-           "SECTION_ORDER", "FIGURES"]
+           "overfull_boxes", "SECTION_ORDER", "DOCUMENT", "FIGURES"]
 
-# Order of the article, which is not the order the sections were written in. Front matter
-# (abstract, highlights, keywords) is handled separately by the document template.
-SECTION_ORDER: tuple[str, ...] = (
-    "introduction",
-    "contributions",
-    "related_work",
-    "method",
-    "experimental_setup",
-    "results",
-    "screening_justification",
-    "limitations",
-    "conclusions",
-    "future_work",
+# The document tree, following the structure of the companion UAV study from the same group
+# so a reader of both meets the same shape twice. Each entry is a top-level section and the
+# generated sections that sit under it as subsections; a section listed alone becomes a
+# top-level section in its own right.
+#
+# The consolidation matters beyond consistency. Contributions belong in the introduction
+# rather than standing alone, empirical material reads as one argument rather than four
+# sections that each restate the setup, and limitations sit with the results they qualify
+# instead of after the conclusions, where a reader has already stopped weighing them.
+DOCUMENT: tuple[tuple[str, tuple[str, ...]], ...] = (
+    ("Introduction", ("introduction", "contributions")),
+    ("Background", ("related_work",)),
+    ("The proposal", ("method",)),
+    ("Experiments, results and discussion",
+     ("experimental_setup", "results", "screening_justification", "threats", "limitations")),
+    ("Conclusions and future work", ("conclusions", "future_work")),
+)
+
+# Emitted after the tree above, from the run manifest rather than from a prose section: the
+# parameters that fix the run, in one place a reader can check the code against.
+PARAMETERS_SECTION = "Parameters and provenance"
+
+SECTION_ORDER: tuple[str, ...] = tuple(
+    name for _, names in DOCUMENT for name in names
 )
 
 # Figures in the main text, with their captions and the label the prose can reference.
@@ -46,7 +57,7 @@ FIGURES: tuple[tuple[str, str, str], ...] = (
     ("fig_pareto_front", "pareto",
      "One Pareto front with the three extracted portfolios marked, at the median evaluation "
      "month under the no-screening control. The three profiles are nearly the same "
-     "portfolio, which is the collapse reported in Section~\\ref{sec:results} "
+     "portfolio, which is the collapse reported in Section~\\ref{sec:experiments} "
      "made concrete."),
     ("fig_performance", "performance",
      "Distribution of monthly net return by screening arm at the primary cost scenario."),
@@ -129,8 +140,17 @@ def _inline(text: str) -> str:
     return re.sub(r"\x00(\d+)\x00", restore, text)
 
 
+def _first_heading(markdown: str) -> str | None:
+    """Title of a generated section, for deciding whether it repeats its parent."""
+    for line in markdown.splitlines():
+        if line.strip().startswith("#"):
+            return line.strip().lstrip("#").strip()
+    return None
+
+
 def markdown_to_latex(
-    markdown: str, *, top_level: str = "section", label: str | None = None
+    markdown: str, *, top_level: str = "section", label: str | None = None,
+    drop_first_heading: bool = False,
 ) -> str:
     """Convert one generated section. Raises on any construct it was not built for."""
     depth = {"section": 0, "subsection": 1}[top_level]
@@ -164,6 +184,9 @@ def markdown_to_latex(
                 in_list = False
             hashes = len(stripped) - len(stripped.lstrip("#"))
             title = stripped.lstrip("#").strip()
+            if drop_first_heading and hashes == 2:
+                drop_first_heading = False
+                continue
             command = levels[min(depth + hashes - 2, len(levels) - 1)]
             heading = f"\\{command}{{{_inline(title)}}}"
             # Only the top-level heading of a section carries its label, so a cross-reference
@@ -230,15 +253,40 @@ def build_document(
     )
 
     body = []
-    for name in SECTION_ORDER:
-        if name not in sections:
+    for heading, names in DOCUMENT:
+        present = [name for name in names if name in sections]
+        if not present:
             continue
-        body.append(f"% --- {name} " + "-" * (68 - len(name)))
-        converted = markdown_to_latex(sections[name], label=name.replace("_", "-"))
-        if name == "results":
-            converted += "\n" + _float_block(figure_dir, table_dir)
-        body.append(converted)
+        slug = heading.lower().split(",")[0].split(" and ")[0].replace(" ", "-")
+        body.append("% " + "=" * 74)
+        body.append(f"\\section{{{_escape(heading)}}}\\label{{sec:{slug}}}")
         body.append("")
+        for name in present:
+            body.append(f"% --- {name} " + "-" * (68 - len(name)))
+            # Each generated section's own heading demotes one level: it was written as a
+            # section and now sits as a subsection beneath the heading above.
+            #
+            # Unless it would only repeat its parent. A lone child, or one whose title
+            # matches the section it sits under, produces "1 Introduction / 1.1
+            # Introduction" -- a level of numbering that carries no information and reads as
+            # a mistake. Its own subsections still promote correctly when it is dropped.
+            own_title = _first_heading(sections[name])
+            drop_heading = len(present) == 1 or (
+                own_title and own_title.lower() == heading.lower())
+            converted = markdown_to_latex(
+                sections[name], top_level="subsection",
+                label=None if drop_heading else name.replace("_", "-"),
+                drop_first_heading=drop_heading)
+            if name == "results":
+                converted += "\n" + _float_block(figure_dir, table_dir)
+            body.append(converted)
+            body.append("")
+
+    body.append("% " + "=" * 74)
+    body.append(f"\\section{{{_escape(PARAMETERS_SECTION)}}}\\label{{sec:parameters}}")
+    body.append("")
+    body.append(f"\\input{{{table_dir}/parameters}}")
+    body.append("")
 
     keyword_line = "; ".join(
         _escape(k.strip()) for k in keywords.replace("## Keywords", "").split(";") if k.strip()
@@ -290,8 +338,20 @@ TEMPLATE = r"""\documentclass[preprint,11pt,authoryear]{elsarticle}
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{booktabs}
-\usepackage{longtable}
+\usepackage{threeparttable}
+\usepackage{tabularx}
+\usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
+
+% A tall float may share a page with text rather than claiming a page of its own.
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.7}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.85}
+
+% Let TeX relax a line rather than push it into the margin. Without this a handful of
+% paragraphs overflow by a few points, which is invisible on screen and visible in print.
+\emergencystretch=3em
 
 \journal{Expert Systems with Applications}
 
@@ -338,6 +398,22 @@ def write_latex(
     path = directory / "main.tex"
     path.write_text(document, encoding="utf-8")
     return path
+
+
+def overfull_boxes(log_path: str | Path) -> list[tuple[float, str]]:
+    """Overfull boxes from a LaTeX log, worst first.
+
+    A box that runs past the text block is invisible on screen at normal zoom and plain in
+    print. Nothing else in this pipeline can see it: the table source looks correct, the PDF
+    text extracts correctly, and only the log records that the ink crossed the margin.
+    """
+    text = Path(log_path).read_text(encoding="utf-8", errors="ignore")
+    found = [
+        (float(points), context.strip())
+        for points, context in re.findall(
+            r"Overfull \\hbox \(([0-9.]+)pt too wide\)([^\n]*)", text)
+    ]
+    return sorted(found, reverse=True)
 
 
 def compile_pdf(tex_path: str | Path, *, engine: str = "tectonic") -> Path:

@@ -73,3 +73,45 @@ def test_compiled_pdf_has_no_unresolved_reference_or_citation():
     assert "??" not in text, "a cross-reference did not resolve"
     assert "[?]" not in text, "a citation did not resolve"
     assert "References" in text, "the bibliography is missing"
+
+
+def test_no_content_runs_past_the_text_block():
+    """Ink crossing the margin is invisible on screen and plain in print.
+
+    Nothing else in this pipeline can see it. The table source looks correct, the extracted
+    text is complete, and only the log records the overflow. An earlier draft ran 97pt past
+    the margin while appearing, on screen, to fit.
+
+    The one box left is elsarticle's own output routine, not content, so the threshold
+    admits it by magnitude rather than by exempting the check.
+    """
+    from pathlib import Path
+
+    from bmvport.reporting.latex import overfull_boxes
+
+    log = Path("paper/main.log")
+    if not log.exists():
+        pytest.skip("paper/main.log not present; run scripts/build_paper.py")
+
+    serious = [box for box in overfull_boxes(log) if box[0] >= 5.0]
+    assert not serious, f"content runs past the text block: {serious[:5]}"
+
+
+def test_document_tree_places_every_generated_section():
+    """A section written and never placed is absent from the paper without any error."""
+    from pathlib import Path
+
+    from bmvport.reporting.latex import DOCUMENT
+
+    placed = {name for _, names in DOCUMENT for name in names}
+    front_matter = {"abstract", "highlights", "keywords"}
+    written = {
+        path.name[len("section_"):-len(".md")]
+        for path in Path("paper").glob("section_*.md")
+    }
+    if not written:
+        pytest.skip("no generated sections present")
+
+    assert not written - placed - front_matter, (
+        f"generated but never placed in the document: {written - placed - front_matter}"
+    )

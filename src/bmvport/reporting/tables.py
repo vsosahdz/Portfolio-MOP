@@ -44,15 +44,15 @@ RETURN_METRICS = frozenset({"return_net", "return_gross"})
 COLUMN_LABELS: dict[str, str] = {
     "screener": "Screening arm", "arm": "Arm", "tier": "Tier", "profile": "Profile",
     "metric": "Metric", "extraction_rule": "Extraction rule",
-    "net_annualised": "Net (ann.)",
-    "gross_annualised_upper_bound": "Gross (ann.)\\textsuperscript{a}",
-    "median_sharpe": "Sharpe", "mean_turnover": "Turnover",
-    "mean_selection_size": "Names", "positive_months": "Up months", "n_blocks": "Blocks",
+    "net_annualised": "Net",
+    "gross_annualised_upper_bound": "Gross\\textsuperscript{a}",
+    "median_sharpe": "Sharpe", "mean_turnover": "Turn.",
+    "mean_selection_size": "Names", "positive_months": "Up", "n_blocks": "Blocks",
     "market_annualised": "Market", "selection_annualised": "Selection",
     "allocation_annualised": "Allocation", "fx_tilt_annualised": "FX tilt",
     "portfolio_sic_weight": "Portfolio SIC", "universe_sic_share": "Universe SIC",
     "max_abs_residual": "Max residual",
-    "difference_vs_best_proposed": "Diff. vs best cell",
+    "difference_vs_best_proposed": "Diff.",
     "p_adjusted": "$p$ adj.", "minimum_detectable_annualised": "MDE",
     "verdict": "Verdict", "value": "Value", "annualised": "Annualised",
 }
@@ -110,7 +110,7 @@ def _best_proposed_cell(results: pd.DataFrame, cost_bps: float) -> tuple[str, fl
 
 
 def to_latex(
-    table: pd.DataFrame, *, drop: Sequence[str] = (), size: str = "small",
+    table: pd.DataFrame, *, drop: Sequence[str] = (), size: str | None = None,
     notes: Sequence[str] = (),
 ) -> str:
     """Render a table as a booktabs tabular sized to the text block.
@@ -142,9 +142,17 @@ def to_latex(
 
     # Tested on the dtype, not on equality with object: pandas stores strings in an Arrow
     # dtype here, so the object comparison silently right-aligns every text column.
-    alignment = "".join(
-        "r" if pd.api.types.is_numeric_dtype(frame[c]) else "l" for c in frame.columns
-    )
+    #
+    # The first text column is an X column and the rest are fixed. tabularx then solves for
+    # a table exactly \linewidth wide, absorbing the slack in the label. A plain tabular is
+    # as wide as its content demands and runs into the margin without a warning a reader
+    # would see -- the first typeset draft did so by up to 97pt while appearing to fit.
+    kinds = ["r" if pd.api.types.is_numeric_dtype(frame[c]) else "l" for c in frame.columns]
+    flexible = kinds.index("l") if "l" in kinds else 0
+    # Ragged rather than justified: an X column justifies by stretching interword space, and
+    # a label column of short entries stretches until a long one overflows instead.
+    kinds[flexible] = r">{\raggedright\arraybackslash}X"
+    alignment = "".join(kinds)
     header = " & ".join(
         COLUMN_LABELS.get(c, c.replace("_", " ").capitalize()) for c in frame.columns
     )
@@ -155,21 +163,31 @@ def to_latex(
     # Notes sit after the tabular rather than in a \multicolumn row: a multicolumn cell is
     # as wide as the columns it spans and does not wrap, so a sentence-length note runs off
     # the page exactly like the columns this function exists to keep on it.
+    # threeparttable is the idiom for table notes: it sets them to the table's own width and
+    # keeps them inside the float, where a trailing minipage merely looked as though it did.
+    # Sized by column count rather than fixed. At small, seven columns leave the label
+    # column too narrow for its own entries and every cell overflows individually -- which
+    # reads in the log as thirty-one overfull boxes and on the page as text crossing a rule.
+    if size is None:
+        size = "footnotesize" if len(frame.columns) >= 6 else "small"
     block = [
+        r"\begin{threeparttable}",
         f"\\{size}",
-        r"\begin{tabular}{" + alignment + "}",
+        r"\setlength{\tabcolsep}{4pt}",
+        r"\begin{tabularx}{\linewidth}{" + alignment + "}",
         r"\toprule",
         header + r" \\",
         r"\midrule",
         *body,
         r"\bottomrule",
-        r"\end{tabular}",
+        r"\end{tabularx}",
     ]
-    for note in notes:
-        if note:
-            block.append(r"\par\vspace{2pt}")
-            block.append(r"\begin{minipage}{\linewidth}\footnotesize\raggedright " + note
-                         + r"\end{minipage}")
+    live = [note for note in notes if note]
+    if live:
+        block.append(r"\begin{tablenotes}[flushleft]\footnotesize")
+        block += [r"  \item " + note for note in live]
+        block.append(r"\end{tablenotes}")
+    block.append(r"\end{threeparttable}")
     return "\n".join(block) + "\n"
 
 

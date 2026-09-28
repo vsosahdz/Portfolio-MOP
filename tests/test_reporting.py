@@ -271,9 +271,14 @@ def test_typeset_table_is_narrow_enough_and_reads_as_a_table():
     assert r"12.0\%" in latex, "returns must be typeset as percentages, as the prose quotes them"
     header = [line for line in latex.splitlines() if "Screening arm" in line][0]
     assert header.count("&") <= 7, f"too many columns to fit the text block: {header}"
-    assert latex.splitlines()[1].startswith(r"\begin{tabular}{l"), (
-        "the label column must be left-aligned"
+    # tabularx solves for a table exactly \linewidth wide; a plain tabular is as wide as its
+    # content demands and crosses the margin without a warning the reader sees.
+    tabular = [line for line in latex.splitlines() if line.startswith(r"\begin{tabularx}")][0]
+    assert r"{\linewidth}" in tabular, "the table must be sized to the text block"
+    assert tabular.split("}{")[-1].startswith(r">{\raggedright"), (
+        "the label column must be the flexible, left-aligned one"
     )
+    assert r"\begin{threeparttable}" in latex, "notes belong inside the float"
 
 
 def test_no_table_prints_a_bare_nan():

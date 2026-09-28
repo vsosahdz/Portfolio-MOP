@@ -1,7 +1,9 @@
-\small
-\begin{tabular}{lrrrrrr}
+\begin{threeparttable}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}Xrrrrrr}
 \toprule
-Screening arm & Net (ann.) & Gross (ann.)\textsuperscript{a} & Sharpe & Turnover & Names & Up months \\
+Screening arm & Net & Gross\textsuperscript{a} & Sharpe & Turn. & Names & Up \\
 \midrule
 all stocks & 12.0\% & 15.9\% & 0.83 & 32.0\% & 93.83 & 12 \\
 neural network & 7.9\% & 16.2\% & -0.35 & 71.2\% & 32.66 & 11 \\
@@ -10,8 +12,9 @@ tabpfn & 3.2\% & 10.0\% & -0.47 & 61.3\% & 39.98 & 10 \\
 xgboost & 2.1\% & 9.7\% & -0.51 & 70.2\% & 33.28 & 11 \\
 random forest & 0.1\% & 8.3\% & -0.88 & 67.4\% & 32.69 & 10 \\
 \bottomrule
-\end{tabular}
-\par\vspace{2pt}
-\begin{minipage}{\linewidth}\footnotesize\raggedright \textsuperscript{a}Gross is an upper bound, reported to show the cost drag.\end{minipage}
-\par\vspace{2pt}
-\begin{minipage}{\linewidth}\footnotesize\raggedright cost bps: 50.00 -- Blocks: 18\end{minipage}
+\end{tabularx}
+\begin{tablenotes}[flushleft]\footnotesize
+  \item \textsuperscript{a}Gross is an upper bound, reported to show the cost drag.
+  \item cost bps: 50.00 -- Blocks: 18
+\end{tablenotes}
+\end{threeparttable}

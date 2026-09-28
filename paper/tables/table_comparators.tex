@@ -1,7 +1,9 @@
-\small
-\begin{tabular}{llrrrrr}
+\begin{threeparttable}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}Xlrrrrr}
 \toprule
-Arm & Tier & Net (ann.) & Sharpe & Turnover & Diff. vs best cell & MDE \\
+Arm & Tier & Net & Sharpe & Turn. & Diff. & MDE \\
 \midrule
 momentum equal weight & tier1 & 28.2\% & 2.14 & 27.4\% & -3.1\% & 38.7\% \\
 bmv ipc & tier0 & 19.4\% & -- & 0.0\% & 5.7\% & 52.9\% \\
@@ -19,8 +21,9 @@ proposed:tabpfn & factorial & 3.2\% & -0.47 & 61.3\% & -- & -- \\
 proposed:xgboost & factorial & 2.1\% & -0.51 & 70.2\% & -- & -- \\
 proposed:random forest & factorial & 0.1\% & -0.88 & 67.4\% & -- & -- \\
 \bottomrule
-\end{tabular}
-\par\vspace{2pt}
-\begin{minipage}{\linewidth}\footnotesize\raggedright Differences are against the best individual cell (neural network, ga max return, cap 1, historical labelling, 25.1\% annualised), not against the screener-level figures in this table.\end{minipage}
-\par\vspace{2pt}
-\begin{minipage}{\linewidth}\footnotesize\raggedright cost bps: 50.00 -- $p$ adj.: 1.00 -- Verdict: unresolved\end{minipage}
+\end{tabularx}
+\begin{tablenotes}[flushleft]\footnotesize
+  \item Differences are against the best individual cell (neural network, ga max return, cap 1, historical labelling, 25.1\% annualised), not against the screener-level figures in this table.
+  \item cost bps: 50.00 -- $p$ adj.: 1.00 -- Verdict: unresolved
+\end{tablenotes}
+\end{threeparttable}

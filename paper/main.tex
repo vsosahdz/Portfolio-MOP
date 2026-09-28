@@ -4,8 +4,20 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{booktabs}
-\usepackage{longtable}
+\usepackage{threeparttable}
+\usepackage{tabularx}
+\usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
+
+% A tall float may share a page with text rather than claiming a page of its own.
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.7}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.85}
+
+% Let TeX relax a line rather than push it into the margin. Without this a handful of
+% paragraphs overflow by a few points, which is invisible on screen and visible in print.
+\emergencystretch=3em
 
 \journal{Expert Systems with Applications}
 
@@ -43,9 +55,10 @@ Multi-objective optimisation; performance assessment; evolutionary computation; 
 
 \end{frontmatter}
 
-% --- introduction --------------------------------------------------------
+% ==========================================================================
 \section{Introduction}\label{sec:introduction}
 
+% --- introduction --------------------------------------------------------
 A decision-support system built on multi-objective optimisation presents its user with a set of trade-offs rather than a single answer, and the value of the system rests on that set being a fair picture of what is achievable. Validating it is therefore a question about the produced front, not about the objective values of any one solution, and the field answers that question with indicators: hypervolume, inverted generational distance, attainment. Each requires something to compare against.
 
 On synthetic benchmarks the comparison is exact, because the true front is known by construction. In an application it is not known, and practice substitutes a reference front assembled from the algorithms under study -- commonly the same algorithm run under a larger budget. The substitution is treated as a practical necessity with no consequences for what the indicator means.
@@ -60,7 +73,7 @@ Section headings below follow the order in which the argument is built. We state
 
 
 % --- contributions -------------------------------------------------------
-\section{Contributions}\label{sec:contributions}
+\subsection{Contributions}\label{sec:contributions}
 
 \textbf{An indicator that cannot see its own failure mode, and a correction.} Attainment computed against an extended-budget reference front rises with problem size on our ablation, from 0.945 at 10 decision variables to 0.964 at 94. Measured against the closed-form attainable range instead, coverage of the reachable return range falls from 61.3\% to 10.2\% and of the risk range from 34.0\% to 4.3\%, with Spearman rho = -0.93 over 75 instances. The two readings are contradictory and only one is checkable against ground truth. We give the coverage measure, a guard that refuses to report attainment without it, and the condition that flags the pathology: high attainment beside low coverage.
 
@@ -73,9 +86,10 @@ Section headings below follow the order in which the argument is built. We state
 \textbf{A replication package.} The pipeline is specified before execution, runs from a cached dataset of record with the network unavailable, and regenerates every table, figure and quoted number. Configuration drift is detectable: seeds derive from a configuration fingerprint that is checked against the manifest, a property added after the drift occurred undetected during development.
 
 
-% --- related_work --------------------------------------------------------
-\section{Related work}\label{sec:related-work}
+% ==========================================================================
+\section{Background}\label{sec:background}
 
+% --- related_work --------------------------------------------------------
 \textbf{Performance assessment in multi-objective optimisation.} The hypervolume indicator \citep{zitzler1999} and the attainment function \citep{fonseca1996} are the standard instruments for comparing stochastic multi-objective optimisers, and both require a point of comparison. Where the true Pareto front is known -- on synthetic benchmarks constructed for the purpose -- that point is exact. Where it is not, which is every real application, practice substitutes a reference front assembled from the algorithms under study, often from an extended-budget run of the same algorithm. The substitution is usually described as a practical necessity and treated as benign.
 
 This paper is about a case where it is not benign. A reference front produced by the same optimiser inherits whatever that optimiser cannot do, so an indicator computed against it measures consistency rather than quality, and reports success precisely when the failure is systematic. The problem is distinct from the well-studied sensitivity of hypervolume to its reference point, which concerns the scaling of a comparison rather than its blindness.
@@ -89,16 +103,17 @@ This paper is about a case where it is not benign. A reference front produced by
 \textbf{Comparators.} The empirical arms are placed against deterministic baselines (equal weighting, inverse volatility, minimum variance, maximum Sharpe), against the reference series an investor would hold instead -- the CETES 28-day instrument at 7.8\% annualised, the local index at 19.4\%, and the S\&P 500 converted to pesos -- and against adapted published approaches: a single-objective genetic algorithm maximising the Sharpe ratio, an L1-regularised mean-variance formulation with shrinkage covariance, and a cross-sectional momentum portfolio. Momentum is the demanding one, at 28.2\%, above every arm the studied method produces.
 
 
-% --- method --------------------------------------------------------------
-\section{The diagnostic}\label{sec:method}
+% ==========================================================================
+\section{The proposal}\label{sec:the-proposal}
 
-\subsection{What a self-produced reference cannot show}
+% --- method --------------------------------------------------------------
+\subsubsection{What a self-produced reference cannot show}
 
 Let an optimiser produce a front $F$ on an instance, and let $R$ be a reference front produced by the same optimiser under a larger budget. Any indicator of the form $I(F, R)$ is a statement about the relationship between two samples from the same procedure. If the procedure cannot reach a region of the objective space at all, neither $F$ nor $R$ contains points there, the region is absent from the comparison, and $I(F, R)$ is unaffected by its absence. The indicator does not fail; it answers a different question than the one the analyst intends.
 
 This matters most exactly where reassurance is most wanted. As an instance grows, a search that degrades will produce a narrower $F$ -- and a correspondingly narrower $R$. The ratio can rise while both collapse.
 
-\subsection{Coverage against a computable bound}
+\subsubsection{Coverage against a computable bound}
 
 Where the extremes of each objective can be computed in closed form, the comparison need not be self-referential. For the constrained mean-variance problem over a simplex, the maximum expected return is attained by placing the whole budget on the single highest-mean asset, and the minimum variance is the analytic minimum-variance portfolio. Both are exact and neither involves the optimiser.
 
@@ -112,13 +127,16 @@ Coverage is bounded above by one, is comparable across instance sizes because it
 
 The requirement is that the extremes be computable, not that the whole front be known. This is weaker than it first appears: it holds whenever each objective, taken alone, is optimised by a solution with a closed form, which covers linear objectives over a simplex, convex quadratic objectives with analytic minimisers, and any objective whose single-objective optimum is available from a solver the analyst already trusts.
 
-\subsection{The guard condition}
+\subsubsection{The guard condition}
 
 Coverage does not replace attainment, which answers a legitimate question about budget sufficiency. It constrains how attainment may be read. We report the pair, and flag the configuration in which the two disagree in the dangerous direction: attainment at or above nine tenths beside coverage below one quarter. That combination says the search is consistent with itself and narrow against the problem, which is the signature this paper is about. A reported attainment unaccompanied by coverage is, on this evidence, not interpretable.
 
 
+% ==========================================================================
+\section{Experiments, results and discussion}\label{sec:experiments}
+
 % --- experimental_setup --------------------------------------------------
-\section{Experimental setup}\label{sec:experimental-setup}
+\subsection{Experimental setup}\label{sec:experimental-setup}
 
 \textbf{Market and window.} Equities on the Mexican Stock Exchange, evaluated monthly over 18 blocks from 2025-01 to 2026-06. The universe is screened point-in-time on liquidity and data quality, admitting between 88 and 101 instruments per month. Price history reaches further back than the evaluation window to supply indicator warm-up, the expanding training pool and the covariance estimate.
 
@@ -136,9 +154,9 @@ Coverage does not replace attainment, which answers a legitimate question about 
 
 
 % --- results -------------------------------------------------------------
-\section{Results}\label{sec:results}
+\subsection{Results}\label{sec:results}
 
-\subsection{The two measures disagree in direction}
+\subsubsection{The two measures disagree in direction}
 
 Across 450 ablation instances, attainment against an extended-budget reference rises monotonically with problem size, from 0.945 at 10 decision variables to 0.964 at 94. Read alone, this says the larger instances are solved as completely as the smaller ones and that a fixed-budget comparison across sizes is sound.
 
@@ -146,29 +164,29 @@ Coverage says the opposite. Over 75 instances, the fraction of the attainable re
 
 The effect is visible in the portfolios themselves rather than only in the indicator. On the no-screening control at the median evaluation month, the three extracted profiles hold nearly the entire universe at a maximum weight close to a thirtieth, and their expected returns differ by less than a tenth of a percentage point per month. The aggressive and conservative profiles are, in substance, the same portfolio. The concentration ratio against equal weight stays roughly constant across sizes, so the optimiser is finding structure; it is the span that collapses.
 
-\subsection{Search cost does not grow with the problem}
+\subsubsection{Search cost does not grow with the problem}
 
 Wall-clock rises from 2.1 to 4.1 seconds between 10 and 94 variables, a factor of 2.0, while the covariance matrix grows by a factor of 88. Preselection is therefore not buying computation at this scale, whatever it may buy in search quality.
 
-\subsection{The system's own performance}
+\subsubsection{The system's own performance}
 
 No screening arm beats the no-screening control. At 50 basis points the control returns 12.0\% annualised against 7.9\% for the best machine-learning arm, neural network, and 0.1\% for the worst, random forest. Return attribution locates the cause: the selection component is negative for every screening arm, between -7.3\% and -3.1\% annualised, while the same decomposition returns exactly zero for the control.
 
 Against the comparator suite the ordering is unfavourable to the proposed architecture. The cross-sectional momentum portfolio returns 28.2\%, the local index 19.4\%, and the sovereign short-rate instrument 7.8\%, all above every screening arm and the first two above the control.
 
-\subsection{Nothing separates statistically, and the design says why}
+\subsubsection{Nothing separates statistically, and the design says why}
 
 None of the confirmatory hypotheses rejects, and every estimated effect falls below the detectable bound of 12.7\% to 17.1\%. The hierarchical tests, each holding the other factors at their best level, return probabilities between 0.42 and 0.68. The critical difference over the pre-registered headline set of 6 cells is 1.78 ranks against an observed spread far smaller, so no pair is separated.
 
 These are statements about resolution, not about equivalence, and we report them as such.
 
-\subsection{Inference is sensitive to how dependence is handled}
+\subsubsection{Inference is sensitive to how dependence is handled}
 
 Fitting a mixed model over 21,275 cell-months with the evaluation block as a random effect yields standard errors 6 to 9 times smaller than resampling whole blocks. The point estimates agree; only the precision differs. Cells within a block hold overlapping instruments and move together, and a random intercept removes the block's common level while leaving that dependence intact, so the model treats correlated configurations as replicates. The block-paired tests, named confirmatory in advance, govern; the model is reported as descriptive.
 
 The labelling-by-allocator interaction, which is the direct test of whether an apparent labelling advantage is a concentration effect in disguise, has 10 terms and none reaches significance even at the model's overstated precision.
 
-\subsection{Robustness}
+\subsubsection{Robustness}
 
 Substituting a shrinkage covariance estimator moves the reported contrasts by at most 0.7\% annualised, and no contrast reverses sign. The estimator is therefore not promoted to a design factor.
 
@@ -182,7 +200,7 @@ Substituting a shrinkage covariance estimator moves the reported contrasts by at
 \begin{figure}[htbp]
   \centering
   \includegraphics[width=\linewidth]{figures/fig_pareto_front.png}
-  \caption{One Pareto front with the three extracted portfolios marked, at the median evaluation month under the no-screening control. The three profiles are nearly the same portfolio, which is the collapse reported in Section~\ref{sec:results} made concrete.}
+  \caption{One Pareto front with the three extracted portfolios marked, at the median evaluation month under the no-screening control. The three profiles are nearly the same portfolio, which is the collapse reported in Section~\ref{sec:experiments} made concrete.}
   \label{fig:pareto}
 \end{figure}
 
@@ -241,7 +259,7 @@ Substituting a shrinkage covariance estimator moves the reported contrasts by at
 
 
 % --- screening_justification ---------------------------------------------
-\section{Does preselection justify itself?}\label{sec:screening-justification}
+\subsection{Does preselection justify itself?}\label{sec:screening-justification}
 
 The original formulation motivates supervised screening on two grounds: that it improves the portfolio by removing instruments predicted to fall, and that it makes the optimisation tractable by reducing the number of decision variables. The ablation tests both, over 450 instances spanning 10 to 94 decision variables with no-preselection as an explicit level.
 
@@ -254,8 +272,28 @@ The original formulation motivates supervised screening on two grounds: that it 
 The two findings are separable and both are reported. Preselection does make the optimisation easier in a way that is real and measurable. It does not follow that preselection helps, because the screening signal is negative enough to outweigh what the smaller search space buys. A reader who wants the tractability benefit without the selection penalty should look at dimension reduction that does not condition on a predicted return.
 
 
+% --- threats -------------------------------------------------------------
+\subsection{Threats to validity, and what did not survive}\label{sec:threats}
+
+This section reports what limits the results above and what did not survive measurement, at the same length as the findings, because a reader cannot weigh a claim without knowing which of its neighbours failed.
+
+\textbf{A conclusion of this paper reverses one we had already drawn.} An earlier reading of the ablation concluded that preselection buys neither computational cost nor tractability, on the evidence that attainment rises with problem size. The cost half of that survives; the tractability half was an artefact of the instrument, and the coverage measure of Section\textasciitilde{}\textbackslash\{\}ref\{sec:the-proposal\} exists because of it. We report the reversal rather than the corrected conclusion alone, since the failure mode is the paper's subject and we were subject to it.
+
+\textbf{An earlier version of this study had a one-month look-ahead and produced returns that refuted themselves.} Monthly features aggregate daily indicators of their own month, and the screening stage predicted with month $E$'s features for a portfolio held through month $E$. The correlation between a month's feature and that month's return is above nine tenths, and against the following month's return below a tenth. The resulting arms returned between fifty and sixty-five per cent annualised with monthly Sharpe above four, against a momentum bar of 28.2\%. Selection now uses the preceding month's features. The guard that should have caught it did not, because the defect lived in the join between the selection month and the holding month rather than in either alone.
+
+\textbf{The package did not regenerate its own results, and nothing noticed.} The configuration fingerprint that seeds the optimiser had drifted from the one the stored results were produced under. Deterministic allocators matched bit for bit, so only the genetic replicates differed, and the headline figures moved by at most half a percentage point -- close enough that no analysis looked wrong. The current results are regenerated from the shipped configuration, and the fingerprint is now checked against the manifest.
+
+\textbf{Two further defects inverted intermediate results before they were found.} A momentum comparator ranked over all price history rather than the month's admitted universe, inflating its return by eighteen percentage points; and the Sharpe ratio was annualised by twelve in one hypothesis test, which is not a monthly rate, producing a reported effect of several hundred per cent. Both are fixed and both now carry a guard.
+
+\textbf{Coverage of the design is the binding limit on every performance claim.} 18 evaluation blocks give a detectable effect of 12.7\% to 17.1\% annualised, and no effect we estimated exceeds it. The screening comparison, the labelling comparison and the concentration-cap comparison are therefore unresolved rather than null, and we do not claim equivalence anywhere. The coverage result does not rest on that bound: it is a measurement against a computed quantity, replicated across months and seeds.
+
+\textbf{One screener was omitted with its cost measured rather than estimated.} A contrast-pattern classifier was excluded after its measured runtime reached one hundred and thirty-seven hours on this grid. Injecting a hypothetical seventh arm at an implausibly favourable return moves the pooled screening effect by under three percentage points and leaves it well inside the detectable bound, so the omission cannot carry the screening conclusion.
+
+\textbf{Three limits lie outside what this study can address.} Point-in-time exchange membership is not obtainable for this market, so the universe is screened from price history and the survivorship exposure is declared with its measurement rather than eliminated. Transaction costs are applied after optimisation rather than inside the objective, so the optimiser never trades return against the cost of achieving it. And costs are charged at a flat spread, which flatters the screened arms relative to the control because they hold smaller and less liquid names -- a bias that runs against this paper's own conclusion rather than toward it.
+
+
 % --- limitations ---------------------------------------------------------
-\section{Limitations}\label{sec:limitations}
+\subsection{Limitations}\label{sec:limitations}
 
 \textbf{Resolution.} Conclusions rest on 18 monthly blocks, giving a minimum detectable effect of 12.7\% to 17.1\% annualised. No factor effect in the study exceeds that bound. The hierarchical Friedman tests return p between 0.42 and 0.68, and the critical difference over the headline set is 1.78 ranks against a spread far smaller. These are statements about the design, not about the world, and a longer window is the single change that would most improve the study.
 
@@ -270,8 +308,11 @@ The two findings are separable and both are reported. Preselection does make the
 \textbf{Scope.} The study covers one exchange over one window with one feature dictionary. Nothing here establishes that supervised screening subtracts value in general; it establishes that it did so here, under a protocol designed in advance to be able to detect the opposite.
 
 
+% ==========================================================================
+\section{Conclusions and future work}\label{sec:conclusions}
+
 % --- conclusions ---------------------------------------------------------
-\section{Conclusions}\label{sec:conclusions}
+\subsection{Conclusions}\label{sec:conclusions}
 
 An indicator computed against a reference the system produced itself cannot detect a failure the system makes consistently. We gave a case where this is not a theoretical concern: on a constrained portfolio problem, attainment against an extended-budget reference rises with problem size while coverage against the closed-form attainable range falls by a factor of roughly six, and the two readings support opposite conclusions about whether preselection is needed for tractability.
 
@@ -283,7 +324,7 @@ We are explicit about what this study cannot settle. 18 evaluation blocks give a
 
 
 % --- future_work ---------------------------------------------------------
-\section{Future work}\label{sec:future-work}
+\subsection{Future work}\label{sec:future-work}
 
 \textbf{Cost-aware optimisation.} The most direct extension is to move transaction costs inside the objective rather than applying them afterward. Realised turnover is high enough that the optimiser is currently choosing portfolios it would not choose if it were charged for reaching them, and a third objective or a turnover penalty would let the front express that trade-off rather than have it imposed after the fact.
 
@@ -294,6 +335,12 @@ We are explicit about what this study cannot settle. 18 evaluation blocks give a
 \textbf{Longer windows and more blocks.} The design's resolution is the binding constraint on every conclusion. Extending the evaluation window is the change that most improves what can be claimed, and the protocol is specified so that this requires no methodological change.
 
 \textbf{Alternative labels.} All three labeling strategies condition on realised returns over a one-month horizon. Labels defined on risk-adjusted outcomes, on longer horizons, or on relative rather than absolute performance would test whether the negative selection component is a property of supervised screening or of this particular target.
+
+
+% ==========================================================================
+\section{Parameters and provenance}\label{sec:parameters}
+
+\input{tables/parameters}
 
 \bibliographystyle{elsarticle-harv}
 \bibliography{references}

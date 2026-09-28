@@ -264,7 +264,7 @@
   },
   "config_fingerprint": "2658d460ef0feacc",
   "config_name": "default",
-  "created_at": "2026-09-24T23:19:28+00:00",
+  "created_at": "2026-09-28T21:08:19+00:00",
   "data_vintage": "2026-08-22",
   "feature_dictionary_version": "1.0.0",
   "notes": {
@@ -302,7 +302,7 @@
     }
   },
   "python_version": "3.12.13 (main, Mar  3 2026, 12:39:30) [Clang 21.0.0 (clang-2100.0.123.102)]",
-  "revision": "3adbefc23d375a91bb5bcee180103405b4519774+dirty",
+  "revision": "831efc856077e46c7322df7f56a1611c26f16f54+dirty",
   "seeds": {
     "ablation_seeds": 5,
     "bootstrap_seed": 20260727,

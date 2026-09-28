@@ -1,5 +1,7 @@
-\small
-\begin{tabular}{lrrrrrr}
+\begin{threeparttable}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}Xrrrrrr}
 \toprule
 Screening arm & Market & Selection & Allocation & FX tilt & Portfolio SIC & Universe SIC \\
 \midrule
@@ -10,6 +12,8 @@ random forest & 15.4\% & -6.3\% & 1.4\% & 0.4\% & 54.8\% & 56.0\% \\
 tabpfn & 15.4\% & -6.8\% & 2.9\% & 0.6\% & 52.7\% & 56.0\% \\
 xgboost & 14.3\% & -7.3\% & 3.7\% & 0.3\% & 53.4\% & 56.0\% \\
 \bottomrule
-\end{tabular}
-\par\vspace{2pt}
-\begin{minipage}{\linewidth}\footnotesize\raggedright cost bps: 50.00\end{minipage}
+\end{tabularx}
+\begin{tablenotes}[flushleft]\footnotesize
+  \item cost bps: 50.00
+\end{tablenotes}
+\end{threeparttable}

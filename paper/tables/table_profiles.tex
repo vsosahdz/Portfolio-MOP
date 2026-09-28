@@ -1,5 +1,7 @@
+\begin{threeparttable}
 \small
-\begin{tabular}{lllrr}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}Xllrr}
 \toprule
 Profile & Metric & Screening arm & Value & Annualised \\
 \midrule
@@ -22,6 +24,8 @@ moderate & sharpe & svm & 0.12 & -- \\
 moderate & sharpe & tabpfn & -0.02 & -- \\
 moderate & sharpe & xgboost & -0.24 & -- \\
 \bottomrule
-\end{tabular}
-\par\vspace{2pt}
-\begin{minipage}{\linewidth}\footnotesize\raggedright cost bps: 50.00 -- Blocks: 18\end{minipage}
+\end{tabularx}
+\begin{tablenotes}[flushleft]\footnotesize
+  \item cost bps: 50.00 -- Blocks: 18
+\end{tablenotes}
+\end{threeparttable}

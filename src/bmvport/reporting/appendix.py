@@ -28,7 +28,8 @@ import pandas as pd
 
 from ..config import RunConfig
 
-__all__ = ["build_appendix", "render_appendix", "write_appendix"]
+__all__ = ["build_appendix", "render_appendix", "render_parameters_latex",
+           "write_appendix"]
 
 
 def _universe_sizes(results: pd.DataFrame) -> dict[str, int]:
@@ -221,6 +222,63 @@ def render_appendix(appendix: Mapping[str, Any]) -> str:
     return "\n".join(lines)
 
 
+def render_parameters_latex(appendix: Mapping[str, Any]) -> str:
+    """The parameters-and-provenance table, for the manuscript's closing section.
+
+    Every quantity that fixes the run, in one place a reader can check the code against:
+    the data vintage, the screens and their thresholds, the optimiser's budget and seeds,
+    the cost scenarios, and the environment. A methods section describes these in prose and
+    drifts from them; this is emitted from the same manifest the run wrote.
+    """
+    rows: list[tuple[str, str]] = []
+
+    def add(section: Mapping[str, Any], prefix: str = "") -> None:
+        for key, value in section.items():
+            label = (prefix + key).replace("_", " ")
+            if isinstance(value, Mapping):
+                add(value, prefix=f"{key} / ".replace("_", " "))
+            elif isinstance(value, list):
+                rows.append((label, ", ".join(str(v) for v in value)))
+            elif isinstance(value, float):
+                rows.append((label, f"{value:.4g}"))
+            elif value is not None:
+                rows.append((label, str(value)))
+
+    for key in ("data", "universe", "features", "screening", "optimisation", "evaluation"):
+        add(appendix[key])
+    environment = appendix["environment"]
+    rows.append(("python", str(environment.get("python", "")).split()[0]))
+    rows.append(("config fingerprint", str(environment.get("config_fingerprint", ""))))
+    for package, version in sorted(environment.get("packages", {}).items()):
+        rows.append((f"package / {package}", str(version)))
+
+    def escape(text: str) -> str:
+        for character, replacement in (
+            ("\\", r"\textbackslash{}"), ("&", r"\&"), ("%", r"\%"), ("$", r"\$"),
+            ("#", r"\#"), ("_", r"\_"), ("{", r"\{"), ("}", r"\}"),
+        ):
+            text = text.replace(character, replacement)
+        return text
+
+    # Grouped and started in vertical mode. Left inline, the size and length changes open a
+    # paragraph whose indent the tabularx then overruns -- seventeen points of it, reported
+    # against the whole table rather than any row, which is why it reads as a puzzle.
+    lines = [
+        r"\par\noindent",
+        r"\begingroup",
+        r"\footnotesize",
+        r"\setlength{\tabcolsep}{4pt}",
+        r"\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X"
+        r">{\raggedright\arraybackslash}X}",
+        r"\toprule",
+        r"Parameter & Value \\",
+        r"\midrule",
+    ]
+    lines += [f"{escape(label)} & {escape(value)} \\\\" for label, value in rows]
+    lines += [r"\bottomrule", r"\end{tabularx}", r"\endgroup"]
+    return "\n".join(lines) + "\n"
+
+
 def write_appendix(
     results: pd.DataFrame, config: RunConfig, manifest: Mapping[str, Any],
     directory: str | Path,
@@ -233,4 +291,7 @@ def write_appendix(
     json_path.write_text(json.dumps(appendix, indent=2, default=str), encoding="utf-8")
     md_path = directory / "appendix_reproducibility.md"
     md_path.write_text(render_appendix(appendix), encoding="utf-8")
-    return {"json": json_path, "markdown": md_path}
+    tex_path = directory / "tables" / "parameters.tex"
+    tex_path.parent.mkdir(parents=True, exist_ok=True)
+    tex_path.write_text(render_parameters_latex(appendix), encoding="utf-8")
+    return {"json": json_path, "markdown": md_path, "latex": tex_path}

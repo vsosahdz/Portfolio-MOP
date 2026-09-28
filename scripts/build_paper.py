@@ -16,7 +16,7 @@ sys.path.insert(0, "src")
 warnings.filterwarnings("ignore")
 
 from bmvport.reporting.front_matter import build_front_matter, read_authors  # noqa: E402
-from bmvport.reporting.latex import compile_pdf, write_latex  # noqa: E402
+from bmvport.reporting.latex import compile_pdf, overfull_boxes, write_latex  # noqa: E402
 
 TITLE = ("Self-referential performance assessment hides search degradation: "
          "a diagnostic, and a portfolio-selection case study")
@@ -38,3 +38,10 @@ if engine is None:
 print(f"compiling with {engine}")
 pdf = compile_pdf(tex, engine=engine)
 print(f"wrote {pdf} ({pdf.stat().st_size / 1024:.0f} KB)")
+
+# A box past the margin is invisible on screen and plain in print, and only the log sees it.
+boxes = overfull_boxes(pdf.with_suffix(".log"))
+serious = [b for b in boxes if b[0] >= 1.0]
+print(f"overfull boxes: {len(boxes)} total, {len(serious)} at or above 1pt")
+for points, context in serious[:5]:
+    print(f"  {points:6.2f}pt {context[:70]}")

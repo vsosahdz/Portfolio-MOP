@@ -1,0 +1,64 @@
+\par\noindent
+\begingroup
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X}
+\toprule
+Parameter & Value \\
+\midrule
+vintage & 2026-08-22 \\
+evaluation window & 2025-01 to 2026-06 \\
+evaluation blocks & 18 \\
+download window & 2023-01-01 to 2026-06-30 \\
+risk free series & cetes\_28d \\
+banxico series / cetes 28d & SF43936 \\
+banxico series / fx fix & SF43718 \\
+monthly sizes / months & 18 \\
+monthly sizes / minimum & 88 \\
+monthly sizes / median & 93 \\
+monthly sizes / maximum & 101 \\
+screen thresholds / trailing months & 3 \\
+screen thresholds / min traded day fraction & 0.9 \\
+screen thresholds / min median traded value mxn & 5e+05 \\
+screen thresholds / max stale run days & 5 \\
+screen thresholds / min universe size & 60 \\
+screen thresholds / require full window coverage & True \\
+screen thresholds / min window coverage fraction & 0.95 \\
+screen thresholds / max edge gap days & 7 \\
+screen thresholds / max zero return fraction & 0.5 \\
+screen thresholds / min month median volume & 1 \\
+screen thresholds / max abs daily return & 0.5 \\
+dictionary version & 1.0.0 \\
+daily indicators & 43 \\
+monthly features & 129 \\
+screeners & all\_stocks, svm, random\_forest, neural\_network, xgboost, tabpfn \\
+labeling strategies & historical, t\_plus\_1, historical\_and\_t1 \\
+inner metric & balanced\_accuracy \\
+inner folds & 3 \\
+algorithm & NSGA-III \\
+population size & 100 \\
+generations & 100 \\
+objective evaluations & 10000 \\
+seeds & 10 \\
+weight caps & 1.0, 0.2 \\
+covariance estimator & sample \\
+covariance trailing days & 252 \\
+cost scenarios bps & 0.0, 25.0, 50.0, 100.0 \\
+primary cost scenario bps & 50 \\
+realised turnover mean & 0.609 \\
+python & 3.12.13 \\
+config fingerprint & 2658d460ef0feacc \\
+package / PBC4cip & 0.0.0.8 \\
+package / PyYAML & 6.0.3 \\
+package / matplotlib & 3.11.1 \\
+package / numpy & 2.5.1 \\
+package / pandas & 3.0.5 \\
+package / pyarrow & 25.0.0 \\
+package / pymoo & 0.6.2 \\
+package / scikit-learn & 1.9.0 \\
+package / scipy & 1.18.0 \\
+package / statsmodels & 0.14.6 \\
+package / yfinance & 1.5.2 \\
+\bottomrule
+\end{tabularx}
+\endgroup
